@@ -1,0 +1,15 @@
+[github]
+	user = masukomi
+	token = 85f6f36152b1c74e1db9ac6202336d44
+[user]
+	email = masukomi@masukomi.org
+	name = masukomi
+[status-report]
+	include = /Users/masukomi/workspace/git_accessories
+	include = /Users/masukomi/workspace/jsonpath-perl
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope

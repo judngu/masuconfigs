@@ -1,0 +1,1 @@
+gvcolors.vba: call delete('/home/krhodes/.vim/plugin/gvcolors.vim')|call delete('/home/krhodes/.vim/doc/gvcolors.txt')
