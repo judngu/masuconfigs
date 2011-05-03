@@ -1,0 +1,5 @@
+#RBM Specific tweaks
+
+alias free_slots="rake deploy:show | grep -v '\w@rbm' | grep -v '\-\-\-\-\-\-\-\-\-\-\-'"
+alias my_slots="rake deploy:show | grep $USERNAME"
+alias slots="rake deploy:show"

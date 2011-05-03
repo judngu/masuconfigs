@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-
+USERNAME=`id -nu`
 
 
 ## throw this at the top of your .bash_profile
@@ -115,8 +115,9 @@ esac
 #if [ -f /etc/bash_completion ]; then
 #    . /etc/bash_completion
 #fi
-
-alias callahan='ssh -f callahan "while((1)); do sleep 5; done"'
+if [ -f ~/.bash_work ]; then
+    . ~/.bash_work
+fi
 alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
@@ -127,7 +128,8 @@ source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
 
-PATH=$PATH:/usr/local/bin:/Users/masukomi/Applications:/Users/masukomi/Applications/bin:/Users/masukomi/workspace/git_accessories:/usr/local/git/bin:/Users/masukomi/.gem/ruby/1.8/bin:.
+PATH=$PATH:/usr/local/bin:/Applications:/Users/$USERNAME/Applications:/Users/krhodes/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin:.
+
 
 #alias ct_amber="ssh amber"
 #alias ct_amberqa="ssh amber-qa"
