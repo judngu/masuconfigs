@@ -4,6 +4,10 @@ set shiftwidth=4
 syn on
 set number
 
+" save on losing focus
+"au FocusLost * :wa
+
+
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
 "have % match on if/elsif/else/end/opening and closing XML tags and more
