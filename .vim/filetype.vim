@@ -2,6 +2,7 @@ au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead *.gsp     setf gsp
 au BufNewFile,BufRead *.ftl     setf ftl
 au BufNewFile,BufRead *.jst     setf html
+au BufNewFile,BufRead *.as      setf actionscript
 
 " markdown filetype file
 
