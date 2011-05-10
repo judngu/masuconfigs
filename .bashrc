@@ -52,7 +52,10 @@ function parse_git_branch {
 export PS1='\[\033[01;32m\]\w $(git branch &>/dev/null; if [ $? -eq 0 ]; 
 then echo "\[\033[01;34m\]$(parse_git_branch)"; fi) \$ \[\033[00m\]'
 
-
+#Find And Open (with gvim)
+function fao {
+	find . -name $1 -exec /usr/bin/env gvim '{}' \;
+}
 
 
 
