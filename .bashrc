@@ -1,7 +1,9 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-USERNAME=`id -nu`
+
+export USERNAME=`id -nu`
+export ARCHFLAGS="-arch x86_64"
 
 
 ## throw this at the top of your .bash_profile
@@ -56,7 +58,6 @@ then echo "\[\033[01;34m\]$(parse_git_branch)"; fi) \$ \[\033[00m\]'
 function fao {
 	find . -name $1 -exec /usr/bin/env gvim '{}' \;
 }
-
 
 
 
@@ -121,18 +122,23 @@ esac
 if [ -f ~/.bash_work ]; then
     . ~/.bash_work
 fi
+
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+
 alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
 #End stupidity...
 alias epochtime="date +%s"
+
+
 source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
 
-PATH=$PATH:/usr/local/bin:/Applications:/Users/$USERNAME/Applications:/Users/krhodes/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin:.
-
+PATH=.:$PATH:/usr/local/bin:/Applications:/Users/$USERNAME/Applications:/Users/krhodes/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 #alias ct_amber="ssh amber"
 #alias ct_amberqa="ssh amber-qa"
@@ -153,4 +159,6 @@ PATH=$PATH:/usr/local/bin:/Applications:/Users/$USERNAME/Applications:/Users/krh
 #done
 
 
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+[[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
 
