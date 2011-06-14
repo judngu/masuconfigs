@@ -3485,7 +3485,7 @@ function! s:helpermethods()
         \."cache capture cdata_section check_box check_box_tag collection_select concat content_for content_tag content_tag_for csrf_meta_tag current_cycle cycle "
         \."date_select datetime_select debug distance_of_time_in_words distance_of_time_in_words_to_now div_for dom_class dom_id draggable_element draggable_element_js drop_receiving_element drop_receiving_element_js "
         \."email_field email_field_tag error_message_on error_messages_for escape_javascript escape_once excerpt "
-        \."favicon_link_tag field_set_tag fields_for file_field file_field_tag form form_for form_tag "
+        \."favicon_link_tag field_set_tag fields_for file_field file_field_tag form form_for form_tag form_remote_tag "
         \."grouped_collection_select grouped_options_for_select "
         \."hidden_field hidden_field_tag highlight "
         \."image_path image_submit_tag image_tag input "
