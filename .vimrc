@@ -62,6 +62,18 @@ set viminfo='20,<50,s10,h,%
 vnoremap < <gv
 vnoremap > >gv
 
+
+
+function! g:ToggleNuMode()
+	if(&rnu == 1)
+		set nu
+	else
+		set rnu
+	endif
+endfunc
+
+nnoremap <C-L> :call g:ToggleNuMode()<cr>
+
 " Cut/Copy/Paste {{{1
 
 " Cut (two mappings)
