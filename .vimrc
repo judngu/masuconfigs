@@ -1,12 +1,13 @@
+set ww+=<,>
+" making arrow keys wrap across line breaks in normal mode
+imap <Left> <C-O><Left>
+imap <Right> <C-O><Right>
+
 set tabstop=4
 set shiftwidth=4
 " syntax highlighting
 syn on
 set number
-
-" save on losing focus
-"au FocusLost * :wa
-
 
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
