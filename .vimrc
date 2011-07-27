@@ -8,7 +8,7 @@ set shiftwidth=4
 " syntax highlighting
 syn on
 set number
-
+set ruler
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
 "have % match on if/elsif/else/end/opening and closing XML tags and more
