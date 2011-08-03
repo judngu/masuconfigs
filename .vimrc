@@ -27,6 +27,9 @@ set hlsearch
 set incsearch " ... dynamically as they are typed
 
 
+set fdm=syntax
+
+
 " ok, this is silly, i admit, but it's 
 " more a placeholder so that I'll remember I can do this
 " in the future.
