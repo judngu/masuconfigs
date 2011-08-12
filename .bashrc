@@ -35,7 +35,9 @@ function fao {
 	find . -name $1 -exec /usr/bin/env gvim '{}' \;
 }
 
-
+function gpo {
+	git push origin $(current_git_branch)
+}
 
 #/usr/bin/keychain -q ~/.ssh/internal_key ~/.ssh/deployed_key ~/.ssh/external_key
 #/usr/bin/ssh-add ~/.ssh/internal_key ~/.ssh/deployed_key ~/.ssh/external_key
@@ -63,9 +65,9 @@ shopt -s checkwinsize
 #alias l='ls -CF'
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" -a -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+#if [ -z "$debian_chroot" -a -r /etc/debian_chroot ]; then
+#    debian_chroot=$(cat /etc/debian_chroot)
+#fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 #case "$TERM" in
@@ -110,7 +112,7 @@ alias gvmi=gvim
 alias epochtime="date +%s"
 
 
-source ~/workspace/z/z.sh
+#source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
 
@@ -136,5 +138,5 @@ PATH=.:$PATH:/usr/local/bin:/Applications:/Users/$USERNAME/Applications:/Users/k
 
 
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-[[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
+#[[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
 
