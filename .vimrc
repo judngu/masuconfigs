@@ -3,12 +3,17 @@ set ww+=<,>
 imap <Left> <C-O><Left>
 imap <Right> <C-O><Right>
 
+set noexpandtab
+set copyindent
+set preserveindent
+set softtabstop=0
 set tabstop=4
 set shiftwidth=4
+" shorter version of the above is :set noet ci pi sts=0 sw=4 ts=4
 " syntax highlighting
 syn on
 set number
-set ruler
+
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
 "have % match on if/elsif/else/end/opening and closing XML tags and more
@@ -27,7 +32,8 @@ set hlsearch
 set incsearch " ... dynamically as they are typed
 
 
-set fdm=syntax
+"set fdm=syntax
+" whenever I use that it auto-folds everything when I open a file
 
 
 " ok, this is silly, i admit, but it's 

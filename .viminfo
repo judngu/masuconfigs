@@ -8,57 +8,57 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/execute
+~MSle0~/tab
 
 # Last Substitute Search Pattern:
-~MSle0&lat
+~MSle0&    
 
 # Last Substitute String:
-$
+$ 
 
 # Command Line History (newest to oldest):
 :wq
+:q
 :w
 :u
-:q
-:vsplit list.rb
-:'<,'>s/lat/lon/g
-:'<,'>s/latitude/longitude/g
-:'<,'>s/\t /\t/g
-:'<,'>s/  /\t/g
-:%s/updateMapStyle/updateMapType/g
-:'<,'>s/map_styles/map_types/g
-:q!
-:Q
-:'<,'>s/includes/excludes/g
-:'<,'>s/\$file/$template_file/g
-:W
-:'<,'>s/Debug/WebApp/g
-:'<,'>s/WebApp/Debug/g
-:%s/\[list\]\[\*\]o/\[*\]/g
-:%s/\[list\]\[*\]o/\[*\]/g
+:set noet ci pi sts=0 sw=4 ts=4
+:set noexpandtab
+:set noexpandtabs
+:set notabexpand
+:'<,'>s/    / /g
+:'<,'>s/\n//g
+:'<,'>s/\t/ /g
+:'<,'>/\n//g
+:'<,'>/\n\s+//g
+:split
+:%s/  /\t/g
+:'<,'>s/\t/  /g
+:'<,'>s/ $//
+:'<,'>s/$/    \|/
+:migrate
+:fo
 
 # Search String History (newest to oldest):
-?/execute
-?/<<<
-?/Katherine
-?/\.com
-?/global
-?/masukomi
-?/tunnels
-?/Company Profile
-?/convertFromGoogle
-?/SDKROOT
-?/Amit
-?/amit
-?/Dachary
-? lat
-? latitude
-?/latabs
-? \t 
-?   
-?/alert
-?/updateMap
+?/tab
+?/fixture_types
+?/fs
+?/cps =
+?/initCampaignManager
+?/sku_find
+?/location_image_upload
+?/begin
+?/overview_summary
+?/content
+?/edit floorplan
+?/edit location
+?/feedbackUI
+?/edit
+?/jump_dbid
+?/currently viewing
+?/campaign_id
+?     
+? \n
+? \t
 
 # Expression History (newest to oldest):
 
@@ -68,430 +68,518 @@ $
 
 # Registers:
 "0	LINE	0
-			return false unless option
+										%img{:src=>'/images/indicator.gif'}
 ""1	LINE	0
-	PATH=$PATH:/usr/local/bin:/Users/masukomi/Applications:/Users/masukomi/Applications/bin:/Users/masukomi/workspace/git_accessories:/usr/local/git/bin:/Users/masukomi/.gem/ruby/1.8/bin:.
+	
 "2	LINE	0
-	source ~/workspace/z/z.sh
 	
-	export LANG=en_US.UTF-8
 "3	LINE	0
-	alias ct_amberqa="ssh amber-qa"
+	set tabstop=4
 "4	LINE	0
-	alias eclipse="$HOME/applications/eclipse/eclipse &"
+	set shiftwidth=4
 "5	LINE	0
-	#Compensating for stupidity
-"6	LINE	0
-	alias gvmi=gvim
-"7	LINE	0
+	      response['item_name'] = cps[0].sku.name
+"6	CHAR	0
+	cps.collect{|cp|cp.fixture_id}
+"7	CHAR	0
+	cps = ContentPlacement.find(:all,
+	      #:joins=>'inner join contents on content_placements.content_id = contents.id',
+	      :conditions=>['locations.promonet_id = ? AND content_placements.campaign_id = ? AND contents.item_number = ?', 
+	                params[:location_id], params[:campaign_id], params[:sku]],
+	      :include=>[:sku, :location, :fixture]
+	    )
+	    fixture_types = FixtureType.find(cps.collect{|cp|cp.fixture.fixture_type_id})
 	
+	    campaign = Campaign.find(params[:campaign_id])
 "8	LINE	0
-	export JSON_FILE=/home/masukomi/workspace/insight-prov/1_6/bin/portal.js
+	    
 "9	LINE	0
-	
-"d	CHAR	0
-	d
-"j	CHAR	0
-	Â€klÂ€kljÂ€kljjj<q
-"o	CHAR	0
-	;:q
+						%div{:style=>"height: 450px; overflow: auto; padding: 10px;"}
 "q	CHAR	0
-	;;
-"x	CHAR	0
-	${parseInt(entry_index) +1 }
+	io€kb:qoEOMo€kb€ýc€ýb
 "-	CHAR	0
-	s
+	content_id
 
 # File marks:
-'0  3  41  ~/workspace/home_dir_configs/HOME_DIR_README
-'1  130  183  ~/.bashrc
-'2  1  0  ~/.bash_rc
-'3  1  0  ~/.ssh/config
-'4  61  1  ~/workspace/passy/ubiquity/passy_ubiquity_section.js
-'5  34  5  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/list.rb
-'6  7  2  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/globals.rb
-'7  1  0  ~/workspace/serverwatcher.masukomi.org/download.html
-'8  1  0  ~/workspace/serverwatcher.masukomi.org/webServer.html
-'9  1  0  ~/workspace/serverwatcher.masukomi.org/vphtmltemplate.html
+'0  12  64  ~/.vimrc
+'1  1  0  ~/workspace/ipog/app/views/campaigns/list
+'2  1206  201  ~/workspace/ipog/app/controllers/locations_controller.rb
+'3  1  0  ~/workspace/vmm/app/jobs/location_jobs.rb
+'4  516  13  ~/workspace/ipog/app/helpers/application_helper.rb
+'5  1  0  ~/workspace/ipog/.git/COMMIT_EDITMSG
+'6  25  0  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+'7  36  8  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+'8  21  0  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+'9  43  21  ~/Desktop/daydreams.mkdn
 
 # Jumplist (newest first):
--'  3  41  ~/workspace/home_dir_configs/HOME_DIR_README
--'  1  0  ~/workspace/home_dir_configs/HOME_DIR_README
--'  130  183  ~/.bashrc
--'  134  0  ~/.bashrc
--'  1  0  ~/.bashrc
--'  1  0  ~/.bash_rc
--'  1  0  ~/.ssh/config
--'  61  1  ~/workspace/passy/ubiquity/passy_ubiquity_section.js
--'  54  56  ~/workspace/passy/ubiquity/passy_ubiquity_section.js
--'  71  1  ~/workspace/passy/ubiquity/passy_ubiquity_section.js
--'  67  1  ~/workspace/passy/ubiquity/passy_ubiquity_section.js
--'  70  0  ~/workspace/passy/ubiquity/passy_ubiquity_section.js
--'  1  0  ~/workspace/passy/ubiquity/passy_ubiquity_section.js
--'  34  5  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/list.rb
--'  44  1  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/list.rb
--'  1  0  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/list.rb
--'  29  0  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/list.rb
--'  1  0  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/ToDoList.java
--'  7  2  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/globals.rb
--'  1  0  ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/globals.rb
--'  1  0  ~/workspace/serverwatcher.masukomi.org/download.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/webServer.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/vphtmltemplate.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/testing_20a_20server.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/testing_20a_20server
--'  1  0  ~/workspace/serverwatcher.masukomi.org/report_20a_20bug.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/preferences.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/per_server_preferences.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/licenses.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/installation.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/index.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/donate.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/developers.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/color_20key.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/changelog.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/bean_shell.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/adding_20notification_20methods.html
--'  1  0  ~/workspace/serverwatcher.masukomi.org/indexOrig.html
--'  38  0  ~/workspace/gearupproject.org/index.html
--'  1  0  ~/workspace/gearupproject.org/index.html
--'  1  0  ~/workspace/listfulthinking.com/public/robots.txt
--'  1  0  ~/workspace/listfulthinking.com/public/plannedFeatures.htm
--'  1  0  ~/workspace/listfulthinking.com/public/help.htm
--'  1  0  ~/workspace/listfulthinking.com/public/screenshots.htm
--'  1  0  ~/workspace/listfulthinking.com/public/paper_edition.htm
--'  1  0  ~/workspace/listfulthinking.com/public/download.htm
--'  1  0  ~/workspace/listfulthinking.com/public/donate.htm
--'  127  0  ~/workspace/listfulthinking.com/public/weblog/000872.html
--'  1  0  ~/workspace/listfulthinking.com/public/weblog/000872.html
--'  32  0  ~/workspace/rubyjs/README
--'  1  0  ~/workspace/rubyjs/README
--'  13259  20  ~/workspace/defaults.txt
--'  10145  26  ~/workspace/defaults.txt
--'  9852  23  ~/workspace/defaults.txt
--'  9086  24  ~/workspace/defaults.txt
--'  87  24  ~/workspace/defaults.txt
--'  1  0  ~/workspace/defaults.txt
--'  1  0  ~/Desktop/wp-prep/public/wp-config.php
--'  1  0  ~/Desktop/wp-prep/BAD/the_devil.txt
--'  1  0  ~/Desktop/wp-prep/public/wp-pass.php
--'  370  40  ~/temp/adventure-means-taking-chances
--'  1  0  ~/temp/adventure-means-taking-chances
--'  112  35  ~/temp/shCore.js
--'  6  24  ~/temp/shCore.js
--'  3  24  ~/temp/shCore.js
--'  1550  25  ~/temp/shCore.js
--'  382  23  ~/temp/shCore.js
--'  355  46  ~/temp/shCore.js
--'  215  10  ~/temp/shCore.js
--'  198  4  ~/temp/shCore.js
--'  105  795  ~/temp/shCore.js
--'  1038  20  ~/temp/shCore.js
--'  31  93  ~/temp/shCore.js
--'  1  0  ~/temp/shCore.js
--'  65  0  ~/Downloads/wp_posts (1).sql
--'  1  0  ~/Downloads/wp_posts (1).sql
--'  65  0  ~/Downloads/wp_posts.sql
--'  1  0  ~/Downloads/wp_posts.sql
--'  13  42  ~/workspace/snow_fight/source/tests/field_test.rb
--'  1  0  ~/workspace/snow_fight/source/tests/field_test.rb
--'  22  24  ~/workspace/snow_fight/source/lib/holdables.rb
--'  37  1  ~/workspace/snow_fight/source/lib/holdables.rb
--'  7  0  ~/workspace/snow_fight/source/lib/holdables.rb
--'  11  21  ~/workspace/snow_fight/source/lib/holdables.rb
--'  1  0  ~/workspace/snow_fight/source/lib/holdables.rb
--'  5  33  ~/workspace/snow_fight/source/tests/AllTests.rb
--'  1  0  ~/workspace/snow_fight/source/tests/AllTests.rb
--'  2  15  ~/workspace/snow_fight/source/tests/DistanceCalculatorTest.rb
--'  1  0  ~/workspace/snow_fight/source/tests/DistanceCalculatorTest.rb
--'  48  74  ~/workspace/acl_plus_rbac/docs/index.html
--'  11  0  ~/workspace/acl_plus_rbac/docs
--'  43  13  ~/.ssh/config
--'  526  65  ~/workspace/acl_plus_rbac-read_only/docs/index.html
--'  492  13  ~/workspace/acl_plus_rbac-read_only/docs/index.html
--'  1  0  ~/workspace/acl_plus_rbac-read_only/docs/index.html
--'  32  11  ~/.subversion/config
--'  63  1  ~/.subversion/config
--'  13  45  ~/.subversion/config
--'  1  0  ~/.subversion/config
+-'  12  64  ~/.vimrc
+-'  10  0  ~/.vimrc
+-'  58  10  ~/.vimrc
+-'  56  8  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  1  0  ~/workspace/ipog/app/views/campaigns/list
+-'  1206  201  ~/workspace/ipog/app/controllers/locations_controller.rb
+-'  1214  6  ~/workspace/ipog/app/controllers/locations_controller.rb
+-'  1212  31  ~/workspace/ipog/app/controllers/locations_controller.rb
+-'  1207  179  ~/workspace/ipog/app/controllers/locations_controller.rb
+-'  1203  3  ~/workspace/ipog/app/controllers/locations_controller.rb
+-'  1208  3  ~/workspace/ipog/app/controllers/locations_controller.rb
+-'  1  0  ~/workspace/ipog/app/controllers/locations_controller.rb
+-'  1  0  ~/workspace/vmm/app/jobs/location_jobs.rb
+-'  516  13  ~/workspace/ipog/app/helpers/application_helper.rb
+-'  1  0  ~/workspace/ipog/app/helpers/application_helper.rb
+-'  1  0  ~/workspace/ipog/.git/COMMIT_EDITMSG
+-'  25  0  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  87  480  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  86  128  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  85  8  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  81  44  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  95  59  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  22  36  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  58  7  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  55  16  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  60  4  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  72  3  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  54  2  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  2  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  48  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  1  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  28  15  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  15  25  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  14  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  20  51  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  19  17  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  18  63  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  21  57  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  47  311  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  25  0  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  87  480  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  86  128  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  85  8  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  81  44  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  95  59  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  22  36  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  58  7  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  55  16  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  60  4  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  72  3  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  54  2  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  2  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  48  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  1  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  28  15  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  15  25  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  14  0  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  20  51  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  19  17  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  18  63  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  21  57  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  47  311  ~/workspace/ipog/app/views/locations/floorplan.haml
+-'  22  24  ~/workspace/ipog/public/javascripts/application.js
+-'  598  9  ~/workspace/ipog/public/javascripts/application.js
+-'  489  38  ~/workspace/ipog/public/javascripts/application.js
+-'  614  2  ~/workspace/ipog/public/javascripts/application.js
+-'  604  42  ~/workspace/ipog/public/javascripts/application.js
+-'  584  2  ~/workspace/ipog/public/javascripts/application.js
+-'  550  120  ~/workspace/ipog/public/javascripts/application.js
+-'  508  58  ~/workspace/ipog/public/javascripts/application.js
+-'  469  45  ~/workspace/ipog/public/javascripts/application.js
+-'  485  16  ~/workspace/ipog/public/javascripts/application.js
+-'  1  0  ~/workspace/ipog/public/javascripts/application.js
+-'  513  27  ~/workspace/ipog/public/javascripts/application.js
+-'  34  26  ~/workspace/ipog/public/javascripts/application.js
+-'  18  86  ~/workspace/ipog/public/javascripts/application.js
+-'  494  4  ~/workspace/ipog/public/javascripts/application.js
+-'  1  0  ~/workspace/ipog/.git/COMMIT_EDITMSG
+-'  12  29  ~/workspace/ipog/.git/COMMIT_EDITMSG
+-'  3  0  ~/workspace/ipog/.git/rebase-merge/git-rebase-todo
+-'  1  0  ~/workspace/ipog/.git/rebase-merge/git-rebase-todo
+-'  16  2  ~/workspace/ipog/config/database.yml
+-'  7  0  ~/workspace/ipog/config/database.yml
+-'  1  12  ~/workspace/ipog/config/database.yml
+-'  1  19  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  24  3  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  190  11  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  189  17  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  31  0  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  36  8  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  142  33  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  29  0  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  28  0  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  7  1  ~/workspace/ipog/app/views/locations/floorplan.rhtml
+-'  11  33  ~/workspace/ipog/app/views/locations/floorplan.rhtml
 
 # Buffer list:
-%~/workspace/home_dir_configs/HOME_DIR_README	3	41
+%~/.vimrc	12	64
 
 # History of marks within files (newest to oldest):
 
-> ~/workspace/home_dir_configs/HOME_DIR_README
-	"	3	41
-	^	3	42
-	.	3	41
-	+	3	41
+> ~/.vimrc
+	"	12	64
+	^	12	65
+	.	12	34
+	+	10	0
+	+	6	0
+	+	10	0
+	+	10	0
+	+	9	0
+	+	8	0
+	+	7	0
+	+	6	0
+	+	10	0
+	+	12	34
+
+> ~/workspace/ipog/app/views/campaigns/list
+	"	1	0
+
+> ~/workspace/ipog/app/controllers/locations_controller.rb
+	"	1206	201
+	^	1206	201
+	.	1206	200
+	+	1208	4
+	+	1203	4
+	+	1208	0
+	+	1203	7
+	+	1204	3
+	+	1205	3
+	+	1205	30
+	+	1207	3
+	+	1203	52
+	+	1204	48
+	+	1205	27
+	+	1205	54
+	+	1206	244
+	+	1204	42
+	+	1204	0
+	+	1207	179
+	+	1211	28
+	+	1212	50
+	+	1213	36
+	+	1206	200
+
+> ~/workspace/ipog/public/javascripts/snippets/locations/floorplan.js
+	"	4	2
+	^	4	2
+	.	4	0
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	29
+	+	162	0
+	+	163	0
+	+	234	0
+	+	244	0
+	+	245	0
+	+	251	0
+	+	251	0
+	+	253	0
+	+	252	0
+	+	2	29
+	+	7	1
+	+	1	42
+	+	143	2
+	+	150	2
+	+	151	0
+	+	6	1
+	+	5	1
+	+	4	0
+
+> ~/workspace/ipog/app/controllers/frontline_controller.rb
+	"	621	3
+	^	619	6
+	.	618	0
+	+	618	3
+	+	619	5
+	+	617	0
+	+	618	0
+
+> ~/workspace/ipog/app/views/locations/floorplan.haml
+	"	71	206
+	^	24	71
+	.	24	91
+	+	1	0
+	+	1	0
+	+	1	0
+	+	58	3
+	+	58	3
+	+	58	3
+	+	58	7
+	+	58	7
+	+	58	3
+	+	58	7
+	+	58	3
+	+	58	3
+	+	58	5
+	+	58	7
+	+	129	0
+	+	130	4
+	+	131	2
+	+	58	3
+	+	58	3
+	+	58	3
+	+	58	105
+	+	2	0
+	+	2	3
+	+	58	3
+	+	58	3
+	+	58	3
+	+	1	0
+	+	2	0
+	+	58	0
+	+	64	0
+	+	76	0
+	+	64	0
+	+	59	49
+	+	59	49
+	+	60	87
+	+	62	0
+	+	61	0
+	+	60	74
+	+	128	5
+	+	90	9
+	+	90	277
+	+	90	8
+	+	90	278
+	+	90	9
+	+	91	412
+	+	91	78
+	+	128	0
+	+	128	0
+	+	91	181
+	+	91	218
+	+	102	3
+	+	128	0
+	+	103	0
+	+	48	19
+	+	53	22
+	+	56	21
+	+	58	11
+	+	76	29
+	+	81	16
+	+	85	19
+	+	89	15
+	+	95	25
+	+	96	31
+	+	87	14
+	+	126	21
+	+	77	23
+	+	78	0
+	+	83	13
+	+	81	41
+	+	86	0
+	+	89	0
+	+	91	220
+	+	91	368
+	+	91	479
+	+	48	0
+	+	126	0
+	+	57	6
+	+	128	1
+	+	11	27
+	+	14	50
+	+	14	16
+	+	56	47
+	+	11	21
+	+	11	21
+	+	13	2
+	+	14	2
+	+	13	3
+	+	14	0
+	+	95	50
+	+	96	32
+	+	48	45
+	+	126	0
+	+	127	3
+	+	13	0
+	+	91	227
+	+	12	0
+	+	60	80
+	+	72	109
+	+	124	71
+	+	24	91
+
+> ~/workspace/ipog/vendor/plugins/gemsonrails/init.rb
+	"	14	2
+
+> ~/workspace/ipog/vendor/plugins/gemsonrails/tasks/gems_freeze.rake
+	"	41	69
+	^	41	69
+	.	41	68
+	+	41	68
+
+> ~/workspace/ipog/vendor/plugins/haml/lib/haml.rb
+	"	1	0
+
+> /usr/local/rvm/rubies/ruby-1.8.7-p334/lib/ruby/site_ruby/1.8/rubygems/commands/unpack_command.rb
+	"	93	25
+	^	93	25
+	.	93	0
+	+	94	29
+	+	93	37
+	+	95	3
+	+	93	0
+
+> ~/workspace/ipog/vendor/plugins/haml/init.rb
+	"	1	0
+
+> ~/workspace/ipog/vendor/plugins/haml/rails/init.rb
+	"	1	0
+
+> ~/workspace/ipog/.git/COMMIT_EDITMSG
+	"	1	0
+	^	1	14
+	.	1	13
+	+	2	21
+	+	3	0
+	+	3	0
+	+	8	0
+	+	10	0
+	+	10	14
+	+	9	35
+	+	3	0
+	+	3	68
+	+	10	0
+	+	10	48
+	+	10	0
+	+	5	0
+	+	6	29
+	+	1	32
+	+	3	48
+	+	12	60
+	+	13	78
+	+	14	25
+	+	1	13
 
 > ~/.bashrc
-	"	130	183
-	^	148	1
-	.	130	0
-	+	129	0
-	+	149	0
-	+	150	0
-	+	151	0
-	+	125	0
-	+	133	0
-	+	134	0
-	+	135	0
-	+	136	0
-	+	137	0
-	+	138	0
-	+	139	0
-	+	140	0
-	+	142	0
-	+	141	0
-	+	143	0
-	+	144	0
-	+	145	0
-	+	146	0
-	+	147	0
-	+	148	0
-	+	150	0
-	+	126	0
-	+	151	0
-	+	130	0
+	"	111	1
+	^	111	1
+	.	70	0
+	+	68	0
+	+	69	0
+	+	70	0
 
-> ~/workspace/home_dir_configs/.ssh/config
-	"	1	0
-	.	1	0
-	+	13	0
-	+	25	0
-	+	1	0
-
-> ~/.bash_rc
+> ~/workspace/ipog/rm
 	"	1	0
 
-> ~/.ssh/config
+> ~/workspace/vmm/app/jobs/location_jobs.rb
 	"	1	0
 
-> ~/workspace/passy/ubiquity/passy_ubiquity_section.js
-	"	61	1
+> ~/workspace/ipog/app/helpers/application_helper.rb
+	"	516	13
 
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/ToDoList.java
-	"	64	34
-	^	64	35
+> ~/workspace/ipog/public/javascripts/application.js
+	"	22	24
 
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/list.rb
-	"	34	5
-	^	25	27
-	.	25	26
-	+	49	2
-	+	3	28
-	+	4	19
-	+	4	17
-	+	4	25
-	+	4	20
-	+	29	1
-	+	43	21
-	+	28	9
-	+	4	47
-	+	4	18
-	+	27	0
-	+	4	23
-	+	5	1
-	+	5	26
-	+	10	12
-	+	6	23
-	+	13	4
-	+	11	5
-	+	12	19
-	+	6	0
-	+	32	51
-	+	44	2
-	+	1	0
-	+	44	17
-	+	42	3
-	+	41	2
-	+	40	2
-	+	39	2
-	+	38	2
-	+	37	2
-	+	36	2
-	+	35	2
-	+	34	2
-	+	33	2
-	+	44	13
-	+	4	0
-	+	6	24
-	+	9	35
-	+	10	20
-	+	18	3
-	+	17	25
-	+	22	3
-	+	21	28
-	+	26	3
-	+	25	26
-
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/ToDoItem.java
-	"	172	0
-
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/item.rb
-	"	16	25
-	^	16	25
-	.	16	24
-	+	33	2
-	+	1	13
-	+	33	0
-	+	30	0
-	+	31	4
-	+	31	7
-	+	32	1
-	+	31	3
-	+	31	6
-	+	33	0
-	+	31	2
-	+	10	3
-	+	9	4
-	+	8	15
-	+	6	2
-	+	4	0
+> ~/workspace/ipog/public/stylesheets/snippets/locations/floorplan.css
+	"	9	10
+	.	10	0
+	+	11	0
+	+	7	21
+	+	8	11
+	+	9	11
+	+	10	15
+	+	10	1
+	+	18	0
+	+	13	22
+	+	14	11
+	+	15	12
 	+	17	1
-	+	27	0
-	+	17	4
-	+	17	11
-	+	6	21
-	+	26	21
-	+	24	9
-	+	28	3
-	+	27	31
-	+	27	30
-	+	26	27
-	+	32	0
-	+	31	11
-	+	27	31
-	+	28	4
-	+	29	0
-	+	17	43
-	+	17	6
-	+	17	7
-	+	17	4
-	+	17	43
-	+	17	17
-	+	17	45
-	+	17	7
-	+	17	47
-	+	17	16
-	+	17	45
-	+	17	4
-	+	17	3
-	+	17	6
-	+	17	3
-	+	17	4
-	+	17	1
-	+	17	1
-	+	17	1
-	+	17	4
-	+	17	3
-	+	17	3
-	+	17	3
-	+	17	5
-	+	17	1
-	+	17	1
-	+	17	1
-	+	24	4
-	+	24	3
-	+	24	28
-	+	24	24
-	+	17	1
-	+	17	47
-	+	17	1
-	+	17	1
-	+	17	1
-	+	17	26
-	+	17	39
-	+	17	38
+	+	16	1
+	+	15	1
+	+	14	1
+	+	19	19
+	+	20	1
+	+	20	17
+	+	20	22
+	+	21	13
+	+	22	14
+	+	23	19
 	+	24	1
-	+	17	40
-	+	23	3
-	+	19	1
-	+	17	37
-	+	22	21
-	+	20	25
-	+	19	0
-	+	17	0
-	+	26	0
-	+	25	10
-	+	12	35
-	+	18	64
-	+	14	23
-	+	13	13
-	+	16	24
+	+	28	0
+	+	27	1
+	+	31	0
+	+	30	13
+	+	32	13
+	+	32	29
+	+	32	0
+	+	32	35
+	+	32	0
+	+	32	15
+	+	32	47
+	+	32	20
+	+	33	47
+	+	36	0
+	+	34	18
+	+	35	1
+	+	32	1
+	+	32	1
+	+	32	44
+	+	20	0
+	+	32	0
+	+	10	0
 
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/storage.rb
-	"	20	0
-	.	22	0
-	+	22	2
-	+	21	1
-	+	4	25
-	+	6	3
-	+	3	33
-	+	4	27
-	+	3	56
+> ~/workspace/ipog/app/views/locations/floorplan.rhtml
+	"	204	14
+	^	25	0
+	.	13	0
+	+	11	41
+	+	20	123
+	+	20	46
+	+	20	116
+	+	20	1
+	+	20	86
+	+	11	82
+	+	20	46
+	+	11	55
+	+	28	42
+	+	30	42
+	+	37	45
+	+	43	43
+	+	11	45
+	+	11	2
+	+	11	4
+	+	18	163
+	+	11	47
+	+	20	44
+	+	11	2
+	+	11	2
+	+	11	2
+	+	11	2
+	+	11	84
+	+	18	109
+	+	11	2
+	+	11	89
+	+	11	2
+	+	11	2
+	+	11	4
+	+	11	2
+	+	11	2
+	+	11	2
+	+	11	2
+	+	11	2
+	+	11	10
+	+	11	44
+	+	11	217
+	+	11	68
+	+	10	11
+	+	11	2
+	+	11	2
+	+	11	2
+	+	11	2
+	+	11	4
+	+	11	5
 	+	11	3
-	+	8	41
-	+	19	4
-	+	21	4
-	+	21	2
-	+	21	19
-	+	21	2
-	+	21	21
-	+	21	1
-	+	21	1
-	+	21	2
-	+	21	1
-	+	21	22
-	+	21	29
-	+	21	30
-	+	21	31
-	+	21	3
-	+	21	4
-	+	21	25
-	+	21	1
-	+	22	0
-
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/globals.rb
-	"	7	2
-	^	4	18
-	.	4	17
+	+	6	2
+	+	5	3
+	+	11	67
+	+	5	12
+	+	11	0
+	+	12	0
+	+	20	0
+	+	29	0
 	+	7	2
-	+	5	35
-	+	6	27
-	+	4	17
-
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/Globals.java
-	"	19	0
-
-> ~/workspace/snow_fight_orig/source/lib/field.rb
-	"	1	0
-
-> ~/workspace/listfulthinking.com/releases/ToDo_0_6_3/lists/masukomi/TestList.xml
-	"	1	0
-
-> ~/workspace/listful_thinking/ruby/lib/org/listfulthinking/Storage.java
-	"	389	10
-
-> ~/workspace/rdoc/lib/rdoc/markup.rb
-	"	38	0
-
-> ~/workspace/rdbc/trunk/README
-	"	72	0
-	^	72	0
-	.	74	0
-	+	73	21
-	+	71	20
-	+	74	0
-
-> ~/workspace/serverwatcher.masukomi.org/download.html
-	"	1	0
-	.	1	0
-	+	1	0
-
-> ~/workspace/serverwatcher.masukomi.org/webServer.html
-	"	1	0
-	.	1	0
-	+	1	0
+	+	29	0
+	+	110	0
+	+	190	248
+	+	13	0

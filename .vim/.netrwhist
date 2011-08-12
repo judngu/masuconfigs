@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/masukomi/workspace/acl_plus_rbac'
 let g:netrw_dirhist_2='/Users/masukomi/workspace/acl_plus_rbac/docs'
+let g:netrw_dirhist_3='/Users/krhodes/workspace/ipog/vendor/plugins/rbm_mods'
+let g:netrw_dirhist_4='/Users/krhodes/workspace/vmm/test/support'
+let g:netrw_dirhist_5='/Users/krhodes/workspace/ipog/app/views/placement'
+let g:netrw_dirhist_6='/Users/krhodes/workspace/ipog/standalone/jobber/ebin'
