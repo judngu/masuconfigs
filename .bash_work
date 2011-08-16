@@ -37,14 +37,14 @@ export VMM_DIR="/Users/$USERNAME/workspace/vmm/"
 
 function deploy_ipog {
 	git pull origin master
-	echo "Continue and Push to origin? y/n: "
+	echo "Continue and Push branch $(current_git_branch) to origin master? y/n: "
 	read continue
-	if [ "$continue" == 'y' ] || [ "$continue" == 'Y']; then
+	if [ "$continue" == 'y' ] || [ "$continue" == 'Y' ]; then
 		git push origin master
 		echo "Continue and deploy? y/n: "
 		read continue
-		if [ "$continue" == 'y' ] || [ "$continue" == 'Y']; then
-			STAG=prod cap deploy
+		if [ "$continue" == 'y' ] || [ "$continue" == 'Y' ]; then
+			STAGE=prod cap deploy
 		fi
 	fi
 }
