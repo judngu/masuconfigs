@@ -38,6 +38,16 @@ function fao {
 function gpo {
 	git push origin $(current_git_branch)
 }
+function br {
+	for file in *.$1; do
+		mv $file `basename $file $1`.$2
+	done
+}
+# superceeded by css_image script in PATH
+#function css_image {
+#	openssl base64 -in "$1" | awk -v ext="${1#*.}" '{ str1=str1 $0 }END{ print "background:url(data:image/"ext";base64,"str1");" }'
+#}
+
 
 #/usr/bin/keychain -q ~/.ssh/internal_key ~/.ssh/deployed_key ~/.ssh/external_key
 #/usr/bin/ssh-add ~/.ssh/internal_key ~/.ssh/deployed_key ~/.ssh/external_key
@@ -116,7 +126,7 @@ alias epochtime="date +%s"
 
 export LANG=en_US.UTF-8
 
-PATH=.:$PATH:/usr/local/bin:/Applications:/Users/$USERNAME/Applications:/Users/krhodes/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
+PATH=.:$PATH:/usr/local/bin:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 #alias ct_amber="ssh amber"
 #alias ct_amberqa="ssh amber-qa"
