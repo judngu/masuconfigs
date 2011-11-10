@@ -1,0 +1,26 @@
+{
+// Command-Option-Return (Markdown list continuation)
+"~@\U000D" = (  
+    breakUndoCoalescing,
+    moveToEndOfParagraph:,
+    insertText:, "x",
+    moveToBeginningOfParagraph:,
+    selectWord:,
+    moveRightAndModifySelection:,
+    moveWordForwardAndModifySelection:,
+    moveWordBackwardAndModifySelection:,
+    moveLeftAndModifySelection:,
+    setMark:,
+    deleteToMark:,
+    yank:,
+    moveToEndOfParagraph:,
+    deleteBackward:,
+    insertNewlineIgnoringFieldEditor:,
+    deleteToBeginningOfParagraph:,
+    yank:,
+    insertText:, " ",
+    selectWord:,
+    insertText:, " "
+);
+
+}
