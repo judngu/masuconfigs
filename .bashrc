@@ -38,6 +38,10 @@ function fao {
 function gpo {
 	git push origin $(current_git_branch)
 }
+function gso {
+	# the S is for Suck!
+	git pull origin $(current_git_branch)
+}
 function br {
 	for file in *.$1; do
 		mv $file `basename $file $1`.$2
