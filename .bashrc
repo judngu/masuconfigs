@@ -34,7 +34,9 @@ then echo "\[\033[01;34m\]$(parse_git_branch)"; fi) \$ \[\033[00m\]'
 function fao {
 	find . -name $1 -exec /usr/bin/env gvim '{}' \;
 }
-
+function findg {
+	find $1 | grep -v "\.git"
+}
 function gpo {
 	git push origin $(current_git_branch)
 }
