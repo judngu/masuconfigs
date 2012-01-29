@@ -49,6 +49,12 @@ function br {
 		mv $file `basename $file $1`.$2
 	done
 }
+
+# open with Marked.app
+function marked {
+	open -a Marked $1
+}
+
 # superceeded by css_image script in PATH
 #function css_image {
 #	openssl base64 -in "$1" | awk -v ext="${1#*.}" '{ str1=str1 $0 }END{ print "background:url(data:image/"ext";base64,"str1");" }'
