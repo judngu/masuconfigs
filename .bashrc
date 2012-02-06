@@ -44,6 +44,9 @@ function gso {
 	# the S is for Suck!
 	git pull origin $(current_git_branch)
 }
+function gbd {
+	git log origin/$(current_git_branch)..$(current_git_branch)
+}
 function br {
 	for file in *.$1; do
 		mv $file `basename $file $1`.$2
