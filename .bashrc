@@ -57,6 +57,9 @@ function br {
 function marked {
 	open -a Marked $1
 }
+function rvmv {
+	echo $(~/.rvm/bin/rvm-prompt)
+}
 
 # superceeded by css_image script in PATH
 #function css_image {
@@ -165,3 +168,5 @@ PATH=.:$PATH:/usr/local/bin:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 #[[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
