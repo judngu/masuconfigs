@@ -47,6 +47,9 @@ else
 	colorscheme anotherdark
 end
 
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 
 "end thanks
 
@@ -81,8 +84,14 @@ function! g:ToggleNuMode()
 		set rnu
 	endif
 endfunc
-
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
+
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_WinWidth = 50
+map <F4> :TlistToggle<cr>
+map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
+
+
 
 " Cut/Copy/Paste {{{1
 

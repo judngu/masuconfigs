@@ -44,6 +44,7 @@ function gso {
 	# the S is for Suck!
 	git pull origin $(current_git_branch)
 }
+
 function gbd {
 	git log origin/$(current_git_branch)..$(current_git_branch)
 }
@@ -138,7 +139,7 @@ alias givm=gvim
 alias gvmi=gvim
 #End stupidity...
 alias epochtime="date +%s"
-
+alias build_tags="/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache* ."
 
 #source ~/workspace/z/z.sh
 
