@@ -76,7 +76,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 
-
+" use Ctrl+L to toggle the line number counting method
 function! g:ToggleNuMode()
 	if(&rnu == 1)
 		set nu
@@ -86,6 +86,7 @@ function! g:ToggleNuMode()
 endfunc
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
 
+" Toggle the Ctags list on the left pannel with F4
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
