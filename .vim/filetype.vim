@@ -4,6 +4,7 @@ au BufNewFile,BufRead *.ftl     setf ftl
 au BufNewFile,BufRead *.jst     setf html
 au BufNewFile,BufRead *.as      setf actionscript
 au! BufRead,BufNewFile *.haml   setfiletype haml
+au BufNewFile,BufRead *.handlebars      setf javascript
 
 " markdown filetype file
 
