@@ -53,15 +53,6 @@ function br {
 		mv $file `basename $file $1`.$2
 	done
 }
-
-# open with Marked.app
-function marked {
-	open -a Marked $1
-}
-function rvmv {
-	echo $(~/.rvm/bin/rvm-prompt)
-}
-
 # superceeded by css_image script in PATH
 #function css_image {
 #	openssl base64 -in "$1" | awk -v ext="${1#*.}" '{ str1=str1 $0 }END{ print "background:url(data:image/"ext";base64,"str1");" }'
@@ -137,6 +128,8 @@ alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
+alias ga='git add'
+alias gs='git status -uno'
 #End stupidity...
 alias epochtime="date +%s"
 alias build_tags="/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache* ."
@@ -145,7 +138,7 @@ alias build_tags="/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+
 
 export LANG=en_US.UTF-8
 
-PATH=.:$PATH:/usr/local/bin:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
+PATH=.:/usr/local/bin:$PATH:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 #alias ct_amber="ssh amber"
 #alias ct_amberqa="ssh amber-qa"
@@ -166,7 +159,6 @@ PATH=.:$PATH:/usr/local/bin:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/
 #done
 
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 #[[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
