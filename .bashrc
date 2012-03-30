@@ -129,7 +129,7 @@ alias top="top -o cpu"
 alias givm=gvim
 alias gvmi=gvim
 alias ga='git add'
-alias gs='git status -uno'
+alias gits='git status -uno'
 #End stupidity...
 alias epochtime="date +%s"
 alias build_tags="/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache* ."
