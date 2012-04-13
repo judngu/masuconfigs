@@ -35,7 +35,7 @@ function fao {
 	find . -name $1 -exec /usr/bin/env gvim '{}' \;
 }
 function findg {
-	find $1 | grep -v "\.git"
+	find $@ | grep -v "\.git" | grep -v "\.rsync_cache"
 }
 function gpo {
 	git push origin $(current_git_branch)
