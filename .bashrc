@@ -44,6 +44,9 @@ function gso {
 	# the S is for Suck!
 	git pull origin $(current_git_branch)
 }
+function gsor {
+	git pull --rebase origin $(current_git_branch)
+}
 
 function gbd {
 	git log origin/$(current_git_branch)..$(current_git_branch)
@@ -140,25 +143,9 @@ export LANG=en_US.UTF-8
 
 PATH=.:/usr/local/bin:$PATH:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
-#alias ct_amber="ssh amber"
-#alias ct_amberqa="ssh amber-qa"
-#for suff in '' 79 80 81 82 ; do
-#	alias "ct_amber$suff"="ssh amber$suff"
-#done
-#for suff in 01 02 03 04; do
-#	export "amber$suff"=adsdev$suff
-#	alias "ct_amber$suff"="ssh adsdev$suff"
-#done
-#
-#export dev=dev-portal-aps01.kendall.corp.akamai.com
-#alias ct_dev="ssh masukomi@$dev"
-#
-#for num in 1 2 ; do 
-#	export "tomapp$num"=dev-portal-tomapp$num.kendall.corp.akamai.com
-#	alias "ct_tomapp$num"="ssh masukomi@dev-portal-tomapp$num.kendall.corp.akamai.com"
-#done
+export obtvse_login=masukomi
+export obtvse_password=838c14263A1a0916
 
-
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-#[[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+[[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
 
