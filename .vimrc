@@ -32,6 +32,12 @@ set hlsearch
 set incsearch " ... dynamically as they are typed
 
 
+" formd Markdown shortcuts
+" see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
+nmap <leader>fr :%! formd -r<CR>
+nmap <leader>fi :%! formd -i<CR>
+
+
 "set fdm=syntax
 " whenever I use that it auto-folds everything when I open a file
 
