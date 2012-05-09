@@ -37,6 +37,9 @@ function fao {
 function findg {
 	find $@ | grep -v "\.git" | grep -v "\.rsync_cache"
 }
+function fing {
+	findg $@
+}
 function gpo {
 	git push origin $(current_git_branch)
 }
