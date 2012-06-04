@@ -99,6 +99,10 @@ map <F4> :TlistToggle<cr>
 map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
 
 
+function! UseTabs(...)
+	set noet ci pi sts=0 sw=4 ts=4
+endfunction
+:cabbr ut :call UseTabs()
 
 " Cut/Copy/Paste {{{1
 
@@ -130,6 +134,8 @@ vmap <silent> <C-y> :<C-u>call Cream_redo("v")<CR>
 " Save (only when changes)
 imap <silent> <C-s> <C-o>:call Cream_update("i")<CR>
 vmap <silent> <C-s> :<C-u>call Cream_update("v")<CR>
+
+" Cream functions: 
 
 function! Cream_cut(mode)
 " cut selection to universal clipboard ("+)
