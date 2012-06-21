@@ -31,6 +31,10 @@ set scrolloff=3
 set hlsearch
 set incsearch " ... dynamically as they are typed
 
+" automatically copy visual selections to the clipboard
+set go+=a
+
+
 
 " formd Markdown shortcuts
 " see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
