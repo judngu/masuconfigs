@@ -32,7 +32,7 @@ set hlsearch
 set incsearch " ... dynamically as they are typed
 
 " automatically copy visual selections to the clipboard
-set go+=a
+"set go+=a
 
 
 
