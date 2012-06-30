@@ -131,6 +131,8 @@ shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 alias top="top -o cpu"
+alias berc="bundle exec rails console"
+alias bers="bundle exec rails server"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
