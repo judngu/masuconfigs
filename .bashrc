@@ -50,6 +50,7 @@ function gso {
 function gsor {
 	git pull --rebase origin $(current_git_branch)
 }
+
 function god {
 	git log origin/$(current_git_branch)..$(current_git_branch)
 }
@@ -66,6 +67,7 @@ function gsmr {
 function gmd {
 	git log masukomi/$(current_git_branch)..$(current_git_branch)
 }
+
 function br {
 	for file in *.$1; do
 		mv $file `basename $file $1`.$2
@@ -143,8 +145,6 @@ shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 alias top="top -o cpu"
-alias berc="bundle exec rails console"
-alias bers="bundle exec rails server"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
@@ -152,17 +152,18 @@ alias ga='git add'
 alias gits='git status -uno'
 #End stupidity...
 alias epochtime="date +%s"
+alias berc='bundle exec rails console'
+alias bers='bundle exec rails server'
 alias build_tags="/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache* ."
 
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
 
-PATH=.:/usr/local/bin:$PATH:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
-
-export obtvse_login=masukomi
-export obtvse_password=838c14263A1a0916
+PATH=.:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
+
+
 
