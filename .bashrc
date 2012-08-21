@@ -50,9 +50,21 @@ function gso {
 function gsor {
 	git pull --rebase origin $(current_git_branch)
 }
-
-function gbd {
+function god {
 	git log origin/$(current_git_branch)..$(current_git_branch)
+}
+function gpm {
+	git push masukomi $(current_git_branch)
+}
+function gsm {
+	# the S is for Suck!
+	git pull masukomi $(current_git_branch)
+}
+function gsmr {
+	git pull --rebase masukomi $(current_git_branch)
+}
+function gmd {
+	git log masukomi/$(current_git_branch)..$(current_git_branch)
 }
 function br {
 	for file in *.$1; do
