@@ -51,6 +51,7 @@ nmap <leader>fi :%! formd -i<CR>
 " in the future.
 if has('gui_running')
 	set encoding=utf8
+	set guifont=Menlo:h18
 	
 	colorscheme anotherdark
 else
@@ -107,6 +108,15 @@ function! UseTabs(...)
 	set noet ci pi sts=0 sw=4 ts=4
 endfunction
 :cabbr ut :call UseTabs()
+
+function! Ott(...)
+	:%s/# sort_by_pass_wall_family IN:/# sort_by_pass_wall_family IN:\r      input=[/g
+	:%s/# sort_by_pass_wall_family OUT:/# sort_by_pass_wall_family OUT:\r]\r      output=/g
+	:%s/# sort_by_pass_family IN:/# sort_by_pass_wall_family IN:\r      input=[/g
+	:%s/# sort_by_pass_family OUT:/# sort_by_pass_wall_family OUT:\r]\r      output=/g
+endfunction
+:cabbr ott :call Ott()
+
 
 " Cut/Copy/Paste {{{1
 
@@ -223,5 +233,4 @@ function! Cream_save()
 		confirm write
 	endif
 endfunction
-
 
