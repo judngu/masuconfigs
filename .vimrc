@@ -14,6 +14,9 @@ set shiftwidth=4
 syn on
 set number
 
+
+
+
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
 "have % match on if/elsif/else/end/opening and closing XML tags and more
@@ -57,6 +60,13 @@ if has('gui_running')
 else
 	colorscheme anotherdark
 end
+
+" lighten the background color slightly
+hi Normal	guifg=White guibg=#252525
+" set column hilight color 
+"hi CursorColumn cterm=none ctermbg=black guibg=black
+" set line hilight color
+hi CursorLine cterm=none ctermbg=black guibg=black
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
