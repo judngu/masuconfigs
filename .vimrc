@@ -62,11 +62,13 @@ else
 end
 
 " lighten the background color slightly
-hi Normal	guifg=White guibg=#252525
+hi Normal guifg=White guibg=#303030
 " set column hilight color 
 "hi CursorColumn cterm=none ctermbg=black guibg=black
 " set line hilight color
-hi CursorLine cterm=none ctermbg=black guibg=black
+"hi CursorLine cterm=none ctermbg=black guibg=#252525
+hi cursorline cterm=none ctermbg=black guibg=#252525
+set cursorline
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
