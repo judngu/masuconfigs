@@ -68,6 +68,8 @@ hi Normal guifg=White guibg=#303030
 " set line hilight color
 "hi CursorLine cterm=none ctermbg=black guibg=#252525
 hi cursorline cterm=none ctermbg=black guibg=#252525
+hi cursorcolumn cterm=none ctermbg=black guibg=Gray23
+set cursorcolumn
 set cursorline
 
 " Highlight VCS conflict markers
