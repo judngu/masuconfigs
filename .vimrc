@@ -123,6 +123,22 @@ function! UseTabs(...)
 endfunction
 :cabbr ut :call UseTabs()
 
+function TabToggle()
+	if &expandtab
+		set shiftwidth=4
+		set tabstop=4
+		set softtabstop=0
+		set noexpandtab
+	else
+		" damn rails geeks and their 2 spaces
+		set shiftwidth=2
+		set softtabstop=2
+		set expandtab
+	endif
+endfunction
+:cabbr tt :call TabToggle()
+
+
 function! Ott(...)
 	:%s/# sort_by_pass_wall_family IN:/# sort_by_pass_wall_family IN:\r      input=[/g
 	:%s/# sort_by_pass_wall_family OUT:/# sort_by_pass_wall_family OUT:\r]\r      output=/g
