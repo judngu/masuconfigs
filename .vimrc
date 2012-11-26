@@ -13,6 +13,7 @@ set shiftwidth=4
 " syntax highlighting
 syn on
 set number
+set autoindent "
 
 
 
