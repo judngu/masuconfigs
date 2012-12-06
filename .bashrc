@@ -32,7 +32,8 @@ then echo "\[\033[01;34m\]$(parse_git_branch)"; fi) \D{%M} \$ \[\033[00m\]'
 
 #find and open
 function fao {
-	find . -name $1 -exec /usr/bin/env gvim '{}' \;
+	#find . -name $1 -exec /usr/bin/env gvim '{}' \;
+	gvim $(find . -name "$1" | grep -v '\.rsync_cache')
 }
 function findg {
 	find $@ | grep -v "\.git" | grep -v "\.rsync_cache"
@@ -40,20 +41,25 @@ function findg {
 function fing {
 	findg $@
 }
+#gpo: git push origin
 function gpo {
 	git push origin $(current_git_branch)
 }
+#gso: git suck origin 
 function gso {
 	# the S is for Suck!
 	git pull origin $(current_git_branch)
 }
+#gsor: git suck origin & rebase local changes on top
 function gsor {
 	git pull --rebase origin $(current_git_branch)
 }
-
+#god: git origin diff (what's different between your branch 
+# and the one with the same name on origin
 function god {
 	git log origin/$(current_git_branch)..$(current_git_branch)
 }
+
 function gpm {
 	git push masukomi $(current_git_branch)
 }
