@@ -1,12 +1,15 @@
 [github]
 	user = masukomi
 	token = 85f6f36152b1c74e1db9ac6202336d44
-#[user]
-#	email = masukomi@masukomi.org
-#	name = Masukomi
 [user]
-	email = krhodes@rbmtechnologies.com
-	name = Kay Rhodes
+	email = masukomi@masukomi.org
+	name = masukomi
+#[user]
+#	email = krhodes@rbmtechnologies.com
+#	name = Kay Rhodes
+#[user]
+#	email = vmoroz@rbmtechnologies.com
+#	name = Victor Moroz
 [status-report]
 	include = /Users/krhodes/workspace/vmm_copy
 	email = krhodes@rbmtechnologies.com
@@ -16,18 +19,18 @@
 	tool = Kaleidoscope
 	
 [difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [alias]
 	master-sync = "!f() { echo Syncing $1 with master && git checkout master && git pull && git checkout $1 && git rebase master; }; f"
 [core]
 	excludesfile = /Users/krhodes/.gitignore_global
 	quotepath = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+#[difftool "Kaleidoscope"]
+#	cmd = /Applications/Kaleidoscope.app/Contents/MacOS/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+#	path = 
+#[mergetool "sourcetree"]
+#	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#	trustExitCode = true
 [alias]
 	ci = commit
 	cia = commit --amend
@@ -35,7 +38,7 @@
 	br = branch
 	co = checkout
 	df = diff
-	lg = log -p
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	loll = log --graph --decorate --pretty=oneline --abbrev-commit
 	lol = !git --no-pager loll
 	lolal = log --graph --decorate --pretty=oneline --abbrev-commit --all
@@ -43,3 +46,12 @@
 	ls = ls-files
 	unstash = stash pop
 	changed = status -uno
+	st = status -sb
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[mergetool]
+	prompt = false
+[merge]
+	tool = Kaleidoscope
+[push]
+	default = upstream
