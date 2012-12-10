@@ -7,9 +7,6 @@
 #[user]
 #	email = krhodes@rbmtechnologies.com
 #	name = Kay Rhodes
-#[user]
-#	email = vmoroz@rbmtechnologies.com
-#	name = Victor Moroz
 [status-report]
 	include = /Users/krhodes/workspace/vmm_copy
 	email = krhodes@rbmtechnologies.com
