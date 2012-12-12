@@ -10,6 +10,7 @@ echo '!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/' >> $FILE_T
 echo '!_TAG_PROGRAM_VERSION	5.7	//' >> $FILE_TAGS_NAME
 
 find $* \
+    \( ! -regex '.*/\..*/..*' \) \
     \( \
         -name '.DS_Store' -or \
         -name '.tmp_*~' -or \
@@ -28,7 +29,6 @@ find $* \
     \( \
          -path '*/.svn/*' -or \
          -path '*/migrate/*' -or \
-         -path '*/.git/*' -or \
          -path '*/tmp/*' -or \
          -path '*/performance/*' -or \
          -path '*/tax_chart/*' -or \
