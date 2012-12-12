@@ -119,6 +119,9 @@ set viminfo='20,<50,s10,h,%
 " depends on having ~/bin/ftags.sh be run in advance.
 set tags+=ftags
 
+command FF FufFile
+command FT FufTag
+
 " lets you keep indenting or outdenting without reselecting
 vnoremap < <gv
 vnoremap > >gv
