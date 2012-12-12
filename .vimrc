@@ -131,6 +131,12 @@ set tags+=ftags
 command FF FufFile
 command FT FufTag
 
+" AutoComplPop has a tendency to freeze 
+" when you type a . on some things with 
+" bazillions of methods (like numbers)
+let g:acp_behaviorRubyOmniMethodLength = -1
+
+
 " lets you keep indenting or outdenting without reselecting
 vnoremap < <gv
 vnoremap > >gv
