@@ -114,6 +114,11 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
 
+" uses the ftags file to let fuzzyfinder 
+" bring up filenames in subdirectories.
+" depends on having ~/bin/ftags.sh be run in advance.
+set tags+=ftags
+
 " lets you keep indenting or outdenting without reselecting
 vnoremap < <gv
 vnoremap > >gv
