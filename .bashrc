@@ -41,6 +41,10 @@ function findg {
 function fing {
 	findg $@
 }
+# find a method
+function findm {
+	grep -rn $0 $1 | grep 'def'
+}
 #gpo: git push origin
 function gpo {
 	git push origin $(current_git_branch)
@@ -160,13 +164,15 @@ alias gits='git status -uno'
 alias epochtime="date +%s"
 alias berc='bundle exec rails console'
 alias bers='bundle exec rails server'
-alias build_tags="/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache* ."
+alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
+alias hgrep="history | grep"
+
 
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
 
-PATH=.:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
+PATH=.:/Users/krhodes/brew/bin:/Users/krhodes/brew/sbin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
