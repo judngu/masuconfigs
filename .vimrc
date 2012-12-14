@@ -55,7 +55,7 @@ nmap <leader>fi :%! formd -i<CR>
 " in the future.
 if has('gui_running')
 	set encoding=utf8
-	set guifont=Menlo:h18
+	set guifont=Menlo\ for\ Powerline:h18
 	
 	colorscheme anotherdark
 	" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
@@ -81,6 +81,13 @@ end
 
 " lighten the background color slightly
 hi Normal guifg=White guibg=#303030
+
+" Change the background on the popups
+:hi Pmenu ctermbg=darkgray "for vim
+:hi Pmenu guibg=darkgray gui=bold  "for gvim
+
+
+
 " set column hilight color 
 "hi CursorColumn cterm=none ctermbg=black guibg=black
 " set line hilight color
@@ -89,6 +96,8 @@ hi cursorline cterm=none ctermbg=black guibg=#252525
 hi cursorcolumn cterm=none ctermbg=black guibg=Gray23
 set cursorcolumn
 set cursorline
+
+let g:Powerline_symbols = 'fancy'
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
