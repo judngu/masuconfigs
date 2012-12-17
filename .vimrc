@@ -85,7 +85,7 @@ hi Normal guifg=White guibg=#303030
 " Change the background on the popups
 :hi Pmenu ctermbg=darkgray "for vim
 :hi Pmenu guibg=darkgray gui=bold  "for gvim
-
+:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold 
 
 
 " set column hilight color 
