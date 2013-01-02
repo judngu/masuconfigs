@@ -79,6 +79,8 @@ else
 	colorscheme anotherdark
 end
 
+" create a visual marker at 80 columns
+set colorcolumn=80
 " lighten the background color slightly
 hi Normal guifg=White guibg=#303030
 
