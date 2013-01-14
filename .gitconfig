@@ -7,9 +7,6 @@
 [user]
 	email = krhodes@rbmtechnologies.com
 	name = Kay Rhodes
-#[user]
-#	email = vmoroz@rbmtechnologies.com
-#	name = Victor Moroz
 [status-report]
 	include = /Users/krhodes/workspace/vmm_copy
 	email = krhodes@rbmtechnologies.com
@@ -38,6 +35,8 @@
 	br = branch
 	co = checkout
 	df = diff
+	tl=log --name-status --pretty=format:'-----------------------------------------%n%h %an %ar %n %s'
+	#tiny log
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	loll = log --graph --decorate --pretty=oneline --abbrev-commit
 	lol = !git --no-pager loll
@@ -69,3 +68,9 @@
 [merge]
 	tool = Kaleidoscope
 #	ff = false
+[difftool "sourcetree"]
+	cmd = /Applications/Kaleidoscope.app/Contents/MacOS/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
