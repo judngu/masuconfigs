@@ -14,6 +14,9 @@ function parse_git_dirty {
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
+
+# Public: current_git_branch returns the name of the 
+#         current git branch (duh)
 function current_git_branch { #not used by anything, just useful
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
@@ -93,6 +96,39 @@ function runtimes() {
 	done
 }
 
+function gdef() {
+	echo "running: grep -r $1 $2* | grep def"
+	grep -r $1 $2* | grep def
+}
+
+# Public: Git Push to UPstream
+#         Setting a tracking branch only affects git pull
+#         this will perform a git push to wherever git pull
+#         would come from, or just do "git pull"
+# Requirement: current_git_branch function
+#         current_git_branch is expected to return the name of 
+#         the current git branch.
+function gpup {
+	CURRENT_GIT_BRANCH=$(current_git_branch)
+	REMOTE=$(git config --get "branch.$CURRENT_GIT_BRANCH.remote")
+	if [ "$REMOTE" != "" ]; then
+		MERGE=$(git config --get "branch.$CURRENT_GIT_BRANCH.merge" | sed -e 's/.*\///g')
+		if [ "$MERGE" != "" ]; then
+			git push $REMOTE $MERGE
+		else
+			echo "Umm... you've got a remote configured but not a merge. quitting"
+		fi
+	else
+		echo "No branch specific upstream. Continue with default? [enter for yes|q for quit]"
+		read RESPONSE
+		if [ "$RESPONSE" == "" ]; then 
+			echo "will push to default"
+			#git push
+		else
+			echo "quitting"
+		fi
+	fi
+}
 
 
 # superceeded by css_image script in PATH
