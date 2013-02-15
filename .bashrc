@@ -143,7 +143,7 @@ function gpup {
 		if [ "$SET_UPSTREAM" == "y" ]; then
 			git push --set-upstream origin $CURRENT_GIT_BRANCH
 		else
-			echo "ok, you'll probably want to run something like this soon:"
+			echo "Ok, you'll probably want to run something like this soon:"
 			echo "    git push --set-upstream origin $CURRENT_GIT_BRANCH"
 		fi
 		echo "Continue with default? [enter for yes|q for quit]"
