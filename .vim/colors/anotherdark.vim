@@ -104,5 +104,4 @@ hi Ignore	cterm=bold ctermfg=7
 hi Ignore	ctermfg=darkgrey
 hi Error	cterm=bold ctermfg=7 ctermbg=1
 
-
 "vim: sw=4
