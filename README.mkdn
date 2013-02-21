@@ -1,0 +1,20 @@
+# What's this?
+
+These are all my configuration files, and common scripts. Keeping them in git 
+provides me with an easy way to keep all the computers I work on
+functioning in the same manner.
+
+## So what's here?
+
+	.bash_profile
+	.bashrc
+	.DS_Store
+	.irbrc
+	.js # for the [~/.js Chrome plugin](https://github.com/defunkt/dotjs)
+	This repo contains a collection of (primarily) hidden files.
+	.ssh # config only. no keys. Duh.
+	.vim # all the good stuff lives here
+	.vimrc # lots here too
+	bin # a handful of scripts I like to keep in my path
+	Library/KeyBindings/ # I forget what I've shoved in this. 
+
