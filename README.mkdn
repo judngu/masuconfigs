@@ -6,15 +6,28 @@ functioning in the same manner.
 
 ## So what's here?
 
-	.bash_profile
-	.bashrc
-	.DS_Store
-	.irbrc
-	.js # for the [~/.js Chrome plugin](https://github.com/defunkt/dotjs)
-	This repo contains a collection of (primarily) hidden files.
-	.ssh # config only. no keys. Duh.
-	.vim # all the good stuff lives here
-	.vimrc # lots here too
-	bin # a handful of scripts I like to keep in my path
-	Library/KeyBindings/ # I forget what I've shoved in this. 
+.bash_profile  
+.bashrc  
+.DS_Store  
+.irbrc  
+.js # for the [~/.js Chrome plugin][1]  
+This repo contains a collection of (primarily) hidden files.  
+.ssh # config only. no keys. Duh.  
+.vim # all the good stuff lives here  
+.vimrc # lots here too  
+bin # a handful of scripts I like to keep in my path
+
+- css_image # converts a binary image to Base64 encoded inline css
+- [formd][2] a markdown formatting tool
+- ftags.sh creates ctags for file names. Utilized via my FuzzyFinder plugin in Vim.
+- [git-wtf][3] a great tool for keeping your git repo in sync
+- [TTYtter][4] a command line twitter client written in perl. For when you're feeling ... something.
+
+Library/KeyBindings/ # I forget what I've shoved in this.
+
+
+[1]: https://github.com/defunkt/dotjs
+[2]: http://drbunsen.github.com/formd/
+[3]: https://github.com/michaelklishin/git-wtf
+[4]: http://www.floodgap.com/software/ttytter/
 

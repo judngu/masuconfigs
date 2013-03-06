@@ -190,16 +190,6 @@ function TabToggle()
 endfunction
 :cabbr tt :call TabToggle()
 
-
-function! Ott(...)
-	:%s/# sort_by_pass_wall_family IN:/# sort_by_pass_wall_family IN:\r      input=[/g
-	:%s/# sort_by_pass_wall_family OUT:/# sort_by_pass_wall_family OUT:\r]\r      output=/g
-	:%s/# sort_by_pass_family IN:/# sort_by_pass_wall_family IN:\r      input=[/g
-	:%s/# sort_by_pass_family OUT:/# sort_by_pass_wall_family OUT:\r]\r      output=/g
-endfunction
-:cabbr ott :call Ott()
-
-
 " Cut/Copy/Paste {{{1
 
 " Cut (two mappings)

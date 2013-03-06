@@ -248,11 +248,14 @@ alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --
 alias hgrep="history | grep"
 
 alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
-
-
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 
 PATH=.:/Users/krhodes/brew/bin:/Users/krhodes/brew/sbin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Users/$USERNAME/bin:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
