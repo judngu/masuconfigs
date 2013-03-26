@@ -138,22 +138,27 @@ function gpup {
 		fi
 	else
 		echo "No branch specific upstream. "
-		echo "Want me to set the upstream tracking to origin/$CURRENT_GIT_BRANCH ? [y|n]"
+		echo "Want me to set the upstream tracking to origin/$CURRENT_GIT_BRANCH ? [enter for yes|n]"
 		read SET_UPSTREAM
-		if [ "$SET_UPSTREAM" == "y" ]; then
+		if [ "$SET_UPSTREAM" != "n" ]; then
 			git push --set-upstream origin $CURRENT_GIT_BRANCH
 		else
 			echo "Ok, you'll probably want to run something like this soon:"
 			echo "    git push --set-upstream origin $CURRENT_GIT_BRANCH"
 		fi
-		echo "Continue with default? [enter for yes|q for quit]"
-		read RESPONSE
+		RESPOSNE='q'
+		if [ "$SET_UPSTREAM" == "y" ]; then
+			RESPONSE=''
+		else
+			echo "Continue with default? [enter for yes|q for quit]"
+			read RESPONSE
+		fi
 		if [ "$RESPONSE" == "" ]; then 
 			if [ $# -gt 0 ]; then
 				echo "running: git push $@ origin $CURRENT_GIT_BRANCH"
 				git push $@ $REMOTE $MERGE
 			else
-				echo "running: origin $CURRENT_GIT_BRANCH"
+				echo "running: git push origin $CURRENT_GIT_BRANCH"
 				git push origin $CURRENT_GIT_BRANCH
 			fi
 		else
@@ -238,6 +243,7 @@ alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
+alias be='bundle exec'
 alias ga='git add'
 alias gits='git status -uno'
 #End stupidity...
@@ -248,6 +254,9 @@ alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --
 alias hgrep="history | grep"
 
 alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+# git diff <treeish> | cleandiff
+
+
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
