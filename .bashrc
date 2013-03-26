@@ -87,6 +87,13 @@ function br {
 	done
 }
 
+
+#alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+# git diff <treeish> | cleandiff
+function cdiff(){
+	git diff $@ | cleandiff
+}
+
 function runtimes() {
 	number=$1
 	shift
