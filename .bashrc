@@ -90,8 +90,13 @@ function br {
 
 #alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
 # git diff <treeish> | cleandiff
+#alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+# git diff <treeish> | cleandiff
 function cdiff(){
 	git diff $@ | cleandiff
+}
+function cleandiff(){
+	dwdiff -A best -L -s -W " _}{\x0A%'\"" -c -d ",;/:." --diff-input -
 }
 
 function runtimes() {
@@ -260,8 +265,6 @@ alias bers='bundle exec rails server'
 alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
 alias hgrep="history | grep"
 
-alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
-# git diff <treeish> | cleandiff
 
 
 #source ~/workspace/z/z.sh
