@@ -113,6 +113,24 @@ function gdef() {
 	grep -r $1 $2* | grep def
 }
 
+# Public: Git Diff UPstream
+#         Compare the current branch to the upstream version of itself.
+function gdup {
+	CURRENT_GIT_BRANCH=$(current_git_branch)
+	REMOTE=$(git config --get "branch.$CURRENT_GIT_BRANCH.remote")
+	if [ "$REMOTE" != "" ]; then
+		MERGE=$(git config --get "branch.$CURRENT_GIT_BRANCH.merge" | sed -e 's/.*\///g')
+		if [ "$MERGE" != "" ]; then
+			echo "running: git difftool $REMOTE/$MERGE"
+			git difftool "$REMOTE/$MERGE"
+		else
+			echo "nothing found in branch.$CURRENT_GIT_BRANCH.merge"
+		fi
+	else
+		echo "nothing found in branch.$CURRENT_GIT_BRANCH.remote"
+	fi
+}
+
 # Public: Git Push to UPstream
 #         Setting a tracking branch only affects git pull.
 #         This will perform a git push to wherever git pull
@@ -159,7 +177,7 @@ function gpup {
 			echo "    git push --set-upstream origin $CURRENT_GIT_BRANCH"
 		fi
 		RESPOSNE='q'
-		if [ "$SET_UPSTREAM" == "y" ]; then
+		if [ "$SET_UPSTREAM" == "" ]; then
 			RESPONSE=''
 		else
 			echo "Continue with default? [enter for yes|q for quit]"
