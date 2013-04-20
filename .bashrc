@@ -5,6 +5,12 @@
 export USERNAME=`id -nu`
 export ARCHFLAGS="-arch x86_64"
 
+bind '"\e[A": history-search-backward' #up-arrow through history
+bind '"\e[B": history-search-forward' #down-arrow through history
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+
 
 ## throw this at the top of your .bash_profile
 function parse_git_dirty {
@@ -87,6 +93,18 @@ function br {
 	done
 }
 
+
+#alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+# git diff <treeish> | cleandiff
+#alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+# git diff <treeish> | cleandiff
+function cdiff(){
+	git diff $@ | cleandiff
+}
+function cleandiff(){
+	dwdiff -A best -L -s -W " _}{\x0A%'\"" -c -d ",;/:." --diff-input -
+}
+
 function runtimes() {
 	number=$1
 	shift
@@ -99,6 +117,24 @@ function runtimes() {
 function gdef() {
 	echo "running: grep -r $1 $2* | grep def"
 	grep -r $1 $2* | grep def
+}
+
+# Public: Git Diff UPstream
+#         Compare the current branch to the upstream version of itself.
+function gdup {
+	CURRENT_GIT_BRANCH=$(current_git_branch)
+	REMOTE=$(git config --get "branch.$CURRENT_GIT_BRANCH.remote")
+	if [ "$REMOTE" != "" ]; then
+		MERGE=$(git config --get "branch.$CURRENT_GIT_BRANCH.merge" | sed -e 's/.*\///g')
+		if [ "$MERGE" != "" ]; then
+			echo "running: git difftool $REMOTE/$MERGE"
+			git difftool "$REMOTE/$MERGE"
+		else
+			echo "nothing found in branch.$CURRENT_GIT_BRANCH.merge"
+		fi
+	else
+		echo "nothing found in branch.$CURRENT_GIT_BRANCH.remote"
+	fi
 }
 
 # Public: Git Push to UPstream
@@ -138,22 +174,27 @@ function gpup {
 		fi
 	else
 		echo "No branch specific upstream. "
-		echo "Want me to set the upstream tracking to origin/$CURRENT_GIT_BRANCH ? [y|n]"
+		echo "Want me to set the upstream tracking to origin/$CURRENT_GIT_BRANCH ? [enter for yes|n]"
 		read SET_UPSTREAM
-		if [ "$SET_UPSTREAM" == "y" ]; then
+		if [ "$SET_UPSTREAM" != "n" ]; then
 			git push --set-upstream origin $CURRENT_GIT_BRANCH
 		else
 			echo "Ok, you'll probably want to run something like this soon:"
 			echo "    git push --set-upstream origin $CURRENT_GIT_BRANCH"
 		fi
-		echo "Continue with default? [enter for yes|q for quit]"
-		read RESPONSE
+		RESPOSNE='q'
+		if [ "$SET_UPSTREAM" == "" ]; then
+			RESPONSE=''
+		else
+			echo "Continue with default? [enter for yes|q for quit]"
+			read RESPONSE
+		fi
 		if [ "$RESPONSE" == "" ]; then 
 			if [ $# -gt 0 ]; then
 				echo "running: git push $@ origin $CURRENT_GIT_BRANCH"
 				git push $@ $REMOTE $MERGE
 			else
-				echo "running: origin $CURRENT_GIT_BRANCH"
+				echo "running: git push origin $CURRENT_GIT_BRANCH"
 				git push origin $CURRENT_GIT_BRANCH
 			fi
 		else
@@ -238,6 +279,7 @@ alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
+alias be='bundle exec'
 alias ga='git add'
 alias gits='git status -uno'
 #End stupidity...
@@ -248,6 +290,7 @@ alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --
 alias hgrep="history | grep"
 
 alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
