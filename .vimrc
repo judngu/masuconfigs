@@ -18,6 +18,7 @@ set autoindent "
 
 
 
+
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
 "have % match on if/elsif/else/end/opening and closing XML tags and more
@@ -152,6 +153,9 @@ let g:acp_behaviorRubyOmniMethodLength = -1
 vnoremap < <gv
 vnoremap > >gv
 
+execute pathogen#infect()
+" useful with gitgutter
+highlight clear SignColumn
 
 " use Ctrl+L to toggle the line number counting method
 function! g:ToggleNuMode()
@@ -164,7 +168,7 @@ endfunc
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
 
 " Toggle the Ctags list on the left pannel with F4
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_Ctags_Cmd = "/usr/bin/env ctags"
 let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
@@ -189,6 +193,16 @@ function TabToggle()
 	endif
 endfunction
 :cabbr tt :call TabToggle()
+
+
+function! Ott(...)
+	:%s/# sort_by_pass_wall_family IN:/# sort_by_pass_wall_family IN:\r      input=[/g
+	:%s/# sort_by_pass_wall_family OUT:/# sort_by_pass_wall_family OUT:\r]\r      output=/g
+	:%s/# sort_by_pass_family IN:/# sort_by_pass_wall_family IN:\r      input=[/g
+	:%s/# sort_by_pass_family OUT:/# sort_by_pass_wall_family OUT:\r]\r      output=/g
+endfunction
+:cabbr ott :call Ott()
+
 
 " Cut/Copy/Paste {{{1
 
