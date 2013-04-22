@@ -4,6 +4,7 @@
 # to see changed lines use git lg -p
 #git config --global alias.st "status -sb"
 
+brew install ack
 brew install ctags
 brew install dwdiff
 brew install gettext
