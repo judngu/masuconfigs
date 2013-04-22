@@ -11,3 +11,11 @@ brew install gettext
 brew install imagemagick
 brew install readline
 brew install ossp-uuid
+
+# vim plugins
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle
+git clone git://github.com/godlygeek/tabular.git
+git clone https://github.com/kchmck/vim-coffee-script.git
+git clone git://github.com/tpope/vim-endwise.git
+git clone git://github.com/tpope/vim-fugitive.git
