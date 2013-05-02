@@ -1,3 +1,6 @@
+execute pathogen#infect()
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 set ww+=<,>
 " making arrow keys wrap across line breaks in normal mode
 imap <Left> <C-O><Left>
@@ -14,6 +17,9 @@ set shiftwidth=4
 syn on
 set number
 set autoindent "
+" Make the selection not include the character under the cursor
+" so that you it doesn't keep selecting the newline at the end
+set selection=exclusive
 
 
 
@@ -82,6 +88,9 @@ end
 
 " create a visual marker at 80 columns
 set colorcolumn=80
+highlight colorcolumn guibg=Black
+" optionally ColorColumn
+
 " lighten the background color slightly
 hi Normal guifg=White guibg=#303030
 
@@ -95,6 +104,7 @@ hi Normal guifg=White guibg=#303030
 "hi CursorColumn cterm=none ctermbg=black guibg=black
 " set line hilight color
 "hi CursorLine cterm=none ctermbg=black guibg=#252525
+
 hi cursorline cterm=none ctermbg=black guibg=#252525
 hi cursorcolumn cterm=none ctermbg=black guibg=Gray23
 set cursorcolumn
@@ -140,8 +150,6 @@ set viminfo='20,<50,s10,h,%
 " depends on having ~/bin/ftags.sh be run in advance.
 set tags+=ftags
 
-command FF FufFile
-command FT FufTag
 
 " AutoComplPop has a tendency to freeze 
 " when you type a . on some things with 
@@ -153,9 +161,6 @@ let g:acp_behaviorRubyOmniMethodLength = -1
 vnoremap < <gv
 vnoremap > >gv
 
-execute pathogen#infect()
-" useful with gitgutter
-highlight clear SignColumn
 
 " use Ctrl+L to toggle the line number counting method
 function! g:ToggleNuMode()
@@ -168,7 +173,7 @@ endfunc
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
 
 " Toggle the Ctags list on the left pannel with F4
-let Tlist_Ctags_Cmd = "/usr/bin/env ctags"
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
