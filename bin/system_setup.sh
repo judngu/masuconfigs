@@ -11,6 +11,7 @@ brew install gettext
 brew install imagemagick
 brew install readline
 brew install ossp-uuid
+brew install tig
 
 # vim plugins
 # we're cding in and calling git update after clone
