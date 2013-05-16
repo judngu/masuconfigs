@@ -279,6 +279,8 @@ alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
+alias awx=ack
+  # ^^^ I KEEP doing that
 alias be='bundle exec'
 alias ga='git add'
 alias gits='git status -uno'
@@ -289,9 +291,10 @@ alias bers='bundle exec rails server'
 alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
 alias hgrep="history | grep"
 
-alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+
 
 #source ~/workspace/z/z.sh
+source ~/perl5/perlbrew/etc/bashrc
 
 export LANG=en_US.UTF-8
 
