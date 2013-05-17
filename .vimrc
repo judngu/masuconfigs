@@ -93,6 +93,8 @@ highlight colorcolumn guibg=Black
 
 " lighten the background color slightly
 hi Normal guifg=White guibg=#303030
+" Change the gutter color in Syntastic
+hi SignColumn ctermbg=black guibg=#303030
 
 " Change the background on the popups
 :hi Pmenu ctermbg=darkgray "for vim
