@@ -1,0 +1,20 @@
+# Core Apps To Install
+
+Ok self, you've got an installed all the stuff in the [masuconfigs](https://github.com/masukomi/masuconfigs) repo, and loaded your ssh keys. Now, you need to start installing apps.
+
+1. [Chrome](https://www.google.com/intl/en/chrome/browser/)
+3. [Homebrew](http://mxcl.github.com/homebrew/)
+4. run bin/system_setup.sh
+5. [MacVim](http://code.google.com/p/macvim/)
+6. [Kaleidoscope](http://kaleidoscopeapp.com)
+7. [SourceTree](http://www.sourcetreeapp.com/)
+8. [CodeBox](http://www.shpakovski.com/codebox/)
+9. [Byword](http://bywordapp.com/)
+10. [Alfred](http://www.alfredapp.com/)
+11. [Moom](http://manytricks.com/moom/)
+12. [Iterm2](http://www.iterm2.com/)
+13. [nvAlt](http://brettterpstra.com/projects/nvalt/)
+14. [Marked](http://markedapp.com/)
+15. [Tweetbot](http://tapbots.com/software/tweetbot/mac/)
+16. [Wedge](http://wedge.natestedman.com/)
+17. [rvm](https://rvm.io/)
