@@ -203,6 +203,10 @@ function gpup {
 	fi
 }
 
+function frequent_commands {
+	history | sed "s/^[0-9 ]*//" | sed "s/ *| */\n/g" | awk '{print $1}' | sort | uniq -c | sort -rn | head -n 100
+}
+
 
 # superceeded by css_image script in PATH
 #function css_image {
