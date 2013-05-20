@@ -203,6 +203,17 @@ function gpup {
 	fi
 }
 
+function upstreamed {
+	CURRENT_GIT_BRANCH=$(current_git_branch)
+	REMOTE=$(git config --get "branch.$CURRENT_GIT_BRANCH.remote")
+	if [ "$REMOTE" != "" ]; then
+		echo "Yup: $REMOTE"
+	else
+		echo "Nope."
+	fi
+}
+
+# BEGIN MUCKING WITH HISTORY
 function frequent_commands {
 	history | sed "s/^[0-9 ]*//" | sed "s/ *| */\n/g" | awk '{print $1}' | sort | uniq -c | sort -rn | head -n 100
 }
@@ -213,7 +224,7 @@ shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 # don't put duplicate lines in the history. See bash(1) for more options
 #export HISTCONTROL=ignoredups
-
+# END MUCKING WITH HISTORY
 
 # superceeded by css_image script in PATH
 #function css_image {
