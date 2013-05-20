@@ -206,6 +206,13 @@ function gpup {
 function frequent_commands {
 	history | sed "s/^[0-9 ]*//" | sed "s/ *| */\n/g" | awk '{print $1}' | sort | uniq -c | sort -rn | head -n 100
 }
+export HISTTIMEFORMAT='%F %T '
+#export HISTTIMEFORMAT=''
+export HISTFILESIZE=2500
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+# don't put duplicate lines in the history. See bash(1) for more options
+#export HISTCONTROL=ignoredups
 
 
 # superceeded by css_image script in PATH
@@ -219,8 +226,6 @@ function frequent_commands {
 # If not running interactively, don't do anything:
 #[ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history. See bash(1) for more options
-#export HISTCONTROL=ignoredups
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -275,9 +280,6 @@ esac
 if [ -f ~/.bash_work ]; then
     . ~/.bash_work
 fi
-
-shopt -s histappend
-PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 alias top="top -o cpu"
 #Compensating for stupidity
