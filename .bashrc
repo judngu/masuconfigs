@@ -292,6 +292,9 @@ if [ -f ~/.bash_work ]; then
     . ~/.bash_work
 fi
 
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+
 alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
@@ -305,6 +308,7 @@ alias gits='git status -uno'
 alias epochtime="date +%s"
 alias berc='bundle exec rails console'
 alias bers='bundle exec rails server'
+alias berd='bundle exec rails server --debugger'
 alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
 alias hgrep="history | grep"
 
