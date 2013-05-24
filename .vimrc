@@ -21,8 +21,6 @@ set autoindent "
 " so that you it doesn't keep selecting the newline at the end
 set selection=exclusive
 
-" Text Expansions
-imap sterr $stderr.puts("XXX")<esc>bi
 
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
@@ -199,6 +197,9 @@ function TabToggle()
 	endif
 endfunction
 :cabbr tt :call TabToggle()
+
+" Text Expansions
+iab sterr $stderr.puts("XXX")<ESC>bi
 
 
 " Cut/Copy/Paste {{{1
