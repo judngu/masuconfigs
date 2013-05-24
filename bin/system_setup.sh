@@ -12,6 +12,7 @@ brew install imagemagick
 brew install readline
 brew install ossp-uuid
 brew install tig
+brew instal hub
 
 mkdir ~/workspace
 cd workspace

@@ -203,28 +203,6 @@ function gpup {
 	fi
 }
 
-function upstreamed {
-	CURRENT_GIT_BRANCH=$(current_git_branch)
-	REMOTE=$(git config --get "branch.$CURRENT_GIT_BRANCH.remote")
-	if [ "$REMOTE" != "" ]; then
-		echo "Yup: $REMOTE"
-	else
-		echo "Nope."
-	fi
-}
-
-# BEGIN MUCKING WITH HISTORY
-function frequent_commands {
-	history | sed "s/^[0-9 ]*//" | sed "s/ *| */\n/g" | awk '{print $1}' | sort | uniq -c | sort -rn | head -n 100
-}
-export HISTTIMEFORMAT='%F %T '
-#export HISTTIMEFORMAT=''
-export HISTFILESIZE=2500
-shopt -s histappend
-PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
-# don't put duplicate lines in the history. See bash(1) for more options
-#export HISTCONTROL=ignoredups
-# END MUCKING WITH HISTORY
 
 # superceeded by css_image script in PATH
 #function css_image {
@@ -237,6 +215,8 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 # If not running interactively, don't do anything:
 #[ -z "$PS1" ] && return
 
+# don't put duplicate lines in the history. See bash(1) for more options
+#export HISTCONTROL=ignoredups
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -299,8 +279,6 @@ alias top="top -o cpu"
 #Compensating for stupidity
 alias givm=gvim
 alias gvmi=gvim
-alias awx=ack
-  # ^^^ I KEEP doing that
 alias be='bundle exec'
 alias ga='git add'
 alias gits='git status -uno'
@@ -312,10 +290,9 @@ alias berd='bundle exec rails server --debugger'
 alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
 alias hgrep="history | grep"
 
-
-
+alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
+alias git=hub
 #source ~/workspace/z/z.sh
-source ~/perl5/perlbrew/etc/bashrc
 
 export LANG=en_US.UTF-8
 
