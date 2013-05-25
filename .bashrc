@@ -203,6 +203,11 @@ function gpup {
 	fi
 }
 
+function rvmerize {
+	echo "ruby-2.0.0-p195" > .ruby-version
+	echo ${PWD##*/} > .ruby-gemset
+}
+
 
 # superceeded by css_image script in PATH
 #function css_image {
