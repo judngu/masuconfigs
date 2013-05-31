@@ -1,12 +1,12 @@
 [github]
 	user = masukomi
 	token = 85f6f36152b1c74e1db9ac6202336d44
-#[user]
-#	email = masukomi@masukomi.org
-#	name = masukomi
 [user]
-	email = krhodes@rbmtechnologies.com
-	name = Kay Rhodes
+	email = masukomi@masukomi.org
+	name = masukomi
+#[user]
+#	email = krhodes@rbmtechnologies.com
+#	name = Kay Rhodes
 [status-report]
 	include = /Users/krhodes/workspace/vmm_copy
 	email = krhodes@rbmtechnologies.com
@@ -52,12 +52,17 @@
 	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
 	ball = !sh -c \"git branch -a | sed -e 's/^* //g' | sed -e 's/^  //g'\"
 	# ball == branch + all
+	assume   = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 [push]
 	default = current
 [difftool]
 	prompt = false
 [diff]
 	tool = Kaleidoscope
+	algorithm = patience
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [mergetool "Kaleidoscope"]
