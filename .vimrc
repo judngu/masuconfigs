@@ -84,10 +84,14 @@ else
 end
 
 " create a visual marker at 80 columns
-set colorcolumn=80
-highlight colorcolumn guibg=Black
-" optionally ColorColumn
-
+if version > 720
+	" honestly I don't know what version this 
+	" came into play but dreamhost has v 7.2 
+	" and it doesn't work on that. ;)
+	set colorcolumn=80
+	highlight colorcolumn guibg=Black
+	" optionally ColorColumn
+endif
 " lighten the background color slightly
 hi Normal guifg=White guibg=#303030
 " Change the gutter color in Syntastic
