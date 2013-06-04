@@ -297,6 +297,8 @@ alias hgrep="history | grep"
 
 alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
 alias git=hub
+alias grep="grep --color=always"
+
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
