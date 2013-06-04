@@ -42,7 +42,8 @@ then echo "\[\033[01;34m\]$(parse_git_branch)"; fi) \D{%M} \$ \[\033[00m\]'
 #find and open
 function fao {
 	#find . -name $1 -exec /usr/bin/env gvim '{}' \;
-	gvim $(find . -name "$1" | grep -v '\.rsync_cache')
+	gvim $(mdfind -onlyin . -name $1| grep -v '\.rsync_cache')
+	#gvim $(find . -name "$1" | grep -v '\.rsync_cache')
 }
 function findg {
 	find $@ | grep -v "\.git" | grep -v "\.rsync_cache"
