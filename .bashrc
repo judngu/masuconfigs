@@ -24,7 +24,7 @@ function parse_git_branch {
 # Public: current_git_branch returns the name of the 
 #         current git branch (duh)
 function current_git_branch { #not used by anything, just useful
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+	echo $(__git_ps1) | sed -e 's/(\(.*\))/\1/'
 }
 
 

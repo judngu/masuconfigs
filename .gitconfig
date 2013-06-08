@@ -15,6 +15,10 @@
 	quotepath = false
 [color]
 	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -75,6 +79,7 @@
 	prompt = false
 [merge]
 	tool = Kaleidoscope
+	summary = true
 #	ff = false
 [difftool "sourcetree"]
 	cmd = /Applications/Kaleidoscope.app/Contents/MacOS/ksdiff -w \"$LOCAL\" \"$REMOTE\"
