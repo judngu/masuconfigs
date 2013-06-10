@@ -208,6 +208,10 @@ function rvmerize {
 	echo ${PWD##*/} > .ruby-gemset
 }
 
+function utest {
+	bundle exec ruby -I"lib:test" test/unit/$1_test.rb
+}
+
 
 # superceeded by css_image script in PATH
 #function css_image {
