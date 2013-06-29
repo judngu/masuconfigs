@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/Floobits"]
 	path = .vim/bundle/Floobits
 	url = git://github.com/Floobits/vim-plugin.git
+[submodule ".vim/bundle/vim-slime"]
+	path = .vim/bundle/vim-slime
+	url = git@github.com:masukomi/vim-slime.git
