@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = git@github.com:masukomi/vim-slime.git
+[submodule ".emacs.d/evil"]
+	path = .emacs.d/evil
+	url = git://gitorious.org/evil/evil.git
