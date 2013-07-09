@@ -21,6 +21,8 @@ cd home_dir_configs
 git submodule init
 git submodule update
 ln -s ~/workspace/home_dir_configs/.vim/bundle ~/.vim/bundle
+ln -s ~/workspace/home_dir_configs/.emacs ~/.emacs
+ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
 
 
 # command-t should already be installed via a vimball stored in the git repo
