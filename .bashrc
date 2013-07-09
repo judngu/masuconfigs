@@ -106,6 +106,25 @@ function cleandiff(){
 	dwdiff -A best -L -s -W " _}{\x0A%'\"" -c -d ",;/:." --diff-input -
 }
 
+# generates a cleandiff for the supplied treeish vs
+# its predecessor OR for HEAD vs its predecessor.
+function cdprev(){
+	if [ $# -gt 0 ]; then
+		git diff $1^ $1 | cleandiff
+	else
+		git diff HEAD^ HEAD | cleandiff
+	fi
+}
+# loads git difftool for the supplied treeish vs
+# its predecessor OR for HEAD vs its predecessor.
+function dprev(){
+	if [ $# -gt 0 ]; then
+		git difftool $1^ $1
+	else
+		git difftool HEAD^ HEAD
+	fi
+}
+
 function runtimes() {
 	number=$1
 	shift
@@ -304,6 +323,7 @@ alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --di
 alias git=hub
 alias grep="grep --color=always"
 alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+alias be='bundle exec'
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
@@ -313,7 +333,7 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 
-PATH=.:/Users/$USERNAME/bin:/Users/krhodes/brew/bin:/Users/krhodes/brew/sbin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
+PATH=.:/Users/$USERNAME/bin:/Users/krhodes/brew/bin:/Users/krhodes/brew/sbin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
