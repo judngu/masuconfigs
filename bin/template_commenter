@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+directory = ARGV[0]
+raise "Must supply a directory path" if directory.nil? or directory == ''
+directory = "#{directory}/" unless directory[-1,1] == '/'
+
+Dir.foreach(directory) do |item|
+  next if item == '.' or item == '..'
+  # do work on real items
+
+  start_content = "BEGIN #{directory}#{item}"
+  end_content = "END #{directory}#{item}"
+
+  body = File.read("#{directory}#{item}")
+  if item =~ /\.haml$/
+    start_content = "/ #{start_content}\n"
+    end_content   = "/ #{end_content}\n"
+  elsif item =~ /\.rhtml$|\.erb$/
+    start_content = "<!-- #{start_content} -->\n"
+    end_content = "<!-- #{end_content} -->\n"
+  else
+    puts "skipping: #{item}... unsupported file type"
+    next
+  end
+  puts "commenting in #{directory}#{item}"
+  File.open("#{directory}/#{item}", "w") {|f| 
+    f.write start_content
+    f.write body
+    f.write end_content
+  }
+end
+
