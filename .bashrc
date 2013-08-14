@@ -24,7 +24,7 @@ function parse_git_branch {
 # Public: current_git_branch returns the name of the 
 #         current git branch (duh)
 function current_git_branch { #not used by anything, just useful
-	echo $(__git_ps1) | sed -e 's/(\(.*\))/\1/'
+	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
 
@@ -38,6 +38,26 @@ function current_git_branch { #not used by anything, just useful
 
 export PS1='\[\033[01;32m\]\w $(git branch &>/dev/null; if [ $? -eq 0 ]; 
 then echo "\[\033[01;34m\]$(parse_git_branch)"; fi) \D{%M} \$ \[\033[00m\]'
+
+
+NORMAL=$(tput sgr0)
+GREEN=$(tput setaf 2; tput bold)
+YELLOW=$(tput setaf 3)
+RED=$(tput setaf 1)
+
+function red() {
+    echo -e "$RED$*$NORMAL"
+}
+
+function green() {
+    echo -e "$GREEN$*$NORMAL"
+}
+
+function yellow() {
+    echo -e "$YELLOW$*$NORMAL"
+}
+
+
 
 #find and open
 function fao {
@@ -62,6 +82,7 @@ function gpo {
 #gso: git suck origin 
 function gso {
 	# the S is for Suck!
+	git fetch
 	git pull origin $(current_git_branch)
 }
 #gsor: git suck origin & rebase local changes on top
@@ -228,10 +249,6 @@ function rvmerize {
 	echo ${PWD##*/} > .ruby-gemset
 }
 
-function utest {
-	bundle exec ruby -I"lib:test" test/unit/$1_test.rb
-}
-
 
 # superceeded by css_image script in PATH
 #function css_image {
@@ -324,6 +341,7 @@ alias git=hub
 alias grep="grep --color=always"
 alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 alias be='bundle exec'
+
 #source ~/workspace/z/z.sh
 
 export LANG=en_US.UTF-8
@@ -333,7 +351,7 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 
-PATH=.:/Users/$USERNAME/bin:/Users/krhodes/brew/bin:/Users/krhodes/brew/sbin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
+PATH=.:/Users/$USERNAME/bin:/Users/$USERNAME/brew/bin:/Users/$USERNAME/brew/sbin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
