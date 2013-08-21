@@ -1,5 +1,7 @@
 execute pathogen#infect()
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+runtime macros/matchit.vim
+runtime ftplugin/ruby/ruby-matchit.vim
 
 set ww+=<,>
 " making arrow keys wrap across line breaks in normal mode
@@ -20,6 +22,9 @@ set autoindent "
 " Make the selection not include the character under the cursor
 " so that you it doesn't keep selecting the newline at the end
 set selection=exclusive
+
+
+
 
 
 " thanks to http://items.sjbach.com/319/configuring-vim-right
@@ -104,6 +109,8 @@ hi SignColumn ctermbg=black guibg=#303030
 :hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold 
 
 
+" PLUGINS STUFF
+
 " set column hilight color 
 "hi CursorColumn cterm=none ctermbg=black guibg=black
 " set line hilight color
@@ -131,6 +138,8 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 "end thanks
 
+" ruby complexity plugin
+"g:rubycomplexity_enable_at_startup
 
 
 set list
