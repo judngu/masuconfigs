@@ -5,14 +5,48 @@
 #git config --global alias.st "status -sb"
 
 brew install ack
-brew install ctags
-brew install dwdiff
-brew install gettext
-brew install imagemagick
+brew install fish
+brew install glib
+brew install libgpg-error
+brew install little-cms2
+brew install pkg-config
+brew install xz
+brew install autoconf
+brew install fontforge
+brew install hub
+brew install libksba
+brew install macvim
+brew install postgresql
+brew install automake
+brew install fuse4x
+brew install icu4c
+brew install libtiff
+brew install mercurial
 brew install readline
+brew install cloc
+brew install fuse4x-kext
+brew install imagemagick
+brew install libtool
+brew install mongodb
+brew install sqlite
+brew install cscope
+brew install gettext
+brew install jbig2dec
+brew install libxml2
+brew install mpack
+brew install sshfs
+brew install ctags
+brew install ghostscript
+brew install jpeg
+brew install libxslt
+brew install openssl
+brew install uudeview
+brew install dwdiff
+brew install git
+brew install libffi
+brew install libyaml
 brew install ossp-uuid
-brew install tig
-brew instal hub
+
 
 mkdir ~/workspace
 cd workspace
