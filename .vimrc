@@ -66,6 +66,7 @@ if has('gui_running')
 	set encoding=utf8
 	set guifont=Menlo\ for\ Powerline:h18
 	" uses the Menlo-Powerline.otf font
+	set guifont=Inconsolata-dz\ for\ Powerline:h22
 	
 	colorscheme anotherdark
 	" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
