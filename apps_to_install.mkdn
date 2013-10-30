@@ -18,3 +18,5 @@ Ok self, you've got an installed all the stuff in the [masuconfigs](https://gith
 15. [Tweetbot](http://tapbots.com/software/tweetbot/mac/)
 16. [Wedge](http://wedge.natestedman.com/)
 17. [rvm](https://rvm.io/)
+18. [ccl](file://localhost/Applications/Clozure%20CL.app/Contents/Resources/ccl/doc/ccl-documentation.html#obtaining-ccl)
+    (Get the dmg, put the contents of it in /Applications/ccl)
