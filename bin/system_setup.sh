@@ -57,7 +57,11 @@ git submodule update
 ln -s ~/workspace/home_dir_configs/.vim/bundle ~/.vim/bundle
 ln -s ~/workspace/home_dir_configs/.emacs ~/.emacs
 ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
-
+mkdir -p /usr/local/src
+ln -s /usr/local/src/ccl /Applications/ccl
+ln -s /Applications/ccl/scripts/ccl ~/bin/ccl
 
 # command-t should already be installed via a vimball stored in the git repo
 # https://wincent.com/products/command-t
+
+
