@@ -244,6 +244,15 @@ function gpup {
 	fi
 }
 
+# deletes remote branches
+function kob {
+	if [ $# -gt 0 ]; then
+		git push origin :$1
+	else
+		git push origin :$(current_git_branch)
+	fi
+}
+
 function rvmerize {
 	echo "ruby-2.0.0-p195" > .ruby-version
 	echo ${PWD##*/} > .ruby-gemset
