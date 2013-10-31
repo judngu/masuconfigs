@@ -5,15 +5,6 @@ runtime macros/matchit.vim
 runtime ftplugin/ruby/ruby-matchit.vim
 
 
-map <silent> <C-m> :if &guioptions =~# 'T' <Bar>
-\set guioptions-=T <Bar>
-\set guioptions-=m <bar>
-\else <Bar>
-\set guioptions+=T <Bar>
-\set guioptions+=m <Bar>
-\endif<CR>
-
-
 set ww+=<,>
 " making arrow keys wrap across line breaks in normal mode
 imap <Left> <C-O><Left>
