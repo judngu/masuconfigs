@@ -102,6 +102,7 @@ if version > 720
 	highlight colorcolumn guibg=Black
 	" optionally ColorColumn
 endif
+
 " lighten the background color slightly
 hi Normal guifg=White guibg=#303030
 " Change the gutter color in Syntastic
@@ -182,6 +183,7 @@ vnoremap > >gv
 " use Ctrl+L to toggle the line number counting method
 function! g:ToggleNuMode()
 	if(&rnu == 1)
+		set nornu
 		set nu
 	else
 		set rnu
