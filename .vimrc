@@ -67,7 +67,7 @@ nmap <leader>fi :%! formd -i<CR>
 " in the future.
 if has('gui_running')
 	set encoding=utf8
-	set guifont=Menlo\ for\ Powerline:h18
+	set guifont=Menlo\ for\ Powerline:h22
 	" uses the Menlo-Powerline.otf font
 	set guifont=Inconsolata-dz\ for\ Powerline:h22
 	
