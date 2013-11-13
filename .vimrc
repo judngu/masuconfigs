@@ -205,6 +205,12 @@ function! UseTabs(...)
 endfunction
 :cabbr ut :call UseTabs()
 
+function Border()
+	set colorcolumn=80
+	highlight colorcolumn guibg=Black
+endfunction
+:cabbr border :call Border()
+
 function TabToggle()
 	if &expandtab
 		set shiftwidth=4
