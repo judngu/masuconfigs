@@ -59,6 +59,7 @@
 	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	st = status -sb
 	sta  = "!function f { git stash apply stash@{$1}; }; f"
+	subup = submodule foreach git pull origin master
 	tl=log --name-status --pretty=format:'-----------------------------------------%n%h %an %ar %n %s'
 	unassume = update-index --no-assume-unchanged
 	unstash = stash pop[push]
