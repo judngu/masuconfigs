@@ -55,12 +55,22 @@ cd home_dir_configs
 git submodule init
 git submodule update
 ln -s ~/workspace/home_dir_configs/.vim/bundle ~/.vim/bundle
+ln -s ~/workspace/home_dir_configs/slime.vim ~/slime.vim
 ln -s ~/workspace/home_dir_configs/.emacs ~/.emacs
 ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
+
+ln -s ~/workspace/home_dir_configs/.ackrc ~/.ackrc
+ln -s ~/workspace/home_dir_configs/.clisprc.lisp ~/.clisprc.lisp
+
+ln -s ~/workspace/home_dir_configs/.darcs ~/.darcs
+
+# setup CCL
 mkdir -p /usr/local/src
 ln -s /Applications/ccl/scripts/ccl ~/bin/ccl
 ln -s /Applications/ccl/dx86cl /usr/local/src/ccl/dx86cl
 ln -s /Applications/ccl /usr/local/src/ccl
+ln -s ~/workspace/home_dir_configs/.ccl-init.lisp ~/.ccl-init.lisp
+
 
 # command-t should already be installed via a vimball stored in the git repo
 # https://wincent.com/products/command-t

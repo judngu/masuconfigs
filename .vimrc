@@ -142,12 +142,14 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
-
 "end thanks
 
 " ruby complexity plugin
 "g:rubycomplexity_enable_at_startup
 
+" If we're in a scheme file, it's gonna be Chicken Scheme
+let g:is_chicken=1
+setl complete+=,k~/.vim/chicken_scheme_word_list
 
 set list
 set lcs=tab:»_,trail:·
