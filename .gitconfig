@@ -42,6 +42,7 @@
 	branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
 	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
 	changed = status -uno
+	cherry-pick = cherry-pick -x
 	ci = commit
 	cia = commit --amend
 	ciaa = commit -a --amend
