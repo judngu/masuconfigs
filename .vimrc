@@ -50,6 +50,12 @@ set incsearch " ... dynamically as they are typed
 " automatically copy visual selections to the clipboard
 "set go+=a
 
+" turn on rainbow parenthesis by default
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 
 
 " formd Markdown shortcuts
