@@ -50,13 +50,13 @@ set incsearch " ... dynamically as they are typed
 " automatically copy visual selections to the clipboard
 "set go+=a
 
-" turn on rainbow parenthesis by default
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-
+augroup RainbowParentheses
+    au!
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+augroup END
 
 " formd Markdown shortcuts
 " see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
@@ -212,6 +212,12 @@ function! UseTabs(...)
 	set noet ci pi sts=0 sw=4 ts=4
 endfunction
 :cabbr ut :call UseTabs()
+
+function Border()
+	set colorcolumn=80
+	highlight colorcolumn guibg=Black
+endfunction
+:cabbr border :call Border()
 
 function TabToggle()
 	if &expandtab

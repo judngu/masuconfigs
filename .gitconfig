@@ -33,34 +33,36 @@
 	changed = green
 	untracked = cyan
 [alias]
+	# ball == branch + all
+	#tiny log
+	assume   = update-index --assume-unchanged
+	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+	ball = !sh -c \"git branch -a | sed -e 's/^* //g' | sed -e 's/^  //g'\"
+	br = branch
+	branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
+	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
+	changed = status -uno
 	ci = commit
 	cia = commit --amend
 	ciaa = commit -a --amend
-	br = branch
 	co = checkout
 	df = diff
-	tl=log --name-status --pretty=format:'-----------------------------------------%n%h %an %ar %n %s'
-	#tiny log
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	loll = log --graph --decorate --pretty=oneline --abbrev-commit
 	lol = !git --no-pager loll
-	lolal = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	lola = !git --no-pager lolal
+	lolal = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	loll = log --graph --decorate --pretty=oneline --abbrev-commit
 	ls = ls-files
-	unstash = stash pop
-	changed = status -uno
-	st = status -sb
 	master-sync = "!f() { echo Syncing $1 with master && git checkout master && git pull && git checkout $1 && git rebase master; }; f"
 	oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
-	branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
-	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
-	ball = !sh -c \"git branch -a | sed -e 's/^* //g' | sed -e 's/^  //g'\"
-	# ball == branch + all
-	assume   = update-index --assume-unchanged
-	unassume = update-index --no-assume-unchanged
-	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+	pdiff = !git difftool $(git merge-base $1 $(git rev-parse --abbrev-ref HEAD))
 	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
-[push]
+	st = status -sb
+	sta  = "!function f { git stash apply stash@{$1}; }; f"
+	subup = submodule foreach git pull origin master
+	tl=log --name-status --pretty=format:'-----------------------------------------%n%h %an %ar %n %s'
+	unassume = update-index --no-assume-unchanged
+	unstash = stash pop[push]
 	default = current
 [difftool]
 	prompt = false
