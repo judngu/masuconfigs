@@ -64,9 +64,13 @@ nmap <leader>fr :%! formd -r<CR>
 nmap <leader>fi :%! formd -i<CR>
 
 
-"set fdm=syntax
-" whenever I use that it auto-folds everything when I open a file
-
+set foldmethod=syntax
+" whenever I use that without foldlevel 
+" it auto-folds *everything* when I open a file
+set foldlevel=1
+" tell it to remember the fold levels you last had in each file
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
 
 " ok, this is silly, i admit, but it's 
 " more a placeholder so that I'll remember I can do this
