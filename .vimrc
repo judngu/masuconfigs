@@ -26,7 +26,8 @@ set autoindent "
 " so that you it doesn't keep selecting the newline at the end
 set selection=exclusive
 
-
+" Disable "EX Mode"
+map Q <Nop>
 
 
 
