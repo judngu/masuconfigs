@@ -164,11 +164,13 @@ setl complete+=,k~/.vim/chicken_scheme_word_list
 
 set list
 set lcs=tab:»_,trail:·
+highlight SpecialKey ctermfg=8 guifg=DimGrey
 " non-unicode version of the above
 " set lcs=tab:>-,trail:*
 " store temp files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+			
 
 
 " current directory is always matching the
