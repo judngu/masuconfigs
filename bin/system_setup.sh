@@ -46,6 +46,7 @@ brew install git
 brew install libffi
 brew install libyaml
 brew install ossp-uuid
+brew install tree
 
 
 mkdir ~/workspace
