@@ -29,7 +29,8 @@ set selection=exclusive
 " Disable "EX Mode"
 map Q <Nop>
 
-
+" Allow saving of files as sudo when you forget to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 " thanks to http://items.sjbach.com/319/configuring-vim-right
 set hidden
