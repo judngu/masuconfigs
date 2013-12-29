@@ -77,4 +77,5 @@ ln -s ~/workspace/home_dir_configs/.ccl-init.lisp ~/.ccl-init.lisp
 # command-t should already be installed via a vimball stored in the git repo
 # https://wincent.com/products/command-t
 
-
+# disable the @#$%@#$ back and forth swipe in chrome
+defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool FALSE
