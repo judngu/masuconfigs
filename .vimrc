@@ -4,6 +4,9 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 runtime macros/matchit.vim
 runtime ftplugin/ruby/ruby-matchit.vim
 
+" Control P (fuzzy file find / open) 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 set ww+=<,>
 " making arrow keys wrap across line breaks in normal mode
