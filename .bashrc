@@ -9,8 +9,8 @@ bind '"\e[A": history-search-backward' #up-arrow through history
 bind '"\e[B": history-search-forward' #down-arrow through history
 set show-all-if-ambiguous on
 set completion-ignore-case on
-
-
+set -o vi
+set set editing-mode vi
 
 ## throw this at the top of your .bash_profile
 function parse_git_dirty {
