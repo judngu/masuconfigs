@@ -27,7 +27,7 @@ set number
 set autoindent "
 " Make the selection not include the character under the cursor
 " so that you it doesn't keep selecting the newline at the end
-set selection=exclusive
+" set selection=exclusive
 
 " Disable "EX Mode"
 map Q <Nop>
