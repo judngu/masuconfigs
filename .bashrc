@@ -9,8 +9,8 @@ bind '"\e[A": history-search-backward' #up-arrow through history
 bind '"\e[B": history-search-forward' #down-arrow through history
 set show-all-if-ambiguous on
 set completion-ignore-case on
-set -o vi
-set set editing-mode vi
+#set -o vi
+#set set editing-mode vi
 
 ## throw this at the top of your .bash_profile
 function parse_git_dirty {
@@ -258,6 +258,10 @@ function rvmerize {
 	echo ${PWD##*/} > .ruby-gemset
 }
 
+function google {
+	URL="https://www.google.com/search?q=$1"
+	open $URL
+}
 
 # superceeded by css_image script in PATH
 #function css_image {
