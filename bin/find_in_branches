@@ -17,6 +17,7 @@ file = ARGV[1]
 
 if grep_param.nil? or file.nil? or grep_param == '' or file == ''
   puts usage
+  exit(1)
 end
 
 
