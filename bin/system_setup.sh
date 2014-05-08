@@ -67,6 +67,8 @@ ln -s ~/workspace/home_dir_configs/.clisprc.lisp ~/.clisprc.lisp
 ln -s ~/workspace/home_dir_configs/.darcs ~/.darcs
 ln -s ~/workspace/home_dir_configs/.git-completion.bash ~/.git-completion.bash
 
+cp -r ~/workspace/home_dir_configs/Library/Fonts/* ~/Library/Fonts/
+
 # setup CCL
 mkdir -p /usr/local/src
 ln -s /Applications/ccl/scripts/ccl ~/bin/ccl
