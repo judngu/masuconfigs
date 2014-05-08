@@ -134,14 +134,14 @@ set cursorcolumn
 set cursorline
 
 " create a visual marker at 80 columns
-if version > 720
+" if version > 720 " this number doesn't work on all systems... is weird
 	" honestly I don't know what version this 
 	" came into play but dreamhost has v 7.2 
 	" and it doesn't work on that. ;)
 	set colorcolumn=80
 	highlight colorcolumn guibg=Black
 	" optionally ColorColumn
-endif
+" endif
 
 let g:Powerline_symbols = 'fancy'
 
