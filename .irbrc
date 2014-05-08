@@ -1,13 +1,11 @@
 module R
   class Debug
     class << self
-      def get_url_handlers(url, options = {:method=>'GET'})
-        return Rails.application.routes.recognize_path(url, options)
+
+      def path(url_string, method='GET')
+        puts "running: Rails.application.routes.recognize_path(\"#{url_string}\", {:method=>'#{method}'})"
+        Rails.application.routes.recognize_path(url_string, {:method=>method})
       end
-    end
-    def help
-      puts "R::Debug methods: "
-      puts "get_url_handlers(url, options= {:method=>'GET'})"
     end
   end
 end
@@ -26,3 +24,4 @@ end
 def sql(myarg)
   ap ActiveRecord::Base.connection.execute(myarg).map{|x| x}
 end
+
