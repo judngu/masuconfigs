@@ -39,7 +39,8 @@
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 	ball = !sh -c \"git branch -a | sed -e 's/^* //g' | sed -e 's/^  //g'\"
 	br = branch
-	branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
+	#branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
+	branchdiff=log --left-right --graph --cherry-pick --oneline
 	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
 	changed = status -uno
 	cherry-pick = cherry-pick -x

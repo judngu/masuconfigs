@@ -9,8 +9,8 @@ bind '"\e[A": history-search-backward' #up-arrow through history
 bind '"\e[B": history-search-forward' #down-arrow through history
 set show-all-if-ambiguous on
 set completion-ignore-case on
-set -o vi
-set set editing-mode vi
+#set -o vi
+#set set editing-mode vi
 
 ## throw this at the top of your .bash_profile
 function parse_git_dirty {
@@ -258,6 +258,27 @@ function rvmerize {
 	echo ${PWD##*/} > .ruby-gemset
 }
 
+raw_url_encode() {
+  local string="${1}"
+  local strlen=${#string}
+  local encoded=""
+
+  for (( pos=0 ; pos<strlen ; pos++ )); do
+     c=${string:$pos:1}
+     case "$c" in
+        [-_.~a-zA-Z0-9] ) o="${c}" ;;
+        * )               printf -v o '%%%02x' "'$c"
+     esac
+     encoded+="${o}"
+  done
+  echo "${encoded}"    # You can either set a return variable (FASTER) 
+  REPLY="${encoded}"   #+or echo the result (EASIER)... or both... :p
+}
+
+function google {
+	URL="https://www.google.com/search?q=$(raw_url_encode "$1")"
+	open $URL
+}
 
 # superceeded by css_image script in PATH
 #function css_image {
