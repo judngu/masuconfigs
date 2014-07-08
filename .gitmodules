@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/criticmarkup-vim"]
 	path = .vim/bundle/criticmarkup-vim
 	url = git@github.com:goldfeld/criticmarkup-vim.git
+[submodule ".vim/bundle/vim-racket"]
+	path = .vim/bundle/vim-racket
+	url = git@github.com:wlangstroth/vim-racket.git
