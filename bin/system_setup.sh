@@ -61,8 +61,15 @@ ln -s ~/workspace/home_dir_configs/slime.vim ~/slime.vim
 ln -s ~/workspace/home_dir_configs/.emacs ~/.emacs
 ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
 
+
+ln -s ~/workspace/home_dir_configs/.vimrc ~/.vimrc
+
 ln -s ~/workspace/home_dir_configs/.ackrc ~/.ackrc
 ln -s ~/workspace/home_dir_configs/.clisprc.lisp ~/.clisprc.lisp
+
+# requires `chicken-install linenoise` to have been run first
+ln -s ~/workspace/home_dir_configs/.csirc ~/.csirc
+
 
 ln -s ~/workspace/home_dir_configs/.darcs ~/.darcs
 ln -s ~/workspace/home_dir_configs/.git-completion.bash ~/.git-completion.bash
