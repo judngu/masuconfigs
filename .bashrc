@@ -371,6 +371,8 @@ alias git=hub
 alias grep="grep --color=always"
 alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 alias be='bundle exec'
+alias clojure="java -cp ~/workspace/clojure-1.5.1/clojure-1.5.1.jar clojure.main"
+
 
 #source ~/workspace/z/z.sh
 

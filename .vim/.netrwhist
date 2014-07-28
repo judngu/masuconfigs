@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/krhodes/workspace/Whats_Next/app/views/tickets'
 let g:netrw_dirhist_2='/Users/krhodes/workspace/Whats_Next/lib/plugins'
 let g:netrw_dirhist_3='/Users/krhodes/workspace/Whats_Next/app/views/projects'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/Users/krhodes/workspace/Whats_Next/lib/plugins'
 let g:netrw_dirhist_5='/Users/masukomi/workspace/home_dir_configs/.git/modules'
 let g:netrw_dirhist_6='/Users/krhodes/workspace/rainbow_parentheses.vim/autoload'
 let g:netrw_dirhist_7='/Users/masukomi/bin'
+let g:netrw_dirhist_8='/Users/masukomi/workspace/reference/mocl-example-lisp-contacts-ios/LispContacts'

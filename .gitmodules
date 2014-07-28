@@ -31,9 +31,12 @@
 [submodule ".vim/bundle/rainbow_parentheses.vim"]
 	path = .vim/bundle/rainbow_parentheses.vim
 	url = git@github.com:masukomi/rainbow_parentheses.vim.git
-#[submodule ".vim/bundle/criticmarkup-vim"]
-#	path = .vim/bundle/criticmarkup-vim
-#	url = git@github.com:goldfeld/criticmarkup-vim.git
 [submodule ".vim/bundle/vundle"]
 	path = .vim/bundle/vundle
 	url = git@github.com:gmarik/Vundle.vim.git
+[submodule ".vim/bundle/criticmarkup-vim"]
+	path = .vim/bundle/criticmarkup-vim
+	url = git@github.com:goldfeld/criticmarkup-vim.git
+[submodule ".vim/bundle/vim-racket"]
+	path = .vim/bundle/vim-racket
+	url = git@github.com:wlangstroth/vim-racket.git
