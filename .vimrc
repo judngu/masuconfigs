@@ -25,6 +25,8 @@ set shiftwidth=4
 syn on
 set number
 set autoindent "
+set textwidth=80
+
 " Make the selection not include the character under the cursor
 " so that you it doesn't keep selecting the newline at the end
 " set selection=exclusive
