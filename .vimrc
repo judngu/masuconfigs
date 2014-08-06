@@ -16,6 +16,8 @@
 	Bundle 'tomtom/tcomment_vim'
 	Bundle 'masukomi/rainbow_parentheses.vim'
 	Bundle 'itspriddle/vim-marked'
+	Bundle 'oplatek/Conque-Shell'
+	Bundle 'nelstrom/vim-markdown-folding'
 	"Bundle 'goldfeld/criticmarkup-vim'
 
 
