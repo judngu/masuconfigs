@@ -4,6 +4,8 @@
 
 export USERNAME=`id -nu`
 export ARCHFLAGS="-arch x86_64"
+export EDITOR='vim'
+export VISUAL='vim'
 
 bind '"\e[A": history-search-backward' #up-arrow through history
 bind '"\e[B": history-search-forward' #down-arrow through history
@@ -24,7 +26,7 @@ function parse_git_branch {
 # Public: current_git_branch returns the name of the 
 #         current git branch (duh)
 function current_git_branch { #not used by anything, just useful
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+	echo $(__git_ps1) | sed -e 's/(\(.*\))/\1/'
 }
 
 
@@ -360,6 +362,7 @@ alias ga='git add'
 alias gits='git status -uno'
 #End stupidity...
 alias epochtime="date +%s"
+alias epochmillis="date +%s%N | cut -b1-13"
 alias berc='bundle exec rails console'
 alias bers='bundle exec rails server'
 alias berd='bundle exec rails server --debugger'
