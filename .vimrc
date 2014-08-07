@@ -24,7 +24,6 @@ Bundle 'nelstrom/vim-markdown-folding'
 let $XIKI_DIR="~/workspace/reference/xiki"
 source $XIKI_DIR/etc/vim/xiki.vim
 
-
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 runtime macros/matchit.vim
 runtime ftplugin/ruby/ruby-matchit.vim
@@ -50,6 +49,8 @@ set shiftwidth=4
 syn on
 set number
 set autoindent "
+set textwidth=80
+
 " Make the selection not include the character under the cursor
 " so that you it doesn't keep selecting the newline at the end
 " set selection=exclusive
