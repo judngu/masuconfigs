@@ -2,3 +2,4 @@
 .floorc
 .vim/.netrwhist
 .vim/view
+.DS_Store

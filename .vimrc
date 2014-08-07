@@ -1,4 +1,26 @@
-execute pathogen#infect()
+"execute pathogen#infect()
+	set nocompatible
+	filetype off
+	set rtp+=~/.vim/bundle/vundle/
+	call vundle#rc()
+
+	Bundle 'gmarik/vundle'
+	Bundle 'tpope/vim-fugitive'
+	Bundle 'godlygeek/tabular'
+	Bundle 'kchmck/vim-coffee-script'
+	Bundle 'tpope/vim-endwise'
+	Bundle 'airblade/vim-gitgutter'
+	Bundle 'scrooloose/syntastic'
+	Bundle 'kien/ctrlp.vim'
+	Bundle 'masukomi/vim-slime'
+	Bundle 'tomtom/tcomment_vim'
+	Bundle 'masukomi/rainbow_parentheses.vim'
+	Bundle 'itspriddle/vim-marked'
+	Bundle 'oplatek/Conque-Shell'
+	Bundle 'nelstrom/vim-markdown-folding'
+	"Bundle 'goldfeld/criticmarkup-vim'
+
+
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 runtime macros/matchit.vim
