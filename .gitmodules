@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/vim-racket"]
 	path = .vim/bundle/vim-racket
 	url = git@github.com:wlangstroth/vim-racket.git
+[submodule ".vim/bundle/Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
+	url = git@github.com:gmarik/Vundle.vim.git

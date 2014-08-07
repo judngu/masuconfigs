@@ -1,7 +1,7 @@
 "execute pathogen#infect()
 	set nocompatible
 	filetype off
-	set rtp+=~/.vim/bundle/vundle/
+	set rtp+=~/.vim/bundle/Vundle.vim/
 	call vundle#rc()
 
 	Bundle 'gmarik/vundle'
@@ -16,8 +16,8 @@
 	Bundle 'tomtom/tcomment_vim'
 	Bundle 'masukomi/rainbow_parentheses.vim'
 	Bundle 'itspriddle/vim-marked'
-	Bundle 'oplatek/Conque-Shell'
 	Bundle 'nelstrom/vim-markdown-folding'
+	Bundle 'vim-scripts/Conque-Shell'
 	"Bundle 'goldfeld/criticmarkup-vim'
 
 
