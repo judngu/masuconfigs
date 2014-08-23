@@ -4,21 +4,26 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'godlygeek/tabular'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-endwise'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/syntastic'
-Bundle 'kien/ctrlp.vim'
-Bundle 'masukomi/vim-slime'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'masukomi/rainbow_parentheses.vim'
-Bundle 'itspriddle/vim-marked'
-Bundle 'oplatek/Conque-Shell'
-Bundle 'nelstrom/vim-markdown-folding'
-"Bundle 'goldfeld/criticmarkup-vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'godlygeek/tabular'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-endwise'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'masukomi/vim-slime'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'masukomi/rainbow_parentheses.vim'
+Plugin 'itspriddle/vim-marked'
+Plugin 'oplatek/Conque-Shell'
+Plugin 'nelstrom/vim-markdown-folding'
+"Plugin 'goldfeld/criticmarkup-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 
 let $XIKI_DIR="~/workspace/reference/xiki"
