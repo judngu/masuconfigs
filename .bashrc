@@ -39,7 +39,7 @@ function current_git_branch { #not used by anything, just useful
 # Sweeeeeeeet!
 
 export PS1='\[\033[01;32m\]\w $(git branch &>/dev/null; if [ $? -eq 0 ]; 
-then echo "\[\033[01;34m\]$(parse_git_branch)"; fi) \D{%M} \$ \[\033[00m\]'
+then echo "\[\033[01;34m\]$(current_git_branch)"; fi) \D{%M} \$ \[\033[00m\]'
 
 
 NORMAL=$(tput sgr0)
@@ -126,7 +126,7 @@ function cdiff(){
 	git diff $@ | cleandiff
 }
 function cleandiff(){
-	dwdiff -A best -L -s -W " _}{\x0A%'\"" -c -d ",;/:." --diff-input -
+	dwdiff -A best -L -s -c -d "\x0A%,;/:._{}[]()|-=~>\"\\\\" --diff-input -
 }
 
 # generates a cleandiff for the supplied treeish vs
@@ -370,7 +370,7 @@ alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --
 alias hgrep="history | grep"
 
 alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
-alias git=hub
+#alias git=hub
 alias grep="grep --color=always"
 alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 alias be='bundle exec'
@@ -385,6 +385,9 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+    . ~/.config/exercism/exercism_completion.bash
+fi
 
 PATH=.:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
