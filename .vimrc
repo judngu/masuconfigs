@@ -19,11 +19,13 @@ Plugin 'itspriddle/vim-marked'
 Plugin 'oplatek/Conque-Shell'
 Plugin 'nelstrom/vim-markdown-folding'
 "Plugin 'goldfeld/criticmarkup-vim'
+"Plugin 'sjl/AnsiEsc.vim'
+Plugin 'chrisbra/Colorizer'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
+let g:colorizer_auto_filetype='cdiff'
 
 
 let $XIKI_DIR="~/workspace/reference/xiki"
@@ -248,7 +250,6 @@ let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
-
 
 function! UseTabs(...)
 	set noet ci pi sts=0 sw=4 ts=4
