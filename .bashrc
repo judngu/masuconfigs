@@ -121,21 +121,11 @@ function br {
 #alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
 # git diff <treeish> | cleandiff
 #alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
-# git diff <treeish> | cleandiff
-function cdiff(){
-	git diff $@ | cleandiff
-}
-function cleandiff(){
-	dwdiff -A best -L -s -c -d "\x0A%,;/:._{}[]()|-=~>\"\\\\" --diff-input -
-}
-
-# generates a cleandiff for the supplied treeish vs
-# its predecessor OR for HEAD vs its predecessor.
 function cdprev(){
 	if [ $# -gt 0 ]; then
-		git diff $1^ $1 | cleandiff
+		git difftool --tool=cdiff $1^ $1
 	else
-		git diff HEAD^ HEAD | cleandiff
+		git difftool --tool=cdiff HEAD^ HEAD 
 	fi
 }
 # loads git difftool for the supplied treeish vs
