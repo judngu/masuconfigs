@@ -2,7 +2,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
@@ -21,14 +21,22 @@ Plugin 'nelstrom/vim-markdown-folding'
 "Plugin 'goldfeld/criticmarkup-vim'
 "Plugin 'sjl/AnsiEsc.vim'
 Plugin 'chrisbra/Colorizer'
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'bling/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+" configurations for vim-airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+" end vim-airline stuff
+
 filetype plugin indent on    " required
 let g:colorizer_auto_filetype='cdiff'
 
 
-let $XIKI_DIR="~/workspace/reference/xiki"
+let $XIKI_DIR="~/workspace/reference/tools/xiki"
 source $XIKI_DIR/etc/vim/xiki.vim
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -115,9 +123,11 @@ au BufWinEnter ?* silent loadview
 " in the future.
 if has('gui_running')
 	set encoding=utf8
-	set guifont=Menlo\ for\ Powerline:h22
+	"set guifont=Menlo\ for\ Powerline:h22
+	"set guifont=InputMono\ for\ Powerline:h22
 	" uses the Menlo-Powerline.otf font
-	set guifont=Inconsolata-dz\ for\ Powerline:h22
+	"set guifont=Inconsolata-dz\ for\ Powerline:h22
+	set guifont=Inconsolata-g\ for\ Powerline:h22
 	
 	colorscheme anotherdark
 	" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
