@@ -1,26 +1,35 @@
-"execute pathogen#infect()
-	set nocompatible
-	filetype off
-	set rtp+=~/.vim/bundle/Vundle.vim/
-	call vundle#rc()
+" masukomi's current .vimrc
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
 
-	Bundle 'gmarik/vundle'
-	Bundle 'tpope/vim-fugitive'
-	Bundle 'godlygeek/tabular'
-	Bundle 'kchmck/vim-coffee-script'
-	Bundle 'tpope/vim-endwise'
-	Bundle 'airblade/vim-gitgutter'
-	Bundle 'scrooloose/syntastic'
-	Bundle 'kien/ctrlp.vim'
-	Bundle 'masukomi/vim-slime'
-	Bundle 'tomtom/tcomment_vim'
-	Bundle 'masukomi/rainbow_parentheses.vim'
-	Bundle 'itspriddle/vim-marked'
-	Bundle 'nelstrom/vim-markdown-folding'
-	Bundle 'vim-scripts/Conque-Shell'
-	"Bundle 'goldfeld/criticmarkup-vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'godlygeek/tabular'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-endwise'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'masukomi/vim-slime'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'masukomi/rainbow_parentheses.vim'
+Plugin 'itspriddle/vim-marked'
+Plugin 'oplatek/Conque-Shell'
+Plugin 'nelstrom/vim-markdown-folding'
+"Plugin 'goldfeld/criticmarkup-vim'
+"Plugin 'sjl/AnsiEsc.vim'
+Plugin 'chrisbra/Colorizer'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+let g:colorizer_auto_filetype='cdiff'
 
 
+let $XIKI_DIR="~/workspace/reference/xiki"
+source $XIKI_DIR/etc/vim/xiki.vim
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 runtime macros/matchit.vim
@@ -241,7 +250,6 @@ let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_WinWidth = 50
 map <F4> :TlistToggle<cr>
 map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
-
 
 function! UseTabs(...)
 	set noet ci pi sts=0 sw=4 ts=4
