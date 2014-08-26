@@ -272,6 +272,10 @@ function google {
 	open $URL
 }
 
+function utest {
+	bundle exec ruby -I"lib:test" test/unit/$1_test.rb
+}
+
 # superceeded by css_image script in PATH
 #function css_image {
 #	openssl base64 -in "$1" | awk -v ext="${1#*.}" '{ str1=str1 $0 }END{ print "background:url(data:image/"ext";base64,"str1");" }'
@@ -359,7 +363,6 @@ alias berd='bundle exec rails server --debugger'
 alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
 alias hgrep="history | grep"
 
-alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
 #alias git=hub
 alias grep="grep --color=always"
 alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
@@ -379,7 +382,7 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
     . ~/.config/exercism/exercism_completion.bash
 fi
 
-PATH=.:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
+PATH=.:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/Users/$USERNAME/workspace/cleandiff:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
