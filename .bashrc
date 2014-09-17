@@ -273,6 +273,10 @@ function google {
 	open $URL
 }
 
+function utest {
+	bundle exec ruby -I"lib:test" test/unit/$1_test.rb
+}
+
 # superceeded by css_image script in PATH
 #function css_image {
 #	openssl base64 -in "$1" | awk -v ext="${1#*.}" '{ str1=str1 $0 }END{ print "background:url(data:image/"ext";base64,"str1");" }'
@@ -360,7 +364,6 @@ alias berd='bundle exec rails server --debugger'
 alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
 alias hgrep="history | grep"
 
-alias cleandiff="dwdiff -A best -L -s -W \" _}{\x0A%'\\\"\" -c -d \",;/:.\" --diff-input -"
 #alias git=hub
 alias grep="grep --color=always"
 alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'

@@ -33,7 +33,8 @@ fun! LimpMode_start()
     endif
 
     hi Brackets      ctermbg=53 ctermfg=white 
-    hi BracketsBlock ctermbg=235 guibg=lightgray
+    "hi BracketsBlock ctermbg=235 guibg=lightgray
+    hi BracketsBlock ctermbg=235 guibg=gray14
     hi StatusLine    ctermbg=white ctermfg=160
     hi StatusLineNC  ctermbg=black ctermfg=gray
     hi Pmenu         ctermbg=53 ctermfg=255
