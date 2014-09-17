@@ -1,1 +1,2 @@
 gvcolors.vba: call delete('/home/krhodes/.vim/plugin/gvcolors.vim')|call delete('/home/krhodes/.vim/doc/gvcolors.txt')
+AnsiEsc.vba: call delete('/Users/krhodes/.vim/plugin/AnsiEscPlugin.vim')|call delete('/Users/krhodes/.vim/autoload/AnsiEsc.vim')|call delete('/Users/krhodes/.vim/plugin/cecutil.vim')|call delete('/Users/krhodes/.vim/doc/AnsiEsc.txt')

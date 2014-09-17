@@ -6,18 +6,18 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'godlygeek/tabular'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-endwise'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
-Plugin 'masukomi/vim-slime'
+"Plugin 'godlygeek/tabular'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'tpope/vim-endwise'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'masukomi/vim-slime'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'masukomi/rainbow_parentheses.vim'
-Plugin 'itspriddle/vim-marked'
-Plugin 'oplatek/Conque-Shell'
-Plugin 'nelstrom/vim-markdown-folding'
+"Plugin 'itspriddle/vim-marked'
+"Plugin 'oplatek/Conque-Shell'
+"Plugin 'nelstrom/vim-markdown-folding'
 "Plugin 'goldfeld/criticmarkup-vim'
 "Plugin 'sjl/AnsiEsc.vim'
 Plugin 'chrisbra/Colorizer'
@@ -96,13 +96,13 @@ set incsearch " ... dynamically as they are typed
 " automatically copy visual selections to the clipboard
 "set go+=a
 
-augroup RainbowParentheses
-    au!
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-augroup END
+"augroup RainbowParentheses
+"    au!
+"    au VimEnter * RainbowParenthesesToggle
+"    au Syntax * RainbowParenthesesLoadRound
+"    au Syntax * RainbowParenthesesLoadSquare
+"    au Syntax * RainbowParenthesesLoadBraces
+"augroup END
 
 " formd Markdown shortcuts
 " see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
@@ -122,33 +122,33 @@ au BufWinEnter ?* silent loadview
 " more a placeholder so that I'll remember I can do this
 " in the future.
 if has('gui_running')
-	set encoding=utf8
-	"set guifont=Menlo\ for\ Powerline:h22
-	"set guifont=InputMono\ for\ Powerline:h22
-	" uses the Menlo-Powerline.otf font
-	"set guifont=Inconsolata-dz\ for\ Powerline:h22
-	set guifont=Inconsolata-g\ for\ Powerline:h22
-	
-	colorscheme anotherdark
-	" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
-	" switch between them, like browser tabs. Ctrl-Shift-Tab goes the other way.
-	noremap <C-Tab> :tabnext<CR>
-	noremap <C-S-Tab> :tabprev<CR>
+set encoding=utf8
+"set guifont=Menlo\ for\ Powerline:h22
+"set guifont=InputMono\ for\ Powerline:h22
+" uses the Menlo-Powerline.otf font
+"set guifont=Inconsolata-dz\ for\ Powerline:h22
+set guifont=Inconsolata-g\ for\ Powerline:h22
 
-	" Switch to specific tab numbers with Command-number
-	noremap <D-1> :tabn 1<CR>
-	noremap <D-2> :tabn 2<CR>
-	noremap <D-3> :tabn 3<CR>
-	noremap <D-4> :tabn 4<CR>
-	noremap <D-5> :tabn 5<CR>
-	noremap <D-6> :tabn 6<CR>
-	noremap <D-7> :tabn 7<CR>
-	noremap <D-8> :tabn 8<CR>
-	noremap <D-9> :tabn 9<CR>
-	" Command-0 goes to the last tab
-	noremap <D-0> :tablast<CR>
+colorscheme anotherdark
+" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
+" switch between them, like browser tabs. Ctrl-Shift-Tab goes the other way.
+noremap <C-Tab> :tabnext<CR>
+noremap <C-S-Tab> :tabprev<CR>
+
+" Switch to specific tab numbers with Command-number
+noremap <D-1> :tabn 1<CR>
+noremap <D-2> :tabn 2<CR>
+noremap <D-3> :tabn 3<CR>
+noremap <D-4> :tabn 4<CR>
+noremap <D-5> :tabn 5<CR>
+noremap <D-6> :tabn 6<CR>
+noremap <D-7> :tabn 7<CR>
+noremap <D-8> :tabn 8<CR>
+noremap <D-9> :tabn 9<CR>
+" Command-0 goes to the last tab
+noremap <D-0> :tablast<CR>
 else
-	colorscheme anotherdark
+colorscheme anotherdark
 end
 
 
@@ -178,12 +178,12 @@ set cursorline
 
 " create a visual marker at 80 columns
 " if version > 720 " this number doesn't work on all systems... is weird
-	" honestly I don't know what version this 
-	" came into play but dreamhost has v 7.2 
-	" and it doesn't work on that. ;)
-	set colorcolumn=80
-	highlight colorcolumn guibg=Black
-	" optionally ColorColumn
+" honestly I don't know what version this 
+" came into play but dreamhost has v 7.2 
+" and it doesn't work on that. ;)
+set colorcolumn=80
+highlight colorcolumn guibg=Black
+" optionally ColorColumn
 " endif
 
 let g:Powerline_symbols = 'fancy'
@@ -217,7 +217,7 @@ highlight SpecialKey ctermfg=8 guifg=DimGrey
 " store temp files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-			
+
 
 
 " current directory is always matching the
