@@ -1,4 +1,17 @@
-module R
+def require_dir(relative_dir_path)
+  cleaned_relative_dir_path =relative_dir_path.sub(/\/$/, '')
+  Dir["#{cleaned_relative_dir_path}/**/*.rb"].each do |file|
+    puts "requiring #{file}"
+    begin
+      require file
+    rescue Exception => e
+      puts "Couldn't require #{file}: #{e.message}"
+    end
+  end
+  return true
+end
+
+module R # for rails
   class Debug
     class << self
 
