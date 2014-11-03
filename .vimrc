@@ -6,7 +6,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'tpope/vim-endwise'
 "Plugin 'airblade/vim-gitgutter'
