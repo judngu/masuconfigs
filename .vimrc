@@ -1,4 +1,6 @@
 " masukomi's current .vimrc
+scriptencoding utf-8
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -13,6 +15,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'masukomi/vim-slime'
+"Plugin 'Floobits/vim-plugin'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'masukomi/rainbow_parentheses.vim'
 "Plugin 'itspriddle/vim-marked'
@@ -23,6 +26,8 @@ Plugin 'masukomi/rainbow_parentheses.vim'
 Plugin 'chrisbra/Colorizer'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
+"Plugin 'wlangstroth/vim-racket'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,6 +36,13 @@ call vundle#end()            " required
 set laststatus=2
 let g:airline_powerline_fonts = 1
 " end vim-airline stuff
+"let g:Powerline_symbols = 'fancy'
+
+
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+"let g:airline_symbols.space = "\ua0"
 
 filetype plugin indent on    " required
 let g:colorizer_auto_filetype='cdiff'
@@ -186,7 +198,6 @@ highlight colorcolumn guibg=Black
 " optionally ColorColumn
 " endif
 
-let g:Powerline_symbols = 'fancy'
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -210,7 +221,7 @@ let g:is_chicken=1
 setl complete+=,k~/.vim/chicken_scheme_word_list
 
 set list
-set lcs=tab:»_,trail:·
+set lcs=tab:Â»_,trail:Â·
 highlight SpecialKey ctermfg=8 guifg=DimGrey
 " non-unicode version of the above
 " set lcs=tab:>-,trail:*
