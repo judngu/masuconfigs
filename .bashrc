@@ -96,6 +96,13 @@ function gso {
 	git fetch
 	git pull origin $(current_git_branch)
 }
+function gsu {
+	# the S is for Suck!
+	# the U is for Upstream
+	git fetch
+	git pull upstream $(current_git_branch)
+}
+
 #gsor: git suck origin & rebase local changes on top
 function gsor {
 	git pull --rebase origin $(current_git_branch)
