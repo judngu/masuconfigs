@@ -61,6 +61,14 @@ function yellow() {
 }
 
 
+export TERM='xterm-256color'
+# if you don't do that then the powerline in 
+# vim has no color. I'm sure it screws something 
+# else up too but that's the only thing I've encountered
+# so far.
+# The alternative is:
+#        export TERM='xterm-color' 
+
 
 #find and open
 function fao {
