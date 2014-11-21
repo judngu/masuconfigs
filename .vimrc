@@ -16,7 +16,7 @@ Plugin 'masukomi/vim-slime'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'masukomi/rainbow_parentheses.vim'
 Plugin 'itspriddle/vim-marked'
-Plugin 'oplatek/Conque-Shell'
+"Plugin 'oplatek/Conque-Shell'
 Plugin 'nelstrom/vim-markdown-folding'
 "Plugin 'goldfeld/criticmarkup-vim'
 "Plugin 'sjl/AnsiEsc.vim'
@@ -37,8 +37,8 @@ filetype plugin indent on    " required
 let g:colorizer_auto_filetype='cdiff'
 
 
-let $XIKI_DIR="~/workspace/reference/tools/xiki"
-source $XIKI_DIR/etc/vim/xiki.vim
+"let $XIKI_DIR="~/workspace/reference/tools/xiki"
+"source $XIKI_DIR/etc/vim/xiki.vim
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 runtime macros/matchit.vim
@@ -287,6 +287,11 @@ function TabToggle()
 	endif
 endfunction
 :cabbr tt :call TabToggle()
+
+function GoFull()
+	set fuoptions=maxvert fu
+endfunction
+:cabbr gof :call GoFull()
 
 " Text Expansions
 iab sterr $stderr.puts("XXX")<ESC>bi
