@@ -1,18 +1,12 @@
-[github]
-	user = masukomi
-	token = 85f6f36152b1c74e1db9ac6202336d44
-[user]
-	email = masukomi@masukomi.org
-	name = masukomi
-#[user]
-#	email = krhodes@rbmtechnologies.com
-#	name = Kay Rhodes
+[include]
+	path = workspace/home_dir_configs/external_gitconfig
 [status-report]
 	include = /Users/krhodes/workspace/vmm_copy
 	email = krhodes@rbmtechnologies.com
 [core]
 	excludesfile = /Users/krhodes/.gitignore_global
 	quotepath = false
+	editor = vim
 [color]
 	ui = auto
 	diff = auto
@@ -34,12 +28,13 @@
 	untracked = cyan
 [alias]
 	# ball == branch + all
+	#branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
 	#tiny log
 	assume   = update-index --assume-unchanged
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 	ball = !sh -c \"git branch -a | sed -e 's/^* //g' | sed -e 's/^  //g'\"
 	br = branch
-	#branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
+	branchdiff2 = log --left-right --graph --cherry-pick --oneline
 	branchdiff=log --left-right --graph --cherry-pick --oneline
 	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
 	changed = status -uno
@@ -48,7 +43,10 @@
 	cia = commit --amend
 	ciaa = commit -a --amend
 	co = checkout
+	cpl = !"git --git-dir=$1.git format-patch -k -1 --stdout $2 | git am -3 -k"
+	default = current
 	df = diff
+	kad = difftool --tool Kaleidoscope
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lol = !git --no-pager loll
 	lola = !git --no-pager lolal
@@ -56,8 +54,10 @@
 	loll = log --graph --decorate --pretty=oneline --abbrev-commit
 	ls = ls-files
 	master-sync = "!f() { echo Syncing $1 with master && git checkout master && git pull && git checkout $1 && git rebase master; }; f"
+	mergecommits = ! git log $(git merge-base --octopus $(git log -1 -U $1 --pretty=format:%P)).. --boundary
 	oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
 	pdiff = !git difftool $(git merge-base $1 $(git rev-parse --abbrev-ref HEAD))
+	pum = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
 	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	st = status -sb
 	sta  = "!function f { git stash apply stash@{$1}; }; f"
@@ -65,12 +65,16 @@
 	tl=log --name-status --pretty=format:'-----------------------------------------%n%h %an %ar %n %s'
 	unassume = update-index --no-assume-unchanged
 	unstash = stash pop[push]
-	default = current
 [difftool]
 	prompt = false
+#[diff]
+#	tool = Kaleidoscope
+#	algorithm = patience
 [diff]
-	tool = Kaleidoscope
+	tool = cdiff
 	algorithm = patience
+[difftool "cdiff"]
+	cmd = cdiff \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [mergetool "Kaleidoscope"]
@@ -91,3 +95,8 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[push]
+	default = simple
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

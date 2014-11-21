@@ -1,4 +1,6 @@
 " masukomi's current .vimrc
+scriptencoding utf-8
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -7,23 +9,27 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-endwise'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
-Plugin 'masukomi/vim-slime'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'masukomi/rainbow_parentheses.vim'
 Plugin 'itspriddle/vim-marked'
-"Plugin 'oplatek/Conque-Shell'
 Plugin 'nelstrom/vim-markdown-folding'
-"Plugin 'goldfeld/criticmarkup-vim'
-"Plugin 'sjl/AnsiEsc.vim'
 Plugin 'chrisbra/Colorizer'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'tpope/vim-endwise'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'masukomi/vim-slime'
+"Plugin 'Floobits/vim-plugin'
+"Plugin 'itspriddle/vim-marked'
+"Plugin 'oplatek/Conque-Shell'
+"Plugin 'nelstrom/vim-markdown-folding'
+"Plugin 'goldfeld/criticmarkup-vim'
+"Plugin 'sjl/AnsiEsc.vim'
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'wlangstroth/vim-racket'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -32,6 +38,13 @@ call vundle#end()            " required
 set laststatus=2
 let g:airline_powerline_fonts = 1
 " end vim-airline stuff
+"let g:Powerline_symbols = 'fancy'
+
+
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+"let g:airline_symbols.space = "\ua0"
 
 filetype plugin indent on    " required
 let g:colorizer_auto_filetype='cdiff'
@@ -97,13 +110,13 @@ set incsearch " ... dynamically as they are typed
 " automatically copy visual selections to the clipboard
 "set go+=a
 
-augroup RainbowParentheses
-    au!
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-augroup END
+"augroup RainbowParentheses
+"    au!
+"    au VimEnter * RainbowParenthesesToggle
+"    au Syntax * RainbowParenthesesLoadRound
+"    au Syntax * RainbowParenthesesLoadSquare
+"    au Syntax * RainbowParenthesesLoadBraces
+"augroup END
 
 " formd Markdown shortcuts
 " see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
@@ -123,33 +136,33 @@ au BufWinEnter ?* silent loadview
 " more a placeholder so that I'll remember I can do this
 " in the future.
 if has('gui_running')
-	set encoding=utf8
-	"set guifont=Menlo\ for\ Powerline:h22
-	"set guifont=InputMono\ for\ Powerline:h22
-	" uses the Menlo-Powerline.otf font
-	"set guifont=Inconsolata-dz\ for\ Powerline:h22
-	set guifont=Inconsolata-g\ for\ Powerline:h22
-	
-	colorscheme anotherdark
-	" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
-	" switch between them, like browser tabs. Ctrl-Shift-Tab goes the other way.
-	noremap <C-Tab> :tabnext<CR>
-	noremap <C-S-Tab> :tabprev<CR>
+set encoding=utf8
+set guifont=Menlo\ for\ Powerline:h22
+"set guifont=InputMono\ for\ Powerline:h22
+" uses the Menlo-Powerline.otf font
+"set guifont=Inconsolata-dz\ for\ Powerline:h22
+"set guifont=Inconsolata-g\ for\ Powerline:h22
 
-	" Switch to specific tab numbers with Command-number
-	noremap <D-1> :tabn 1<CR>
-	noremap <D-2> :tabn 2<CR>
-	noremap <D-3> :tabn 3<CR>
-	noremap <D-4> :tabn 4<CR>
-	noremap <D-5> :tabn 5<CR>
-	noremap <D-6> :tabn 6<CR>
-	noremap <D-7> :tabn 7<CR>
-	noremap <D-8> :tabn 8<CR>
-	noremap <D-9> :tabn 9<CR>
-	" Command-0 goes to the last tab
-	noremap <D-0> :tablast<CR>
+colorscheme anotherdark
+" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
+" switch between them, like browser tabs. Ctrl-Shift-Tab goes the other way.
+noremap <C-Tab> :tabnext<CR>
+noremap <C-S-Tab> :tabprev<CR>
+
+" Switch to specific tab numbers with Command-number
+noremap <D-1> :tabn 1<CR>
+noremap <D-2> :tabn 2<CR>
+noremap <D-3> :tabn 3<CR>
+noremap <D-4> :tabn 4<CR>
+noremap <D-5> :tabn 5<CR>
+noremap <D-6> :tabn 6<CR>
+noremap <D-7> :tabn 7<CR>
+noremap <D-8> :tabn 8<CR>
+noremap <D-9> :tabn 9<CR>
+" Command-0 goes to the last tab
+noremap <D-0> :tablast<CR>
 else
-	colorscheme anotherdark
+colorscheme anotherdark
 end
 
 
@@ -179,15 +192,14 @@ set cursorline
 
 " create a visual marker at 80 columns
 " if version > 720 " this number doesn't work on all systems... is weird
-	" honestly I don't know what version this 
-	" came into play but dreamhost has v 7.2 
-	" and it doesn't work on that. ;)
-	set colorcolumn=80
-	highlight colorcolumn guibg=Black
-	" optionally ColorColumn
+" honestly I don't know what version this 
+" came into play but dreamhost has v 7.2 
+" and it doesn't work on that. ;)
+set colorcolumn=80
+highlight colorcolumn guibg=Black
+" optionally ColorColumn
 " endif
 
-let g:Powerline_symbols = 'fancy'
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -211,14 +223,14 @@ let g:is_chicken=1
 setl complete+=,k~/.vim/chicken_scheme_word_list
 
 set list
-set lcs=tab:»_,trail:·
+set lcs=tab:Â»_,trail:Â·
 highlight SpecialKey ctermfg=8 guifg=DimGrey
 " non-unicode version of the above
 " set lcs=tab:>-,trail:*
 " store temp files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-			
+
 
 
 " current directory is always matching the

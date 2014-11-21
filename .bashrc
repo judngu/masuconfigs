@@ -6,6 +6,7 @@ export USERNAME=`id -nu`
 export ARCHFLAGS="-arch x86_64"
 export EDITOR='vim'
 export VISUAL='vim'
+export GOPATH='~/gocode'
 
 bind '"\e[A": history-search-backward' #up-arrow through history
 bind '"\e[B": history-search-forward' #down-arrow through history
@@ -59,6 +60,14 @@ function yellow() {
     echo -e "$YELLOW$*$NORMAL"
 }
 
+
+export TERM='xterm-256color'
+# if you don't do that then the powerline in 
+# vim has no color. I'm sure it screws something 
+# else up too but that's the only thing I've encountered
+# so far.
+# The alternative is:
+#        export TERM='xterm-color' 
 
 
 #find and open
@@ -382,7 +391,7 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
     . ~/.config/exercism/exercism_completion.bash
 fi
 
-PATH=.:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/Users/$USERNAME/workspace/cleandiff:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin
+PATH=.:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin:/Users/$USERNAME/gocode/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.

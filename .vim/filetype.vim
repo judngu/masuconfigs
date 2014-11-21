@@ -7,7 +7,6 @@ au! BufRead,BufNewFile *.haml   setfiletype haml
 au! BufRead,BufNewFile *.coffee setfiletype javascript
 au! BufRead,BufNewFile *.asd setfiletype lisp
 au! BufRead,BufNewFile *.scm setfiletype scheme
-au! BufRead,BufNewFile *.cdf  setfiletype cdiff
 
 " markdown filetype file
 
