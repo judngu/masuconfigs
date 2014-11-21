@@ -40,7 +40,7 @@ function current_git_branch { #not used by anything, just useful
 # Sweeeeeeeet!
 
 export PS1='\[\033[01;32m\]\w $(git branch &>/dev/null; if [ $? -eq 0 ]; 
-then echo "\[\033[01;34m\]$(current_git_branch)"; fi) \D{%M} \$ \[\033[00m\]'
+then echo -e "\[\033[01;34m\]$(current_git_branch)"; fi) \D{%M} $(echo -e "\xE2\x9E\x9C") \[\033[00m\]'
 
 
 NORMAL=$(tput sgr0)
