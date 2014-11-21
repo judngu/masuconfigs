@@ -23,6 +23,7 @@ Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'chrisbra/Colorizer'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
