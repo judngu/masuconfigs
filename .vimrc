@@ -110,13 +110,13 @@ set incsearch " ... dynamically as they are typed
 " automatically copy visual selections to the clipboard
 "set go+=a
 
-"augroup RainbowParentheses
-"    au!
-"    au VimEnter * RainbowParenthesesToggle
-"    au Syntax * RainbowParenthesesLoadRound
-"    au Syntax * RainbowParenthesesLoadSquare
-"    au Syntax * RainbowParenthesesLoadBraces
-"augroup END
+augroup RainbowParentheses
+    au!
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+augroup END
 
 " formd Markdown shortcuts
 " see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
