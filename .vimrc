@@ -137,11 +137,11 @@ au BufWinEnter ?* silent loadview
 " in the future.
 if has('gui_running')
 set encoding=utf8
-set guifont=Menlo\ for\ Powerline:h22
+"set guifont=Menlo\ for\ Powerline:h22
 "set guifont=InputMono\ for\ Powerline:h22
 " uses the Menlo-Powerline.otf font
 "set guifont=Inconsolata-dz\ for\ Powerline:h22
-"set guifont=Inconsolata-g\ for\ Powerline:h22
+set guifont=Inconsolata-g\ for\ Powerline:h22
 
 colorscheme anotherdark
 " In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
@@ -255,6 +255,7 @@ let g:acp_behaviorRubyOmniMethodLength = -1
 " lets you keep indenting or outdenting without reselecting
 vnoremap < <gv
 vnoremap > >gv
+
 
 
 " use Ctrl+L to toggle the line number counting method
