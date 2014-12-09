@@ -186,6 +186,28 @@ function gdup {
 	fi
 }
 
+
+# Public: returns the name of the git remote the current branch is tracking
+function get_git_remote {
+  x=$(current_git_branch)
+  remote=$(git config --get "branch.""$x"".remote")
+  #if [ "$remote" == "" ]; then
+  #  remote=$(git config --get "branch.""$x"".merge" | sed -e 's/.*\///g')
+  #fi
+  echo -ne $remote
+  return
+}
+
+
+# Public: configures the ability to checkout GitHub PRs for the specified remote
+# 
+# args - name of the remote to configure this for.
+function add_prs_to_remote {
+	git config --add remote.$1.fetch "+refs/pull/*/head:refs/remotes/$1/pr/*"
+	git fetch $1
+}
+
+
 # Public: Git Push to UPstream
 #         Setting a tracking branch only affects git pull.
 #         This will perform a git push to wherever git pull
@@ -250,6 +272,10 @@ function gpup {
 			echo "quitting"
 		fi
 	fi
+}
+
+function protect_upstream {
+	git remote set-url upstream you_really_shouldnt_push_to_upstream
 }
 
 # deletes remote branches
@@ -398,7 +424,7 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
     . ~/.config/exercism/exercism_completion.bash
 fi
 
-PATH=.:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin:/Users/$USERNAME/gocode/bin:$GOPATH/bin
+PATH=.:/usr/local/opt/coreutils/libexec/gnubin:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin:/Users/$USERNAME/gocode/bin:$GOPATH/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
