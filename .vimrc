@@ -137,6 +137,7 @@ au BufWinEnter ?* silent loadview
 " in the future.
 if has('gui_running')
 set encoding=utf8
+" POWERLINE FONTS FOUND HERE: https://github.com/powerline/fonts/tree/master/Inconsolata-g
 "set guifont=Menlo\ for\ Powerline:h22
 "set guifont=InputMono\ for\ Powerline:h22
 " uses the Menlo-Powerline.otf font
