@@ -39,8 +39,11 @@ function current_git_branch { #not used by anything, just useful
 #   http://pastie.org/325104
 # Sweeeeeeeet!
 
-export PS1='\[\033[01;32m\]\w $(git branch &>/dev/null; if [ $? -eq 0 ]; 
-then echo -e "\[\033[01;34m\]$(current_git_branch)"; fi) \D{%M} $(echo -e "\xE2\x9E\x9C") \[\033[00m\]'
+# export PS1='\[\033[01;32m\]\w $(git branch &>/dev/null; if [ $? -eq 0 ]; 
+# then echo -e "\[\033[01;34m\]$(current_git_branch)"; fi) \D{%M} $(echo -e "\xE2\x9E\x9C") \[\033[00m\]'
+
+export PS1="\[\033[01;32m\]\w  $(echo -e "\xE2\x9E\x9C")\[\033[00m\] "
+#export PS1="\[\033[01;32m\]\w →\[\033[00m\] "
 
 
 NORMAL=$(tput sgr0)
@@ -382,9 +385,6 @@ esac
 #if [ -f /etc/bash_completion ]; then
 #    . /etc/bash_completion
 #fi
-if [ -f ~/.bash_work ]; then
-    . ~/.bash_work
-fi
 
 shopt -s histappend
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
@@ -436,3 +436,11 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+if [ -f ~/.bash_work ]; then
+    . ~/.bash_work
+fi
+
+
+source ~/.oh-my-git/prompt.sh

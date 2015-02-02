@@ -80,6 +80,8 @@ ln -s ~/workspace/home_dir_ctonfigs/bin ~/bin
 
 cp -r ~/workspace/home_dir_configs/Library/Fonts/* ~/Library/Fonts/
 
+ln -s ~/workspace/home_dir_configs/.oh-my-git ~/.oh-my-git
+
 # setup CCL
 mkdir -p /usr/local/src
 ln -s /Applications/ccl/scripts/ccl ~/bin/ccl
