@@ -144,6 +144,52 @@ set encoding=utf8
 "set guifont=Inconsolata-dz\ for\ Powerline:h22
 set guifont=Inconsolata-g\ for\ Powerline:h22
 
+
+
+" lighten the background color slightly
+hi Normal guifg=White guibg=#303030
+" Change the gutter color in Syntastic
+hi SignColumn ctermbg=black guibg=#303030
+
+" Change the background on the popups
+:hi Pmenu ctermbg=darkgray "for vim
+:hi Pmenu guibg=darkgray gui=bold  "for gvim
+:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold 
+
+" VISUALIZE TABS AND TRAILING SPACES
+set list
+set lcs=tab:»_,trail:·
+highlight SpecialKey ctermfg=8 guifg=DimGrey
+" non-unicode version of the above
+" set lcs=tab:>-,trail:*
+
+" CROSSHAIRS
+
+" set line hilight color
+hi cursorline cterm=none ctermbg=black guibg=Gray14
+" set column hilight color 
+hi cursorcolumn cterm=none ctermbg=black guibg=Gray14
+" now actually turn it on
+set cursorcolumn
+set cursorline
+" END CROSSHAIRS
+
+" CREATE A VISUAL MARKER AT 80 COLUMNS
+" if version > 720 " this number doesn't work on all systems... is weird
+" honestly I don't know what version this 
+" came into play but dreamhost has v 7.2 
+" and it doesn't work on that. ;)
+set colorcolumn=80
+highlight colorcolumn guibg=Black
+" optionally ColorColumn
+" endif
+
+" DIFF HIGHLIGHTING
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+
+" MACVIM
 colorscheme anotherdark
 " In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
 " switch between them, like browser tabs. Ctrl-Shift-Tab goes the other way.
@@ -168,42 +214,8 @@ end
 
 
 
-" lighten the background color slightly
-hi Normal guifg=White guibg=#303030
-" Change the gutter color in Syntastic
-hi SignColumn ctermbg=black guibg=#303030
-
-" Change the background on the popups
-:hi Pmenu ctermbg=darkgray "for vim
-:hi Pmenu guibg=darkgray gui=bold  "for gvim
-:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold 
-
 
 " PLUGINS STUFF
-
-" set column hilight color 
-"hi CursorColumn cterm=none ctermbg=black guibg=black
-" set line hilight color
-"hi CursorLine cterm=none ctermbg=black guibg=#252525
-
-hi cursorline cterm=none ctermbg=black guibg=Gray14
-hi cursorcolumn cterm=none ctermbg=black guibg=Gray14
-set cursorcolumn
-set cursorline
-
-" create a visual marker at 80 columns
-" if version > 720 " this number doesn't work on all systems... is weird
-" honestly I don't know what version this 
-" came into play but dreamhost has v 7.2 
-" and it doesn't work on that. ;)
-set colorcolumn=80
-highlight colorcolumn guibg=Black
-" optionally ColorColumn
-" endif
-
-
-" Highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -223,11 +235,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 let g:is_chicken=1
 setl complete+=,k~/.vim/chicken_scheme_word_list
 
-set list
-set lcs=tab:»_,trail:·
-highlight SpecialKey ctermfg=8 guifg=DimGrey
-" non-unicode version of the above
-" set lcs=tab:>-,trail:*
 " store temp files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -310,6 +317,18 @@ endfunction
 " Text Expansions
 iab sterr $stderr.puts("XXX")<ESC>bi
 
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+
+autocmd FileType ruby,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileType ruby,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FileType ruby,python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd FileType ruby,python,java autocmd BufWritePre     * :call TrimWhiteSpace()
 
 " Cut/Copy/Paste {{{1
 
