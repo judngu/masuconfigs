@@ -16,6 +16,10 @@ Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'chrisbra/Colorizer'
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'
+Plugin 'Keithbsmiley/swift.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'skammer/vim-ruby-complexity'
+"Plugin 'malept/vim-flog'
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'tpope/vim-endwise'
 "Plugin 'airblade/vim-gitgutter'
@@ -49,6 +53,8 @@ endif
 filetype plugin indent on    " required
 let g:colorizer_auto_filetype='cdiff'
 
+" ruby complexity plugin
+"g:rubycomplexity_enable_at_startup
 
 "let $XIKI_DIR="~/workspace/reference/tools/xiki"
 "source $XIKI_DIR/etc/vim/xiki.vim
@@ -228,8 +234,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 "end thanks
 
-" ruby complexity plugin
-"g:rubycomplexity_enable_at_startup
 
 " If we're in a scheme file, it's gonna be Chicken Scheme
 let g:is_chicken=1
@@ -445,4 +449,3 @@ function! Cream_save()
 		confirm write
 	endif
 endfunction
-
