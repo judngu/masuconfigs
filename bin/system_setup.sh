@@ -81,6 +81,7 @@ ln -s ~/workspace/home_dir_ctonfigs/bin ~/bin
 cp -r ~/workspace/home_dir_configs/Library/Fonts/* ~/Library/Fonts/
 
 ln -s ~/workspace/home_dir_configs/.oh-my-git ~/.oh-my-git
+ln -s ~/workspace/home_dir_configs/.git-templates ~/.git-templates
 
 # setup CCL
 mkdir -p /usr/local/src
