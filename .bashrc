@@ -278,7 +278,7 @@ function gpup {
 }
 
 function protect_upstream {
-	git remote set-url upstream you_really_shouldnt_push_to_upstream
+	git remote set-url --push upstream you_really_shouldnt_push_to_upstream
 }
 
 # deletes remote branches
