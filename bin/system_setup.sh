@@ -50,6 +50,7 @@ brew install sshfs
 brew install tree
 brew install uudeview
 brew install xz
+brew install gpg
 
 
 mkdir ~/workspace
@@ -65,6 +66,7 @@ ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
 
 
 ln -s ~/workspace/home_dir_configs/.vimrc ~/.vimrc
+ln -s ~/workspace/home_dir_configs/.vim ~/.vim
 
 ln -s ~/workspace/home_dir_configs/.ackrc ~/.ackrc
 ln -s ~/workspace/home_dir_configs/.clisprc.lisp ~/.clisprc.lisp
