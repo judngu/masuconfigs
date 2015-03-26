@@ -18,7 +18,8 @@ Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'tpope/vim-fireplace'
-Plugin 'skammer/vim-ruby-complexity'
+"Plugin 'skammer/vim-ruby-complexity'
+Plugin 'fousa/vim-flog'
 "Plugin 'malept/vim-flog'
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'tpope/vim-endwise'
@@ -63,7 +64,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 runtime macros/matchit.vim
 runtime ftplugin/ruby/ruby-matchit.vim
 
-" Control P (fuzzy file find / open) 
+" Control P (fuzzy file find / open)
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
@@ -131,14 +132,14 @@ nmap <leader>fi :%! formd -i<CR>
 
 
 set foldmethod=syntax
-" whenever I use that without foldlevel 
+" whenever I use that without foldlevel
 " it auto-folds *everything* when I open a file
 set foldlevel=1
 " tell it to remember the fold levels you last had in each file
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
 
-" ok, this is silly, i admit, but it's 
+" ok, this is silly, i admit, but it's
 " more a placeholder so that I'll remember I can do this
 " in the future.
 if has('gui_running')
@@ -160,7 +161,7 @@ hi SignColumn ctermbg=black guibg=#303030
 " Change the background on the popups
 :hi Pmenu ctermbg=darkgray "for vim
 :hi Pmenu guibg=darkgray gui=bold  "for gvim
-:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold 
+:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold
 
 " VISUALIZE TABS AND TRAILING SPACES
 set list
@@ -173,7 +174,7 @@ highlight SpecialKey ctermfg=8 guifg=DimGrey
 
 " set line hilight color
 hi cursorline cterm=none ctermbg=black guibg=Gray14
-" set column hilight color 
+" set column hilight color
 hi cursorcolumn cterm=none ctermbg=black guibg=Gray14
 " now actually turn it on
 set cursorcolumn
@@ -182,8 +183,8 @@ set cursorline
 
 " CREATE A VISUAL MARKER AT 80 COLUMNS
 " if version > 720 " this number doesn't work on all systems... is weird
-" honestly I don't know what version this 
-" came into play but dreamhost has v 7.2 
+" honestly I don't know what version this
+" came into play but dreamhost has v 7.2
 " and it doesn't work on that. ;)
 set colorcolumn=80
 highlight colorcolumn guibg=Black
@@ -252,14 +253,14 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
 
-" uses the ftags file to let fuzzyfinder 
+" uses the ftags file to let fuzzyfinder
 " bring up filenames in subdirectories.
 " depends on having ~/bin/ftags.sh be run in advance.
 set tags+=ftags
 
 
-" AutoComplPop has a tendency to freeze 
-" when you type a . on some things with 
+" AutoComplPop has a tendency to freeze
+" when you type a . on some things with
 " bazillions of methods (like numbers)
 let g:acp_behaviorRubyOmniMethodLength = -1
 
@@ -323,16 +324,16 @@ iab sterr $stderr.puts("XXX")<ESC>bi
 
 
 " Removes trailing spaces
-function! TrimWhiteSpace()
-    %s/\s\+$//e
-endfunction
+" function! TrimWhiteSpace()
+"     %s/\s\+$//e
+" endfunction
+"
+" nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
-nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
-
-autocmd FileType ruby,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
-autocmd FileType ruby,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
-autocmd FileType ruby,python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
-autocmd FileType ruby,python,java autocmd BufWritePre     * :call TrimWhiteSpace()
+" autocmd FileType ruby,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
+" autocmd FileType ruby,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
+" autocmd FileType ruby,python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
+" autocmd FileType ruby,python,java autocmd BufWritePre     * :call TrimWhiteSpace()
 
 " Cut/Copy/Paste {{{1
 
@@ -365,7 +366,7 @@ vmap <silent> <C-y> :<C-u>call Cream_redo("v")<CR>
 imap <silent> <C-s> <C-o>:call Cream_update("i")<CR>
 vmap <silent> <C-s> :<C-u>call Cream_update("v")<CR>
 
-" Cream functions: 
+" Cream functions:
 
 function! Cream_cut(mode)
 " cut selection to universal clipboard ("+)
