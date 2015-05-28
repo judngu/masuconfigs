@@ -15,11 +15,16 @@ Plugin 'itspriddle/vim-marked'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'chrisbra/Colorizer'
 Plugin 'bling/vim-airline'
-Plugin 'fatih/vim-go'
-Plugin 'Keithbsmiley/swift.vim'
 Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-surround'
+
+" LANGUAGE PLUGINS
+Plugin 'fatih/vim-go'
+Plugin 'rust-lang/rust.vim'
+Plugin 'Keithbsmiley/swift.vim'
+" LANGUAGE ENHANCING PLUGINS
+"Plugin 'fousa/vim-flog'
 "Plugin 'skammer/vim-ruby-complexity'
-Plugin 'fousa/vim-flog'
 "Plugin 'malept/vim-flog'
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'tpope/vim-endwise'
@@ -57,8 +62,9 @@ let g:colorizer_auto_filetype='cdiff'
 " ruby complexity plugin
 "g:rubycomplexity_enable_at_startup
 
-"let $XIKI_DIR="~/workspace/reference/tools/xiki"
-"source $XIKI_DIR/etc/vim/xiki.vim
+"let $XIKI_DIR="~/xiki-master"
+"let $XIKI_DIR="~/workspace/xiki"
+"source $XIKI_DIR/misc/vim/xiki.vim
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 runtime macros/matchit.vim
