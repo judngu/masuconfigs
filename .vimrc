@@ -17,6 +17,9 @@ Plugin 'chrisbra/Colorizer'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-expand-region'
+
+Plugin 'mileszs/ack.vim'
 
 " LANGUAGE PLUGINS
 Plugin 'fatih/vim-go'
@@ -28,8 +31,8 @@ Plugin 'Keithbsmiley/swift.vim'
 "Plugin 'fousa/vim-flog'
 Plugin 'malept/vim-flog'
 "Plugin 'skammer/vim-ruby-complexity'
-"Plugin 'tpope/vim-endwise'
-"Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-endwise'
+Plugin 'airblade/vim-gitgutter'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'masukomi/vim-slime'
@@ -60,6 +63,10 @@ endif
 
 filetype plugin indent on    " required
 let g:colorizer_auto_filetype='cdiff'
+
+" builds on Plugin 'terryma/vim-expand-region'
+ vmap v <Plug>(expand_region_expand)
+ vmap <S-v> <Plug>(expand_region_shrink)
 
 " ruby complexity plugin
 "g:rubycomplexity_enable_at_startup
@@ -346,6 +353,22 @@ iab sterr $stderr.puts("XXX")<ESC>bi
 " autocmd FileType ruby,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
 " autocmd FileType ruby,python,java autocmd FilterWritePre  * :call TrimWhiteSpace()
 " autocmd FileType ruby,python,java autocmd BufWritePre     * :call TrimWhiteSpace()
+
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
+
+"------------------------------------
+" standard keycombos from Cream
+
 
 " Cut/Copy/Paste {{{1
 
