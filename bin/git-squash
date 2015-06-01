@@ -2,7 +2,8 @@
 # found here: http://stackoverflow.com/a/24018435/13973
 
 #get number of commits to squash
-squashCount=$1
+#squashCount=$1
+squashCount=$(($1 - 1))
 
 #get the commit message
 shift
@@ -12,8 +13,22 @@ commitMsg=$@
 regex='^[0-9]+$'
 
 echo "---------------------------------"
-echo "Will squash $squashCount commits"
+echo "Will squash these $squashCount commits into one:"
+git log --no-merges --oneline -$squashCount
+echo " "
+echo "---------------------------------"
 echo "Commit message will be '$commitMsg'"
+echo "---------------------------------"
+
+while true; do
+    read -p "You OK with that? " yn
+    case $yn in
+        [Yy]* ) echo "here goes..."; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer y or n.";;
+    esac
+done
+
 
 echo "...validating input"
 if ! [[ $squashCount =~ $regex ]]

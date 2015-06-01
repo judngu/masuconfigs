@@ -441,6 +441,13 @@ export PATH="/usr/local/heroku/bin:$PATH"
 if [ -f ~/.bash_work ]; then
     . ~/.bash_work
 fi
+if [ -f ~/workspace/useful_scripts/bash/.bashrc ]; then
+    . ~/workspace/useful_scripts/bash/.bashrc
+fi
 
 
 source ~/.oh-my-git/prompt.sh
+
+
+#source ~/.xsh
+

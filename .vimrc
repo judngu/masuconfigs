@@ -22,24 +22,26 @@ Plugin 'tpope/vim-surround'
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'Keithbsmiley/swift.vim'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'wlangstroth/vim-racket'
 " LANGUAGE ENHANCING PLUGINS
 "Plugin 'fousa/vim-flog'
+Plugin 'malept/vim-flog'
 "Plugin 'skammer/vim-ruby-complexity'
-"Plugin 'malept/vim-flog'
-"Plugin 'kchmck/vim-coffee-script'
 "Plugin 'tpope/vim-endwise'
 "Plugin 'airblade/vim-gitgutter'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'kien/ctrlp.vim'
 "Plugin 'masukomi/vim-slime'
 "Plugin 'Floobits/vim-plugin'
-"Plugin 'itspriddle/vim-marked'
 "Plugin 'oplatek/Conque-Shell'
-"Plugin 'nelstrom/vim-markdown-folding'
-"Plugin 'goldfeld/criticmarkup-vim'
 "Plugin 'sjl/AnsiEsc.vim'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Plugin 'wlangstroth/vim-racket'
+
+" Markdown
+"Plugin 'itspriddle/vim-marked'
+"Plugin 'nelstrom/vim-markdown-folding'
+"Plugin 'goldfeld/criticmarkup-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -98,7 +100,7 @@ set textwidth=80
 " set selection=exclusive
 
 " Disable "EX Mode"
-map Q <Nop>
+"map Q <Nop>
 
 " Allow saving of files as sudo when you forget to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -324,6 +326,10 @@ function GoFull()
 	set fuoptions=maxvert fu
 endfunction
 :cabbr gof :call GoFull()
+
+function! TakeBoth()
+	normal /<<<dd/===dd/>>>dd
+endfunction
 
 " Text Expansions
 iab sterr $stderr.puts("XXX")<ESC>bi
