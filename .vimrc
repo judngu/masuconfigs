@@ -413,6 +413,18 @@ highlight ColorColumn guibg=Black
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "------
 
+
+"------
+" Explore mode
+let g:netrw_liststyle=3
+" For those of you using the built in Explore mode 
+" (:E or :Explore) instead of NerdTree
+" puts netrw into a tree style listing
+" see help netrw_liststyle for the other 3 options
+"------
+
+
+
 "------
 " MacVim / GVim
 if has('gui_running')
