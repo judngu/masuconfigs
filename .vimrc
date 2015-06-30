@@ -458,6 +458,14 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " temp files
 
 
+set shellcmdflag=-ic
+set shell=/bin/bash\ -i
+" when you run shell commands within vim
+" you'll expect them to have the same functions and 
+" configuration as when you run them on the terminal
+" if you use zsh you'll have to figure out the 
+" equivalent command ;) 
+" more details here: http://stackoverflow.com/a/9014154/13973
 
 "------------------------------------------------
 " INTEGRATIONS WITH EXTERNAL APPS
