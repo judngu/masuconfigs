@@ -6,20 +6,59 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
+" NOTE All the plugin names here are actually 
+" github repos.
+" For example 'gmarik/Vundle.vim'
+" is really https://github.com/gmarik/Vundle.vim
+" so if you want more info on any of them
+" that's how to find it.
+
 Plugin 'gmarik/Vundle.vim'
+" The plugin manager that's managing all these Plugin lines
 Plugin 'tpope/vim-fugitive'
+" Spectacular git integration. If nothing else, check out the GBlame command
 Plugin 'godlygeek/tabular'
+" Allows you to align items across multiple lines
+" see screencast here: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plugin 'tomtom/tcomment_vim'
+" allows you to easily toggle lines as commentns or not
+"   Visual mode + g + c
 Plugin 'masukomi/rainbow_parentheses.vim'
+" ^^ colorizes matching pairs of {}, [], () so you can see what matches what
 Plugin 'itspriddle/vim-marked'
+" OS X Only - Open the current Markdown buffer in Marked. Supports Marked 1 and 2.
+" Marked: http://marked2app.com/
 Plugin 'nelstrom/vim-markdown-folding'
+" Allows folding of markdown texts based on headings
 Plugin 'chrisbra/Colorizer'
+" A plugin to color colornames and codes
+" check out the screenshot: https://github.com/chrisbra/Colorizer#readme
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fireplace'
+" That pretty piece of awesome at the bottom of every cool vim screen
+" the faster successor to Powerline
+" https://github.com/bling/vim-airline#readme
 Plugin 'tpope/vim-surround'
+" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
+" tags, and more. The plugin provides mappings to easily delete, change and add
+" such surroundings in pairs.
 Plugin 'terryma/vim-expand-region'
+" is a Vim plugin that allows you to visually select increasingly larger
+" regions of text using the same key combination. It is similar to features from
+Plugin 'kien/ctrlp.vim'
+" a nice way to open files with a fuzzy name / path matching
 
 Plugin 'mileszs/ack.vim'
+" useful if you have Ack installed
+" Run your favorite search tool from Vim, with an enhanced results list.
+" This plugin was designed as a Vim frontend for the Perl module App::Ack. Ack
+" can be used as a replacement for 99% of the uses of grep. The plugin allows you
+" to run ack from Vim, and shows the results in a split window.
+
+Plugin 'craigemery/vim-autotag'
+" Automatically discover and "properly" update ctags files on save
+" you are using excuberant ctags right? RIGHT?!?!
+" http://benoithamelin.tumblr.com/post/15101202004/using-vim-exuberant-ctags-easy-source-navigation
+" SEE THE ctags / omnicomplete section below
 
 " LANGUAGE PLUGINS
 Plugin 'fatih/vim-go'
@@ -34,12 +73,17 @@ Plugin 'malept/vim-flog'
 Plugin 'tpope/vim-endwise'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'scrooloose/syntastic'
-"Plugin 'kien/ctrlp.vim'
+" Syntastic is a syntax checking plugin for Vim that runs files through
+" external syntax checkers and displays any resulting errors to the user.
 "Plugin 'masukomi/vim-slime'
 "Plugin 'Floobits/vim-plugin'
 "Plugin 'oplatek/Conque-Shell'
 "Plugin 'sjl/AnsiEsc.vim'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tpope/vim-fireplace'
+" There's a REPL in fireplace, but you probably wouldn't have noticed 
+" if I hadn't told you. Such is the way with fireplace.vim. By the way, 
+" this plugin is for Clojure.
 
 " Markdown
 "Plugin 'itspriddle/vim-marked'
@@ -49,75 +93,58 @@ Plugin 'airblade/vim-gitgutter'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
+
+"------------------------------------------------
+" PLUGIN SPECIFIC CONFIGURATIONS
+" builds on Plugin 'terryma/vim-expand-region'
+" for expanding visual selections
+ vmap v <Plug>(expand_region_expand)
+ vmap <S-v> <Plug>(expand_region_shrink)
+" maps v and Shift+v in visual mode to run the appropriate
+" methods in the plugin
+
+"------
+" Control P (fuzzy file find / open)
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+"------
+
+"------
+" VIM-AIRLINE CONFIGURATIONS
 " configurations for vim-airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 " end vim-airline stuff
 "let g:Powerline_symbols = 'fancy'
-
-
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
 "let g:airline_symbols.space = "\ua0"
+"------
 
-filetype plugin indent on    " required
-let g:colorizer_auto_filetype='cdiff'
-
-" builds on Plugin 'terryma/vim-expand-region'
- vmap v <Plug>(expand_region_expand)
- vmap <S-v> <Plug>(expand_region_shrink)
-
-" ruby complexity plugin
-"g:rubycomplexity_enable_at_startup
-
-"let $XIKI_DIR="~/xiki-master"
-"let $XIKI_DIR="~/workspace/xiki"
-"source $XIKI_DIR/misc/vim/xiki.vim
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-runtime macros/matchit.vim
-runtime ftplugin/ruby/ruby-matchit.vim
-
-" Control P (fuzzy file find / open)
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-set ww+=<,>
-" making arrow keys wrap across line breaks in normal mode
-imap <Left> <C-O><Left>
-imap <Right> <C-O><Right>
+"------
+" load up RainbowParentheses
+augroup RainbowParentheses
+	au!
+	au VimEnter * RainbowParenthesesToggle
+	au Syntax * RainbowParenthesesLoadRound
+	au Syntax * RainbowParenthesesLoadSquare
+	au Syntax * RainbowParenthesesLoadBraces
+augroup END
+"------
 
 
-set noexpandtab
-set copyindent
-set preserveindent
-set softtabstop=0
-set tabstop=4
-set shiftwidth=4
-" shorter version of the above is :set noet ci pi sts=0 sw=4 ts=4
-" syntax highlighting
-syn on
-set number
-set autoindent "
-set textwidth=80
+"------
+" Change the gutter color in Syntastic
+" Plugin 'scrooloose/syntastic'
+" hi SignColumn ctermbg=black guibg=#303030
+"------
 
-" Make the selection not include the character under the cursor
-" so that you it doesn't keep selecting the newline at the end
-" set selection=exclusive
+"------------------------------------------------
 
-" Disable "EX Mode"
-"map Q <Nop>
 
-" Allow saving of files as sudo when you forget to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-
-" thanks to http://items.sjbach.com/319/configuring-vim-right
-set hidden
-"have % match on if/elsif/else/end/opening and closing XML tags and more
-runtime macro/matchit.vim
-"set wildmenu=list:longest
-
+"------------------------------------------------
+" SEARCH MODIFICATIONS
 " semakes /~style searches case sensitive only if there is a capital letter in
 " the search expression. *~style searches will continue to be consistently
 " case-sensitive
@@ -128,192 +155,118 @@ set scrolloff=3
 " highlight search terms...
 set hlsearch
 set incsearch " ... dynamically as they are typed
+"------------------------------------------------
 
-" automatically copy visual selections to the clipboard
+"------------------------------------------------
+" NAVIGATION MODIFICATIONS
+" There are several commands which move the cursor within the line. 
+" When you get to the start/end of a line then these commands will 
+" fail as you cannot go on. However, many users expect the cursor to 
+" be moved onto the previous/next line. Vim allows you to chose which 
+" commands will "wrap" the cursor around the line borders. Here I allow 
+" the cursor left/right keys as well as the 'h' and 'l' command to do that.
+set ww+=<,>,h,l
+" making arrow keys wrap across line breaks in normal mode
+
+imap <Left> <C-O><Left>
+imap <Right> <C-O><Right>
+"------------------------------------------------
+
+"------------------------------------------------
+" TYPING / FORMATTING CONFIGURATION
+"
+" NOTE: at the bottom of this file you'll see a bunch
+" of functions that will enable ctrl+c, ctrl+v, ctrl+x, etc
+" so that you can cut, copy, paste, save, undo, redo, with the 
+" same key combos you use in all your other apps.
+
+set noexpandtab
+" gives you tab if you type a tab rather than converting it 
+" to something else.
+" I use this in conjunction with the TabToggle function 
+" (see below). That will let you swap between tab creating tabs
+" and spaces so that you can easily conform to the conventions
+" of the language you're working in.
+
+set copyindent
+" Copy the structure of the existing lines indent when autoindenting a new line.
+set preserveindent
+" When changing the indent of the current line, preserve as much of the
+" indent structure as possible.
+set softtabstop=0
+" fuck softtabs 
+set tabstop=4
+" tabs display as four spaces
+set shiftwidth=4
+" shorter version of the above is :set noet ci pi sts=0 sw=4 ts=4
+syn on
+" syntax highlighting
+set number
+" show line numbers
+set autoindent
+" Copy indent from current line when starting a new line
+set textwidth=80
+" text should start to wrap at 80 chars
+
+"set wildmenu=list:longest
+"have % match on if/elsif/else/end/opening and closing XML tags and more
+
+" set selection=exclusive
+" Make the selection not include the character under the cursor
+" so that you it doesn't keep selecting the newline at the end
+
 "set go+=a
+" automatically copy visual selections to the clipboard
 
-augroup RainbowParentheses
-    au!
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-augroup END
-
-" formd Markdown shortcuts
-" see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
-nmap <leader>fr :%! formd -r<CR>
-nmap <leader>fi :%! formd -i<CR>
+set hidden
+" I don't remember what this does and the docs are... crap but
+" thanks to http://items.sjbach.com/319/configuring-vim-right
+" I have it set. 
 
 
-set foldmethod=syntax
-" whenever I use that without foldlevel
-" it auto-folds *everything* when I open a file
-set foldlevel=1
-" tell it to remember the fold levels you last had in each file
-au BufWinLeave ?* mkview
-au BufWinEnter ?* silent loadview
-
-" ok, this is silly, i admit, but it's
-" more a placeholder so that I'll remember I can do this
-" in the future.
-if has('gui_running')
-set encoding=utf8
-" POWERLINE FONTS FOUND HERE: https://github.com/powerline/fonts/tree/master/Inconsolata-g
-"set guifont=Menlo\ for\ Powerline:h22
-"set guifont=InputMono\ for\ Powerline:h22
-" uses the Menlo-Powerline.otf font
-"set guifont=Inconsolata-dz\ for\ Powerline:h22
-set guifont=Inconsolata-g\ for\ Powerline:h22
-
-
-
-" lighten the background color slightly
-hi Normal guifg=White guibg=#303030
-" Change the gutter color in Syntastic
-hi SignColumn ctermbg=black guibg=#303030
-
-" Change the background on the popups
-:hi Pmenu ctermbg=darkgray "for vim
-:hi Pmenu guibg=darkgray gui=bold  "for gvim
-:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold
-
-" VISUALIZE TABS AND TRAILING SPACES
-set list
-set lcs=tab:»_,trail:·
-highlight SpecialKey ctermfg=8 guifg=DimGrey
-" non-unicode version of the above
-" set lcs=tab:>-,trail:*
-
-" CROSSHAIRS
-
-" set line hilight color
-hi cursorline cterm=none ctermbg=black guibg=Gray14
-" set column hilight color
-hi cursorcolumn cterm=none ctermbg=black guibg=Gray14
-" now actually turn it on
-set cursorcolumn
-set cursorline
-" END CROSSHAIRS
-
-" CREATE A VISUAL MARKER AT 80 COLUMNS
-" if version > 720 " this number doesn't work on all systems... is weird
-" honestly I don't know what version this
-" came into play but dreamhost has v 7.2
-" and it doesn't work on that. ;)
-set colorcolumn=80
-highlight colorcolumn guibg=Black
-" optionally ColorColumn
-" endif
-
-" DIFF HIGHLIGHTING
-" Highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-
-" MACVIM
-colorscheme anotherdark
-" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
-" switch between them, like browser tabs. Ctrl-Shift-Tab goes the other way.
-noremap <C-Tab> :tabnext<CR>
-noremap <C-S-Tab> :tabprev<CR>
-
-" Switch to specific tab numbers with Command-number
-noremap <D-1> :tabn 1<CR>
-noremap <D-2> :tabn 2<CR>
-noremap <D-3> :tabn 3<CR>
-noremap <D-4> :tabn 4<CR>
-noremap <D-5> :tabn 5<CR>
-noremap <D-6> :tabn 6<CR>
-noremap <D-7> :tabn 7<CR>
-noremap <D-8> :tabn 8<CR>
-noremap <D-9> :tabn 9<CR>
-" Command-0 goes to the last tab
-noremap <D-0> :tablast<CR>
-else
-colorscheme anotherdark
-end
-
-
-
-
-" PLUGINS STUFF
-
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-
-"end thanks
-
-
-" If we're in a scheme file, it's gonna be Chicken Scheme
-let g:is_chicken=1
-setl complete+=,k~/.vim/chicken_scheme_word_list
-
-" store temp files in a central spot
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-
-
-" current directory is always matching the
-" content of the active window
-"set autochdir
-" remember some stuff after quiting vim:
-" marks, registers, searches, buffer list
-set viminfo='20,<50,s10,h,%
-
-" uses the ftags file to let fuzzyfinder
-" bring up filenames in subdirectories.
-" depends on having ~/bin/ftags.sh be run in advance.
-set tags+=ftags
-
-
-" AutoComplPop has a tendency to freeze
-" when you type a . on some things with
-" bazillions of methods (like numbers)
-let g:acp_behaviorRubyOmniMethodLength = -1
-
-
-" lets you keep indenting or outdenting without reselecting
+" the following lets you keep indenting or outdenting without reselecting
 vnoremap < <gv
 vnoremap > >gv
+" Just select something in visual mode type > to indent, then keep whacking
+" it to keep indenting. Same for < and outdenting.
 
 
+set viminfo='20,<50,s10,h,%
+" remember some stuff after quiting vim:
+" marks, registers, searches, buffer list
 
-" use Ctrl+L to toggle the line number counting method
-function! g:ToggleNuMode()
-	if(&rnu == 1)
-		set nornu
-		set nu
-	else
-		set rnu
-	endif
-endfunc
-nnoremap <C-L> :call g:ToggleNuMode()<cr>
 
-" Toggle the Ctags list on the left pannel with F4
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_WinWidth = 50
-map <F4> :TlistToggle<cr>
-map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
+"------
+"set autochdir
+" current directory is always matching the
+" content of the active window. I don't recommend this.
+" better to just cd to the root of your project and 
+" open the first file from there. Then everything's relative
+" to the root of the project.
+"------
 
+"------
+remove trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+"
+" Uncomment this to AUTOMATICALLY remove trailing whitespace
+" nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+"------
+
+
+"------
 function! UseTabs(...)
 	set noet ci pi sts=0 sw=4 ts=4
+	"noet = noexpandtabs = When inserting text do not expand TABs to spaces. 
 endfunction
 :cabbr ut :call UseTabs()
-
-function Border()
-	set colorcolumn=80
-	highlight colorcolumn guibg=Black
-endfunction
-:cabbr border :call Border()
-
+"------
+"------
+" Does hitting the tab key result in
+" tab charaters or space characters being 
+" inserted into your file. This function will toggle it.
 function TabToggle()
 	if &expandtab
 		set shiftwidth=4
@@ -328,12 +281,255 @@ function TabToggle()
 	endif
 endfunction
 :cabbr tt :call TabToggle()
+"------
 
+"------
+function Border()
+	set colorcolumn=80
+	highlight colorcolumn guibg=Black
+endfunction
+:cabbr border :call Border()
+" every now and then it goes away and i need to reload it.
+"------
+
+"------
+" FOLDING
+" see http://vimcasts.org/episodes/how-to-fold/
+" for info on how to use folding
+set foldmethod=syntax
+" whenever I use that without foldlevel
+" it auto-folds *everything* when I open a file
+set foldlevel=1
+" tell it to remember the fold levels you last had in each file
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
+"------
+
+
+"------------------------------------------------
+" USER INTERFACE TWEAKS
+
+
+"------
+" CHOOSING A THEME / COLOR SCHEME
+" first find one, 
+"    go here https://code.google.com/p/vimcolorschemetest/
+"    choose a language. loads slowly but great real world example
+" then download the one you want and put it in ~/.vim/colors/my_color_scheme.vim
+" in the file ( or the instructions for it ) you should see a line like
+" let g:colors_name="anotherdark" That name is the one you want to put 
+" on the next line
+colorscheme anotherdark
+" anotherdark can be found here: 
+"    http://vimcolorschemetest.googlecode.com/svn/colors/anotherdark.vim
+
+
+"------
+" SETTING FONTS
+" POWERLINE / Airline FONTS FOUND HERE: 
+"    https://github.com/powerline/fonts/tree/master/Inconsolata-g
+"set guifont=Menlo\ for\ Powerline:h22
+"set guifont=InputMono\ for\ Powerline:h22
+" uses the Menlo-Powerline.otf font
+"set guifont=Inconsolata-dz\ for\ Powerline:h22
+set guifont=Inconsolata-g\ for\ Powerline:h22
+"------
+"------
+" CROSSHAIRS
+" set line hilight color
+hi cursorline cterm=none ctermbg=black guibg=Gray14
+" set column hilight color
+hi cursorcolumn cterm=none ctermbg=black guibg=Gray14
+" now actually turn it on
+set cursorcolumn
+set cursorline
+" Please see the Border function below.
+" The above configures it but every now and then it's missing 
+" on some files and I need to reload it. 
+
+"------
+"------
+" lighten the background color slightly
+hi Normal guifg=White guibg=#303030
+
+" Change the background on the popups ( see omnicompletion )
+" popups from typeahead integration 
+" typicall via exuberant ctags and some language specific plugin
+:hi Pmenu ctermbg=darkgray "for vim
+:hi Pmenu guibg=darkgray gui=bold  "for gvim
+:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold
+"------
+
+"------
+" use Ctrl+L to toggle the line number counting method
+" either normal, or relative to the current line
+" that way you can easily see the number to type after y or d
+" without having to actually count
+function! g:ToggleNuMode()
+	if(&rnu == 1)
+		set nornu
+		set nu
+	else
+		set rnu
+	endif
+endfunc
+nnoremap <C-L> :call g:ToggleNuMode()<cr>
+"------
+
+"------
+" VISUALIZE TABS AND TRAILING SPACES
+" this will 
+" * hide space characters at the start of lines (if there are characters after them)
+" * display space characters at the end of lines
+" * display ALL tab characters (regardless of location).
+set list
+set lcs=tab:»_,trail:·
+highlight SpecialKey ctermfg=8 guifg=DimGrey
+" non-unicode version of the above
+" set lcs=tab:>-,trail:*
+"------
+
+"------
+" CREATE A VISUAL MARKER AT 80 COLUMNS
+" Useful as a guide to prevent you from making crazy-long lines of code
+
+" if version > 720 " this number doesn't work on all systems... is weird
+" honestly I don't know what version this
+" came into play but dreamhost has v 7.2
+" and it doesn't work on that. ;)
+set colorcolumn=80
+highlight colorcolumn guibg=Black
+highlight ColorColumn guibg=Black
+" ^^^ sets the color of the colorcolumn in GUI versions (MacVim / GVim)
+" ctermbg is probably what you'd use for non GUI versions 
+" sometimes this needs to be colorcolumn sometimes ColorColumn
+" not sure what differentiates which version / system needs which.
+" for a list of available colors run :help gui-colors
+" endif
+"------
+
+" DIFF HIGHLIGHTING
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+"------
+
+"------
+" MacVim / GVim
+if has('gui_running')
+	set encoding=utf8
+
+	" MACVIM
+	" In MacVim, you can have multiple tabs open. This mapping makes Ctrl-Tab
+	" switch between them, like browser tabs. Ctrl-Shift-Tab goes the other way.
+	noremap <C-Tab> :tabnext<CR>
+	noremap <C-S-Tab> :tabprev<CR>
+
+	" Switch to specific tab numbers with Command-number
+	noremap <D-1> :tabn 1<CR>
+	noremap <D-2> :tabn 2<CR>
+	noremap <D-3> :tabn 3<CR>
+	noremap <D-4> :tabn 4<CR>
+	noremap <D-5> :tabn 5<CR>
+	noremap <D-6> :tabn 6<CR>
+	noremap <D-7> :tabn 7<CR>
+	noremap <D-8> :tabn 8<CR>
+	noremap <D-9> :tabn 9<CR>
+	" Command-0 goes to the last tab
+	noremap <D-0> :tablast<CR>
+
+" FULL SCREEN BABY!
 function GoFull()
 	set fuoptions=maxvert fu
 endfunction
 :cabbr gof :call GoFull()
 
+
+end
+"------
+"------------------------------------------------
+
+"------------------------------------------------
+" BASIC VIM CONFIGURATION
+" store temp files in a central spot
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" it'll use the first one it finds
+" instead of polluting your working directory with 
+" temp files
+
+
+
+"------------------------------------------------
+" INTEGRATIONS WITH EXTERNAL APPS
+" formd Markdown shortcuts
+" see http://www.drbunsen.org/formd-a-markdown-formatting-tool.html
+nmap <leader>fr :%! formd -r<CR>
+nmap <leader>fi :%! formd -i<CR>
+filetype plugin indent on    " required
+let g:colorizer_auto_filetype='cdiff'
+"------------------------------------------------
+
+
+"------------------------------------------------
+" LANGUAGE SPECIFIC HACKS
+"------
+" SCHEME
+" If we're in a scheme file, it's gonna be Chicken Scheme
+let g:is_chicken=1
+setl complete+=,k~/.vim/chicken_scheme_word_list
+"------
+" RUBY
+" ruby complexity plugin
+"g:rubycomplexity_enable_at_startup
+" Disable "EX Mode"
+"map Q <Nop>
+
+" Allow saving of files as sudo when you forget to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+" PLUGINS STUFF
+
+
+" CTAGS / OMNICOMPLETION 
+" Toggle the Ctags list on the left pannel with F4
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_WinWidth = 50
+map <F4> :TlistToggle<cr>
+map <F5> :!/usr/local/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync .<CR>
+" reload the ctags with f5
+
+" set up omnicompletion
+" filetype plugin on    " required but set above 
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+" AutoComplPop has a tendency to freeze
+" when you type a . on some things with
+" bazillions of methods (like numbers)
+let g:acp_behaviorRubyOmniMethodLength = -1
+
+
+"------------------------------------------------
+
+
+"------------------------------------------------
+" RANDOM FUNCTIONALITY
+
+" uses the ftags file to let fuzzyfinder
+" bring up filenames in subdirectories.
+" depends on having ~/bin/ftags.sh be run in advance.
+"set tags+=ftags
+
+
+" When you're dealing with a merge conflict
+" and you want BOTH sides of it
+" run this to take both
+" :call TakeBoth()
 function! TakeBoth()
 	normal /<<<dd/===dd/>>>dd
 endfunction
@@ -341,13 +537,6 @@ endfunction
 " Text Expansions
 iab sterr $stderr.puts("XXX")<ESC>bi
 
-
-" Removes trailing spaces
-" function! TrimWhiteSpace()
-"     %s/\s\+$//e
-" endfunction
-"
-" nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
 " autocmd FileType ruby,python,java autocmd FileWritePre    * :call TrimWhiteSpace()
 " autocmd FileType ruby,python,java autocmd FileAppendPre   * :call TrimWhiteSpace()
@@ -367,6 +556,8 @@ else
 endif
 
 "------------------------------------
+" CUT / COPY / PASTE / UNDO / REDO / etc.
+" Copied from Cream http://cream.sourceforge.net/
 " standard keycombos from Cream
 
 
