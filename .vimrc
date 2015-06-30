@@ -246,7 +246,7 @@ set viminfo='20,<50,s10,h,%
 "------
 
 "------
-remove trailing spaces
+" remove trailing spaces
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
