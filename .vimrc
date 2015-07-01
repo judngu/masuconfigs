@@ -91,6 +91,13 @@ Plugin 'tpope/vim-fireplace'
 "Plugin 'goldfeld/criticmarkup-vim'
 
 " All of your Plugins must be added before the following line
+"
+"
+" COLOR SCHEMES / THEMES
+"Plugin 'duythinht/inori'
+" Plugin 'kreeger/benlight'
+
+
 call vundle#end()            " required
 
 
@@ -313,15 +320,22 @@ au BufWinEnter ?* silent loadview
 "------
 " CHOOSING A THEME / COLOR SCHEME
 " first find one, 
-"    go here https://code.google.com/p/vimcolorschemetest/
-"    choose a language. loads slowly but great real world example
-" then download the one you want and put it in ~/.vim/colors/my_color_scheme.vim
-" in the file ( or the instructions for it ) you should see a line like
+"    go here http://vimcolors.com/
+"    or      https://code.google.com/p/vimcolorschemetest/
+"            
+" Many can be installed with Vundle in which case 
+" you would just use a Plugin line in the section above
+" and then enable it below
+"
+" If you CAN'T load it as a Plugin like that you can 
+" find the actual color scheme file, put it in 
+" ~/.vim/colors/
+" In the file ( or the instructions for it ) you should see a line like
 " let g:colors_name="anotherdark" That name is the one you want to put 
 " on the next line
-colorscheme anotherdark
-" anotherdark can be found here: 
-"    http://vimcolorschemetest.googlecode.com/svn/colors/anotherdark.vim
+" colorscheme anotherdark
+syntax enable
+silent! colorscheme inori_m
 
 
 "------
@@ -337,9 +351,11 @@ set guifont=Inconsolata-g\ for\ Powerline:h22
 "------
 " CROSSHAIRS
 " set line hilight color
-hi cursorline cterm=none ctermbg=black guibg=Gray14
+"hi cursorline cterm=none ctermbg=black guibg=Gray14
+hi cursorline cterm=none ctermbg=black guibg=#303030
 " set column hilight color
-hi cursorcolumn cterm=none ctermbg=black guibg=Gray14
+" hi cursorcolumn cterm=none ctermbg=black guibg=Gray14
+hi cursorcolumn cterm=none ctermbg=black guibg=#303030
 " now actually turn it on
 set cursorcolumn
 set cursorline
@@ -347,17 +363,6 @@ set cursorline
 " The above configures it but every now and then it's missing 
 " on some files and I need to reload it. 
 
-"------
-"------
-" lighten the background color slightly
-hi Normal guifg=White guibg=#303030
-
-" Change the background on the popups ( see omnicompletion )
-" popups from typeahead integration 
-" typicall via exuberant ctags and some language specific plugin
-:hi Pmenu ctermbg=darkgray "for vim
-:hi Pmenu guibg=darkgray gui=bold  "for gvim
-:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold
 "------
 
 "------
