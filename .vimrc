@@ -23,6 +23,8 @@ Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'Keithbsmiley/swift.vim'
 " LANGUAGE ENHANCING PLUGINS
+Plugin 'rcyrus/snipmate-snippets-rubymotion'
+Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'fousa/vim-flog'
 "Plugin 'skammer/vim-ruby-complexity'
 "Plugin 'malept/vim-flog'
@@ -49,7 +51,6 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 " end vim-airline stuff
 "let g:Powerline_symbols = 'fancy'
-
 
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
@@ -233,6 +234,7 @@ end
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript call JavaScriptFold()
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
@@ -456,3 +458,5 @@ function! Cream_save()
 		confirm write
 	endif
 endfunction
+
+
