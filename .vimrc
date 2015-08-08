@@ -67,7 +67,7 @@ Plugin 'Keithbsmiley/swift.vim'
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'wlangstroth/vim-racket'
 " LANGUAGE ENHANCING PLUGINS
-Plugin 'rcyrus/snipmate-snippets-rubymotion'
+" Plugin 'rcyrus/snipmate-snippets-rubymotion'
 Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'fousa/vim-flog'
 Plugin 'malept/vim-flog'
@@ -126,7 +126,7 @@ let g:airline_powerline_fonts = 1
 " end vim-airline stuff
 "let g:Powerline_symbols = 'fancy'
 if !exists('g:airline_symbols')
-let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 "let g:airline_symbols.space = "\ua0"
 "------
@@ -481,6 +481,7 @@ if has('gui_running')
 	noremap <D-9> :tabn 9<CR>
 	" Command-0 goes to the last tab
 	noremap <D-0> :tablast<CR>
+endif
 
 " FULL SCREEN BABY!
 function GoFull()
@@ -737,5 +738,4 @@ function! Cream_save()
 		confirm write
 	endif
 endfunction
-
 
