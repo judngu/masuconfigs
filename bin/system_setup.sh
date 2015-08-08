@@ -51,6 +51,8 @@ brew install tree
 brew install uudeview
 brew install xz
 brew install gpg
+brew install tig
+brew install pgcli
 
 
 mkdir ~/workspace
