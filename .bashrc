@@ -7,6 +7,8 @@ export ARCHFLAGS="-arch x86_64"
 export EDITOR='vim'
 export VISUAL='vim'
 export GOPATH=/Users/$USERNAME/workspace/gocode
+export CHICKEN_BUILD=/Users/$USERNAME/workspace/reference/scheme/chicken-4.10.0
+
 
 bind '"\e[A": history-search-backward' #up-arrow through history
 bind '"\e[B": history-search-forward' #down-arrow through history
