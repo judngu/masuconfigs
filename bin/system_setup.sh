@@ -7,6 +7,7 @@
 brew install ack
 brew install autoconf
 brew install automake
+brew install chicken
 brew install clisp
 brew install cloc
 brew install cscope
@@ -100,3 +101,14 @@ ln -s ~/workspace/home_dir_configs/.ccl-init.lisp ~/.ccl-init.lisp
 
 # disable the @#$%@#$ back and forth swipe in chrome
 defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool FALSE
+
+
+# install chicken scheme stuff
+chicken-install chicken-doc
+chicken-install linenoise
+chicken-install loops
+chicken-install directory-utils
+chicken-install regex
+cd `csi -p '(chicken-home)'`
+curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
+
