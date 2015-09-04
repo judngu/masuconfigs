@@ -10,7 +10,7 @@ au! BufRead,BufNewFile  *.haml   setfiletype haml
 au BufNewFile,BufRead   *.js     setf actionscript
 au! BufRead,BufNewFile  *.coffee setfiletype javascript
 au! BufRead,BufNewFile  *.asd    setfiletype lisp
-au! BufRead,BufNewFile  *.scm    setfiletype scheme
+au! BufRead,BufNewFile  *.scm    setfiletype lisp
 au! BufRead,BufNewFile  *.go     setfiletype go
 
 " markdown filetype file
