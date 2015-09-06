@@ -59,6 +59,11 @@ Plugin 'craigemery/vim-autotag'
 " you are using excuberant ctags right? RIGHT?!?!
 " http://benoithamelin.tumblr.com/post/15101202004/using-vim-exuberant-ctags-easy-source-navigation
 " SEE THE ctags / omnicomplete section below
+"
+Plugin 'rizzatti/dash.vim'
+" What do you mean you don't have Dash installed?!
+" enables the :Dash commands
+" https://github.com/rizzatti/dash.vim#readme
 
 " LANGUAGE PLUGINS
 Plugin 'fatih/vim-go'
@@ -102,6 +107,12 @@ Plugin 'tpope/vim-fireplace'
 
 call vundle#end()            " required
 
+
+"------------------------------------------------
+" ENABLE DIRECTORY SPECIFIC .vimrc FILES
+" (project specific tweaks can be very useful)
+set exrc " Enable use of directory-specific .vimrc
+set secure " Only run autocommands owned by me
 
 "------------------------------------------------
 " PLUGIN SPECIFIC CONFIGURATIONS
@@ -338,6 +349,7 @@ au BufWinEnter ?* silent loadview
 " colorscheme anotherdark
 syntax enable
 silent! colorscheme inori_m
+"silent! colorscheme anotherdark
 
 
 "------
