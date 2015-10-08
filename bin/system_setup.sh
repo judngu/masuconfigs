@@ -54,6 +54,7 @@ brew install xz
 brew install gpg
 brew install tig
 brew install pgcli
+brew install thefuck
 
 
 mkdir ~/workspace

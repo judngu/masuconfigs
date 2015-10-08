@@ -387,4 +387,4 @@ source ~/.oh-my-git/prompt.sh
 
 
 #source ~/.xsh
-
+eval "$(thefuck --alias)"
