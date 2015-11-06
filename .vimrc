@@ -93,6 +93,7 @@ Plugin 'tpope/vim-fireplace'
 " this plugin is for Clojure.
 
 " Markdown
+Plugin 'clarke/vim-renumber'
 "Plugin 'itspriddle/vim-marked'
 "Plugin 'nelstrom/vim-markdown-folding'
 "Plugin 'goldfeld/criticmarkup-vim'
