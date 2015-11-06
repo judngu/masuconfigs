@@ -615,6 +615,11 @@ function! TakeBoth()
 	normal /<<<dd/===dd/>>>dd
 endfunction
 
+function! ViewHTML()
+	normal €ýc€ýb:TOhtml:w:!open %:sleep 100m:!rm %€ýc€ýb;€ý,€ý.;
+endfunction
+
+
 " Text Expansions
 iab sterr $stderr.puts("XXX")<ESC>bi
 
