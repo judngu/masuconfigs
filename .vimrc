@@ -279,7 +279,7 @@ function! TrimWhiteSpace()
 endfunction
 "
 " Uncomment this to AUTOMATICALLY remove trailing whitespace
-" nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 "------
 
 
