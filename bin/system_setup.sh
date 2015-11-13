@@ -80,7 +80,7 @@ ln -s ~/workspace/home_dir_configs/.emacs ~/.emacs
 if [ -e "~/.emacs.d" ]; then
 	mv ~/.emacs.d ~/.emacs.bak.was.dot.d
 fi
-git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d
+git clone --recursive git@github.com:syl20bnr/spacemacs.git ~/.emacs.d
 ln -s ~/workspace/home_dir_configs/.spacemacs ~/.spacemacs
 ### end spacemacs
 
