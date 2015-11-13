@@ -78,13 +78,16 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'malept/vim-flog'
 "Plugin 'skammer/vim-ruby-complexity'
 Plugin 'tpope/vim-endwise'
-Plugin 'airblade/vim-gitgutter'
+":if expand("%") == ""|browse confirm w|else|confirm w|endif
+"Plugin 'airblade/vim-gitgutter'
+" ^^^ great but commented out because started having serious issues
+"     constantly complaining about not being able to find temp files
 "Plugin 'scrooloose/syntastic'
 " Syntastic is a syntax checking plugin for Vim that runs files through
 " external syntax checkers and displays any resulting errors to the user.
 "Plugin 'masukomi/vim-slime'
 "Plugin 'Floobits/vim-plugin'
-"Plugin 'oplatek/Conque-Shell'
+Plugin 'oplatek/Conque-Shell'
 "Plugin 'sjl/AnsiEsc.vim'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-fireplace'
@@ -541,6 +544,8 @@ nmap <leader>fr :%! formd -r<CR>
 nmap <leader>fi :%! formd -i<CR>
 filetype plugin indent on    " required
 let g:colorizer_auto_filetype='cdiff'
+
+nmap <Leader>sh           :source ~/bin/vimsh.vim<CR>
 "------------------------------------------------
 
 
