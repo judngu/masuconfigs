@@ -54,6 +54,7 @@ brew install xz
 brew install gpg
 brew install tig
 brew install pgcli
+brew install thefuck
 
 ### for spacemacs https://github.com/syl20bnr/spacemacs
 brew tap railwaycat/homebrew-emacsmacport

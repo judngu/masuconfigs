@@ -96,6 +96,7 @@ Plugin 'tpope/vim-fireplace'
 " this plugin is for Clojure.
 
 " Markdown
+Plugin 'clarke/vim-renumber'
 "Plugin 'itspriddle/vim-marked'
 "Plugin 'nelstrom/vim-markdown-folding'
 "Plugin 'goldfeld/criticmarkup-vim'
@@ -211,11 +212,24 @@ set noexpandtab
 " and spaces so that you can easily conform to the conventions
 " of the language you're working in.
 
+"------
+" BEGIN INDENTATION
+" the following lets you keep indenting or outdenting without reselecting
+vnoremap < <gv
+vnoremap > >gv
+" Just select something in visual mode type > to indent, then keep whacking
+" it to keep indenting. Same for < and outdenting.
+
 set copyindent
 " Copy the structure of the existing lines indent when autoindenting a new line.
 set preserveindent
 " When changing the indent of the current line, preserve as much of the
 " indent structure as possible.
+set autoindent
+" Copy indent from current line when starting a new line
+" END INDENTATION
+"------
+
 set softtabstop=0
 " fuck softtabs 
 set tabstop=4
@@ -226,8 +240,6 @@ syn on
 " syntax highlighting
 set number
 " show line numbers
-set autoindent
-" Copy indent from current line when starting a new line
 set textwidth=80
 " text should start to wrap at 80 chars
 
@@ -247,11 +259,6 @@ set hidden
 " I have it set. 
 
 
-" the following lets you keep indenting or outdenting without reselecting
-vnoremap < <gv
-vnoremap > >gv
-" Just select something in visual mode type > to indent, then keep whacking
-" it to keep indenting. Same for < and outdenting.
 
 
 set viminfo='20,<50,s10,h,%
@@ -275,7 +282,7 @@ function! TrimWhiteSpace()
 endfunction
 "
 " Uncomment this to AUTOMATICALLY remove trailing whitespace
-" nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 "------
 
 
@@ -612,6 +619,11 @@ let g:acp_behaviorRubyOmniMethodLength = -1
 function! TakeBoth()
 	normal /<<<dd/===dd/>>>dd
 endfunction
+
+function! ViewHTML()
+	normal €ýc€ýb:TOhtml:w:!open %:sleep 100m:!rm %€ýc€ýb;€ý,€ý.;
+endfunction
+
 
 " Text Expansions
 iab sterr $stderr.puts("XXX")<ESC>bi
