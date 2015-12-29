@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ $# -lt 2 ];then
+	echo "Usage: dgrep first_grep second_grep [file]"
+	echo "  * first_grep used to find files"
+	echo "  * second_grep is what you want to find IN those files"
+	echo "  * file is any file path/wildcard that grep would accept"
+	echo "    to limit where it looks."
+	echo "Note: dgrep stands for \"double grep\""
+	exit 1
+fi
+
+start_path=$3
+if [ "$start_path" == "" ]; then
+	start_path="*"
+fi
+
+for item in $(grep -rl $1 $start_path)
+do
+	subgrep=$(grep $2 $item)
+	if [ "$subgrep" != "" ]; then
+		echo "$item\n $subgrep\n----------"
+	fi
+done
+
