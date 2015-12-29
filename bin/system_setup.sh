@@ -56,6 +56,15 @@ brew install tig
 brew install pgcli
 brew install thefuck
 
+### for spacemacs https://github.com/syl20bnr/spacemacs
+brew tap railwaycat/homebrew-emacsmacport
+brew install emacs-mac --with-spacemacs-icon
+### end spacemacs
+
+brew linkapps
+# links the experimental Emacs.app (from spacemacs) to /Applications
+# along with anything else that needs to be linked there
+# could just do brew linkapps emacs-mac 
 
 mkdir ~/workspace
 cd workspace
@@ -66,8 +75,14 @@ git submodule update
 ln -s ~/workspace/home_dir_configs/.vim/bundle ~/.vim/bundle
 ln -s ~/workspace/home_dir_configs/slime.vim ~/slime.vim
 ln -s ~/workspace/home_dir_configs/.emacs ~/.emacs
-ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
-
+### spacemacs
+#ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
+if [ -e "~/.emacs.d" ]; then
+	mv ~/.emacs.d ~/.emacs.bak.was.dot.d
+fi
+git clone --recursive git@github.com:syl20bnr/spacemacs.git ~/.emacs.d
+ln -s ~/workspace/home_dir_configs/.spacemacs ~/.spacemacs
+### end spacemacs
 
 ln -s ~/workspace/home_dir_configs/.vimrc ~/.vimrc
 ln -s ~/workspace/home_dir_configs/.vim ~/.vim
