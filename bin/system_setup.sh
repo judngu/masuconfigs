@@ -55,6 +55,9 @@ brew install gpg
 brew install tig
 brew install pgcli
 brew install thefuck
+brew install jrnl
+brew install cmake # used by yajl
+brew install jq # json parser
 
 ### for spacemacs https://github.com/syl20bnr/spacemacs
 brew tap railwaycat/homebrew-emacsmacport
@@ -66,7 +69,15 @@ brew linkapps
 # along with anything else that needs to be linked there
 # could just do brew linkapps emacs-mac 
 
-mkdir ~/workspace
+mkdir -p ~/workspace/reference
+
+cd ~/workspace/reference
+git clone git://github.com/lloyd/yajl
+cd yajl
+./configure && make install
+#^^^ json formatting library
+#    gives you json_reformat and json_verify
+
 cd workspace
 git checkout ssh://masukomi@masukomi.org/home/masukomi/home_dir_configs.git
 cd home_dir_configs
