@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+	echo 1>&2 Usage: git-who \<filepath\> \[ -v \]
+	exit 1
+else
+	git shortlog -sn -- $1
+fi
