@@ -58,6 +58,7 @@ brew install thefuck
 brew install jrnl
 brew install cmake # used by yajl
 brew install jq # json parser
+brew install homebrew/dupes/expect # gets you unbuffer
 
 ### for spacemacs https://github.com/syl20bnr/spacemacs
 brew tap railwaycat/homebrew-emacsmacport
@@ -108,7 +109,7 @@ ln -s ~/workspace/home_dir_configs/.csirc ~/.csirc
 ln -s ~/workspace/home_dir_configs/.darcs ~/.darcs
 ln -s ~/workspace/home_dir_configs/.git-completion.bash ~/.git-completion.bash
 
-ln -s ~/workspace/home_dir_ctonfigs/bin ~/bin
+ln -s ~/workspace/home_dir_configs/bin ~/bin
 
 cp -r ~/workspace/home_dir_configs/Library/Fonts/* ~/Library/Fonts/
 
