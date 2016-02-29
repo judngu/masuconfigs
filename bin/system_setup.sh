@@ -123,6 +123,9 @@ ln -s /Applications/ccl/dx86cl /usr/local/src/ccl/dx86cl
 ln -s /Applications/ccl /usr/local/src/ccl
 ln -s ~/workspace/home_dir_configs/.ccl-init.lisp ~/.ccl-init.lisp
 
+# fish shell config
+ln -s ~/workspace/home_dir_configs/.config ~/.config
+
 
 # command-t should already be installed via a vimball stored in the git repo
 # https://wincent.com/products/command-t
