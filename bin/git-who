@@ -1,29 +1,53 @@
 #!/usr/bin/env ruby
 
 require 'tempfile'
+def get_commits_for_author(author, file)
+	commits = `git log --pretty=format:'%h %ad %d %s' --date=short --author "#{author}" #{file}`.split(/\n/)
+end
 
+def get_numbers_and_authors(lines)
+	numbers_and_authors = []
+	lines.each do | l |
+		cleaned = l.strip
+		next unless cleaned.length > 0
+		items = cleaned.split(/\s+/)
+		num = items[0].to_i
+		name = items[1..-1].join(' ')
+		numbers_and_authors.push( [num, name] )
+	end
+	numbers_and_authors
+end
+
+def load_commit_info(numbers_and_authors, file)
+	$stderr.puts("loading commits for #{numbers_and_authors.count} authors")
+	new_numbers_and_authors = []
+	numbers_and_authors.each_with_index do | arr, idx |
+		$stderr.putc('.')
+		commits = get_commits_for_author( arr[1], file )
+		new_numbers_and_authors.push([arr[0], arr[1], commits])
+	end
+	$stderr.puts("")
+	new_numbers_and_authors
+end
+
+def get_lines(file)
+	if File.exist?(file)
+		lines = `git shortlog -sn #{file}`.split("\n")
+	else
+		lines = []
+	end
+end
+############################################################
 file=ARGV[0]
 stdout=ARGV[1].nil? ? false : true
 
-if File.exist?(file)
-	lines = `git shortlog -sn #{file}`.split("\n")
-else
-	lines = []
-	error_message = "-- <tt>#{file}</tt> does not exist"
-end
 
 output = ""
+lines = get_lines(file)
+error_message = lines.count == 0 ? "-- <tt>#{file}</tt> does not exist" : nil
+numbers_and_authors = get_numbers_and_authors(lines)
 
-numbers_to_authors={}
-numbers_and_authors = []
-lines.each do | l |
-	cleaned = l.strip
-	next unless cleaned.length > 0
-	items = cleaned.split(' ')
-	num = items[0].to_i
-	name = items[1..-1].join(' ')
-	numbers_and_authors.push( [num, name])
-end
+numbers_and_authors = load_commit_info(numbers_and_authors, file)
 sum = numbers_and_authors.map{|arr| arr[0]}.reduce(:+)
 
 header=<<EOL
@@ -152,7 +176,7 @@ bar=<<EOL
   </label>
 EOL
 	output += bar
-	commits = `git log --oneline --author "#{arr[1]}" #{file}`.split(/\n/)
+	commits = arr[2]
 	commits = commits.map{|c|c.strip.sub(/^(\w+)/, "<span class='treeish'>\\1</span>")}
 	
 	output +=<<EOL
@@ -164,7 +188,7 @@ EOL
 	</div>
 EOL
 end
-
+$stderr.puts("\n")
 footer=<<EOL
 			</div>
 		</body>
