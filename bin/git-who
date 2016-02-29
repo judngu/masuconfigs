@@ -37,6 +37,15 @@ def get_lines(file)
 		lines = []
 	end
 end
+
+def write_to_tempfile(output)
+	t = Tempfile.new("git_who_f")
+	t.write(output)
+	t.close()
+
+	`fenestro -p #{t.path} -n "git_who"`
+	t.unlink()
+end
 ############################################################
 file=ARGV[0]
 stdout=ARGV[1].nil? ? false : true
@@ -198,12 +207,7 @@ EOL
 output += footer
 
 if ! stdout 
-	t = Tempfile.new("git_who_f")
-	t.write(output)
-	t.close()
-
-	`fenestro -p #{t.path} -n "git_who"`
-	t.unlink()
+	write_to_tempfile(output)
 else
 	puts output
 end
