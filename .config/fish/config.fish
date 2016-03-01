@@ -1,3 +1,31 @@
+# Abbreviations
+abbr -a gits "git status -uno"
+abbr -a top "top -o cpu"
+#Compensating for stupidity
+abbr -a givm gvim
+abbr -a gvmi gvim
+abbr -a be 'bundle exec'
+abbr -a ga 'git add'
+abbr -a gits 'git status -uno'
+#End stupidity...
+abbr -a epochtime "date +%s"
+abbr -a epochmillis "date +%s%N | cut -b1-13"
+abbr -a berc 'bundle exec rails console'
+abbr -a bers 'bundle exec rails server'
+abbr -a berd 'bundle exec rails server --debugger'
+abbr -a build_tags "~/brew/bin/ctags -R --c++-kinds +p --fields +iaS --extra +q --exclude .rsync_cache ."
+abbr -a hgrep "history | grep"
+
+#abbr -a git hub
+abbr -a grep "grep --color always"
+abbr -a ec '/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
+abbr -a be 'bundle exec'
+abbr -a clojure "java -cp ~/workspace/clojure-1.5.1/clojure-1.5.1.jar clojure.main"
+
+eval (thefuck --alias | tr '\n' ';')
+
+
+# PATH
 set -x PATH $PATH .
 set -x PATH $PATH $HOME/bin
 set -x PATH $PATH /Users/krhodes/bin/git-scripts
