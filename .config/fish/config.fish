@@ -1,3 +1,5 @@
+source $HOME/.config/fish/config_work.fish
+
 # Abbreviations
 abbr -a gits "git status -uno"
 abbr -a top "top -o cpu"
@@ -17,7 +19,7 @@ abbr -a build_tags "~/brew/bin/ctags -R --c++-kinds +p --fields +iaS --extra +q 
 abbr -a hgrep "history | grep"
 
 #abbr -a git hub
-abbr -a grep "grep --color always"
+abbr -a grep "grep --color=always"
 abbr -a ec '/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 abbr -a be 'bundle exec'
 abbr -a clojure "java -cp ~/workspace/clojure-1.5.1/clojure-1.5.1.jar clojure.main"
@@ -50,8 +52,11 @@ set -x PATH $PATH /usr/local/git/bin
 set -x PATH $PATH /Users/krhodes/.gem/ruby/1.8/bin
 set -x PATH $PATH /Users/krhodes/gocode/bin
 set -x PATH $PATH /Users/krhodes/workspace/gocode/bin
+set -x PATH $PATH /Users/krhodes/workspace/gpup
 set -x PATH $PATH /Users/krhodes/.rvm/bin
 set -x PATH $PATH /Users/krhodes/brew/bin
 set -x PATH $PATH /Users/krhodes/brew/sbin
 set -x PATH $PATH /Users/krhodes/workspace/useful_scripts/bin
 set -x PATH $PATH /usr/local/heroku/bin
+
+rvm default

@@ -78,7 +78,10 @@ export TERM='xterm-256color'
 #find and open
 function fao {
 	#find . -name $1 -exec /usr/bin/env gvim '{}' \;
-	gvim $(mdfind -onlyin . -name $1| grep -v '\.rsync_cache')
+	FILE=$(mdfind -onlyin . -name $1| grep -v '\.rsync_cache')
+	# gvim $(mdfind -onlyin . -name $1| grep -v '\.rsync_cache')
+	echo "opening: $FILE"
+	gvim $FILE
 	#gvim $(find . -name "$1" | grep -v '\.rsync_cache')
 }
 function findg {
@@ -170,7 +173,7 @@ function runtimes() {
 
 function gdef() {
 	echo "running: grep -r $1 $2* | grep def"
-	grep -r $1 $2* | grep def
+	grep -r $1 $2* | grep def | grep -v "tags:"
 }
 
 # Public: Git Diff UPstream
@@ -339,6 +342,7 @@ alias epochmillis="date +%s%N | cut -b1-13"
 alias berc='bundle exec rails console'
 alias bers='bundle exec rails server'
 alias berd='bundle exec rails server --debugger'
+alias berdm='bundle exec rake db:migrate'
 alias build_tags="~/brew/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=.rsync_cache ."
 alias hgrep="history | grep"
 
@@ -361,7 +365,7 @@ if [ -f ~/.config/exercism/exercism_completion.bash ]; then
     . ~/.config/exercism/exercism_completion.bash
 fi
 
-PATH=.:/usr/local/opt/coreutils/libexec/gnubin:/Users/$USERNAME/bin:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin:/Users/$USERNAME/gocode/bin:$GOPATH/bin
+PATH=.:/usr/local/opt/coreutils/libexec/gnubin:/Users/$USERNAME/bin:/Users/$USERNAME/bin/git-scripts:/usr/local/rvm/bin:/usr/local/bin:$PATH:/Applications:/Users/$USERNAME/Applications:/Users/$USERNAME/Applications/bin:/Users/$USERNAME/workspace/git-status-report:/Users/$USERNAME/workspace/git_accessories:/usr/local/git/bin:/Users/$USERNAME/.gem/ruby/1.8/bin:/Users/$USERNAME/gocode/bin:$GOPATH/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 [[ -s "/usr/local/rvm" ]] && source "/usr/local/rvm" # This loads RVM into a shell session.
@@ -388,3 +392,4 @@ source ~/.oh-my-git/prompt.sh
 
 #source ~/.xsh
 eval "$(thefuck --alias)"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
