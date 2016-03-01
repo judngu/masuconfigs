@@ -148,3 +148,5 @@ curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 echo "MANUAL TODO:----------------------"
 echo "add: /usr/local/bin/fish to /etc/shells"
 echo "run: chsh -s /usr/local/bin/fish"
+echo "run: rvm fish shell integration commands found here"
+echo "     https://rvm.io/integration/fish"

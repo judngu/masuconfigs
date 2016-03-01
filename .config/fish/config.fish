@@ -1,5 +1,6 @@
 set -g theme_nerd_fonts yes
 
+source $HOME/.config/fish/config_work.fish
 
 # Abbreviations
 abbr -a gits "git status -uno"
@@ -20,7 +21,7 @@ abbr -a build_tags "~/brew/bin/ctags -R --c++-kinds +p --fields +iaS --extra +q 
 abbr -a hgrep "history | grep"
 
 #abbr -a git hub
-abbr -a grep "grep --color always"
+abbr -a grep "grep --color=always"
 abbr -a ec '/Applications/Emacs.app/Contents/MacOS/bin/emacsclient'
 abbr -a be 'bundle exec'
 abbr -a clojure "java -cp ~/workspace/clojure-1.5.1/clojure-1.5.1.jar clojure.main"
@@ -58,3 +59,5 @@ set -x PATH $PATH $HOME/brew/bin
 set -x PATH $PATH $HOME/brew/sbin
 set -x PATH $PATH $HOME/workspace/useful_scripts/bin
 set -x PATH $PATH /usr/local/heroku/bin
+
+rvm default
