@@ -54,7 +54,7 @@ Plugin 'mileszs/ack.vim'
 " can be used as a replacement for 99% of the uses of grep. The plugin allows you
 " to run ack from Vim, and shows the results in a split window.
 
-Plugin 'craigemery/vim-autotag'
+" Plugin 'craigemery/vim-autotag'
 " Automatically discover and "properly" update ctags files on save
 " you are using excuberant ctags right? RIGHT?!?!
 " http://benoithamelin.tumblr.com/post/15101202004/using-vim-exuberant-ctags-easy-source-navigation
@@ -75,7 +75,7 @@ Plugin 'Keithbsmiley/swift.vim'
 " Plugin 'rcyrus/snipmate-snippets-rubymotion'
 Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'fousa/vim-flog'
-Plugin 'malept/vim-flog'
+" Plugin 'malept/vim-flog'
 "Plugin 'skammer/vim-ruby-complexity'
 Plugin 'tpope/vim-endwise'
 ":if expand("%") == ""|browse confirm w|else|confirm w|endif
