@@ -143,3 +143,8 @@ chicken-install regex
 cd `csi -p '(chicken-home)'`
 curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 
+
+#####
+echo "MANUAL TODO:----------------------"
+echo "add: /usr/local/bin/fish to /etc/shells"
+echo "run: chsh -s /usr/local/bin/fish"
