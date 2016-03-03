@@ -1,3 +1,6 @@
+set -g theme_nerd_fonts yes
+
+
 # Abbreviations
 abbr -a gits "git status -uno"
 abbr -a top "top -o cpu"
@@ -28,11 +31,11 @@ eval (thefuck --alias | tr '\n' ';')
 # PATH
 set -x PATH $PATH .
 set -x PATH $PATH $HOME/bin
-set -x PATH $PATH /Users/krhodes/bin/git-scripts
+set -x PATH $PATH $HOME/bin/git-scripts
 set -x PATH $PATH /Applications
-set -x PATH $PATH /Users/krhodes/.rvm/gems/ruby-2.1.2/bin
-set -x PATH $PATH /Users/krhodes/.rvm/gems/ruby-2.1.2@global/bin
-set -x PATH $PATH /Users/krhodes/.rvm/rubies/ruby-2.1.2/bin
+set -x PATH $PATH $HOME/.rvm/gems/ruby-2.1.2/bin
+set -x PATH $PATH $HOME/.rvm/gems/ruby-2.1.2@global/bin
+set -x PATH $PATH $HOME/.rvm/rubies/ruby-2.1.2/bin
 set -x PATH $PATH /usr/local/opt/coreutils/libexec/gnubin
 set -x PATH $PATH /usr/local/rvm/bin
 set -x PATH $PATH /usr/local/bin
@@ -42,16 +45,16 @@ set -x PATH $PATH /bin
 set -x PATH $PATH /usr/sbin
 set -x PATH $PATH /sbin
 set -x PATH $PATH /usr/local/munki
-set -x PATH $PATH /Users/krhodes/Applications
-set -x PATH $PATH /Users/krhodes/Applications/bin
-set -x PATH $PATH /Users/krhodes/workspace/git-status-report
-set -x PATH $PATH /Users/krhodes/workspace/git_accessories
+set -x PATH $PATH $HOME/Applications
+set -x PATH $PATH $HOME/Applications/bin
+set -x PATH $PATH $HOME/workspace/gpup
+set -x PATH $PATH $HOME/workspace/git-status-report
+set -x PATH $PATH $HOME/workspace/git_accessories
 set -x PATH $PATH /usr/local/git/bin
-set -x PATH $PATH /Users/krhodes/.gem/ruby/1.8/bin
-set -x PATH $PATH /Users/krhodes/gocode/bin
-set -x PATH $PATH /Users/krhodes/workspace/gocode/bin
-set -x PATH $PATH /Users/krhodes/.rvm/bin
-set -x PATH $PATH /Users/krhodes/brew/bin
-set -x PATH $PATH /Users/krhodes/brew/sbin
-set -x PATH $PATH /Users/krhodes/workspace/useful_scripts/bin
+set -x PATH $PATH $HOME/.gem/ruby/1.8/bin
+set -x PATH $PATH $HOME/gocode/bin
+set -x PATH $PATH $HOME/workspace/gocode/bin
+set -x PATH $PATH $HOME/brew/bin
+set -x PATH $PATH $HOME/brew/sbin
+set -x PATH $PATH $HOME/workspace/useful_scripts/bin
 set -x PATH $PATH /usr/local/heroku/bin
