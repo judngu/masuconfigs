@@ -1,6 +1,11 @@
 set -g theme_nerd_fonts yes
 
-source $HOME/.config/fish/config_work.fish
+if test -f $HOME/.config/fish/config_work.fish
+	source $HOME/.config/fish/config_work.fish
+end
+
+set -x EDITOR gvim
+
 
 # Abbreviations
 abbr -a gits "git status -uno"
