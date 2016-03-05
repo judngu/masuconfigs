@@ -1,4 +1,4 @@
-function ale --description="add last edited"
+function gale --description="git add last edited"
 	set -l last_file (history --contains "gvim " \
 						| grep --color=none "^gvim" \
 						| head -n 1 | sed 's/gvim //' \
