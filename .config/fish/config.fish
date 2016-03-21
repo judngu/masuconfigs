@@ -3,6 +3,9 @@ set -g theme_nerd_fonts yes
 if test -f $HOME/.config/fish/config_work.fish
 	source $HOME/.config/fish/config_work.fish
 end
+if test -f $HOME/.config/fish/secrets.fish
+	source $HOME/.config/fish/secrets.fish
+end
 
 set -x EDITOR gvim
 
