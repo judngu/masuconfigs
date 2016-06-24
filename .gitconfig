@@ -36,7 +36,13 @@
 	br = branch
 	branchdiff2 = log --left-right --graph --cherry-pick --oneline
 	branchdiff=log --left-right --graph --cherry-pick --oneline
+	branchdiff-simple=log --left-right --cherry-pick --pretty=format:'%C(yellow)%h %Cred%ad %C(cyan)%an%Cgreen%d %Creset%s' --date=short
+	branchdiff-hashes=log --left-right --cherry-pick --pretty=format:'%h'
+	branchdiff-titles=log --left-right --cherry-pick --pretty=format:'%s'
+	bdl=log --stat --left-right --cherry-pick --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
 	branchlog = !sh -c \"git log `git oldest-ancestor`..\"
+	bdf = !sh -c \"git diff --name-status $2 $(git merge-base $2 $1)\"
+	current-branch = rev-parse --abbrev-ref HEAD
 	changed = status -uno
 	cherry-pick = cherry-pick -x
 	ci = commit
@@ -46,6 +52,14 @@
 	cpl = !"git --git-dir=$1.git format-patch -k -1 --stdout $2 | git am -3 -k"
 	default = current
 	df = diff
+	fshow = ! sh -c 'git show --pretty="format:" --name-only $1 | grep -v "^$" | uniq | sed -e "s#^#`git rev-parse --show-toplevel`/#"' -
+	
+	graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+	# take the output of ^^ and pipe it to dot. E.g.:
+	# git graphviz HEAD~100..HEAD~60 | dot -Txdot1.4 > graph.dot
+	# git graphviz HEAD~100..HEAD~60 | dot -Tpng > graph.png
+	grep-for = log --pretty=format:'%C(yellow)%h %Cred%ad %C(cyan)%an %Creset%s' --date=short --grep
+	grep-for-titles = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --grep
 	kad = difftool --tool Kaleidoscope
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lol = !git --no-pager loll
@@ -57,14 +71,19 @@
 	mergecommits = ! git log $(git merge-base --octopus $(git log -1 -U $1 --pretty=format:%P)).. --boundary
 	oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
 	pdiff = !git difftool $(git merge-base $1 $(git rev-parse --abbrev-ref HEAD))
-	pum = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+	pum = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master; echo '--Pushing to origin'; git push origin master"
+	pud = !"git fetch origin; git fetch upstream; git fetch --tags upstream; git merge upstream/development; echo '--Pushing to origin'; git push origin development"
+	rhh = reset --hard HEAD
 	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	st = status -sb
 	sta  = "!function f { git stash apply stash@{$1}; }; f"
 	subup = submodule foreach git pull origin master
 	tl=log --name-status --pretty=format:'-----------------------------------------%n%h %an %ar %n %s'
+	unadd = reset HEAD
 	unassume = update-index --no-assume-unchanged
 	unstash = stash pop[push]
+	assume = update-index --assume-unchanged
+	cdiff = difftool --tool=cdiff
 [difftool]
 	prompt = false
 #[diff]
@@ -73,8 +92,15 @@
 [diff]
 	tool = cdiff
 	algorithm = patience
+	external = cdiff
 [difftool "cdiff"]
 	cmd = cdiff \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[difftool "cdiff-f"]
+	cmd = cdiff --format=fenestro \"$LOCAL\" \"$REMOTE\"
+[difftool "cdiff-h"]
+	cmd = cdiff --format=html \"$LOCAL\" \"$REMOTE\"
+[difftool "diff"]
+	cmd = diff \"$LOCAL\" \"$REMOTE\"
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [mergetool "Kaleidoscope"]
@@ -90,7 +116,7 @@
 	summary = true
 #	ff = false
 [difftool "sourcetree"]
-	cmd = /Applications/Kaleidoscope.app/Contents/MacOS/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
