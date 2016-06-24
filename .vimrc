@@ -37,6 +37,12 @@ Plugin 'bling/vim-airline'
 " That pretty piece of awesome at the bottom of every cool vim screen
 " the faster successor to Powerline
 " https://github.com/bling/vim-airline#readme
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_char = '|'
+" let g:indentLine_concealcursor = 'vc' (default 'inc')
+" let g:indentLine_conceallevel = 0 "(default 2)
+" That shows vertical lines at levels of indentation
+" :IndentLinesToggle toggles lines on and off.
 Plugin 'tpope/vim-surround'
 " Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
 " tags, and more. The plugin provides mappings to easily delete, change and add
@@ -68,7 +74,8 @@ Plugin 'rizzatti/dash.vim'
 " LANGUAGE PLUGINS
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
-Plugin 'Keithbsmiley/swift.vim'
+"Plugin 'Keithbsmiley/swift.vim'
+Plugin 'kballard/vim-swift'
 "Plugin 'kchmck/vim-coffee-script'
 "Plugin 'wlangstroth/vim-racket'
 " LANGUAGE ENHANCING PLUGINS
