@@ -72,18 +72,19 @@ body {
   background: #999;
 }
 
-h2 {
+h2, .heading {
   margin: 0 0 20px 0;
   padding: 0 0 5px 0;
   border-bottom: 1px solid #999;
   font-family: sans-serif;
   font-weight: normal;
-  color: #333;
+  color: #050505;
+  padding-left: 1.5rem;
 }
 
 .container {
   min-width: 500px;
-  margin: 20px;
+  margin: 1.5rem;
   background: #fff;
   padding: 20px;
   overflow: hidden;
@@ -117,17 +118,25 @@ h2 {
   line-height: 20px;
 }
 
+.rounded {
+  border-radius: 3px;
+}
 .rounded .progress-track,
 .rounded .progress-fill {
-  border-radius: 3px;
   box-shadow: inset 0 0 5px rgba(0,0,0,.2);
 }
 
-
 .rounded .progress-track,
 .rounded .progress-fill {
   box-shadow: inset 0 0 5px rgba(0,0,0,.2);
-  border-radius: 3px;
+}
+
+tt {
+	background: white;
+	padding: 0.2rem;
+	margin-top: 0.5rem;
+	display: inline-block;
+	border-radius: 0.25rem;
 }
 .author{
 	white-space: nowrap;
@@ -159,7 +168,7 @@ input[type=checkbox]:checked ~ .commits {
 		<body>
 			<div class="heading">
 				#{sum} Commits on
-				<br /><tt>#{file}</tt>
+				<br /><tt class="rounded">#{file}</tt>
 				#{error_message}
 			</div>
 			<div class="container horizontal rounded">
