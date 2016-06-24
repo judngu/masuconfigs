@@ -7,7 +7,6 @@
 brew install ack
 brew install autoconf
 brew install automake
-brew install chicken
 brew install clisp
 brew install cloc
 brew install cscope
@@ -59,6 +58,7 @@ brew install jrnl
 brew install cmake # used by yajl
 brew install jq # json parser
 brew install homebrew/dupes/expect # gets you unbuffer
+brew install rlwrap
 
 ### for spacemacs https://github.com/syl20bnr/spacemacs
 brew tap railwaycat/homebrew-emacsmacport
@@ -79,9 +79,15 @@ cd yajl
 #^^^ json formatting library
 #    gives you json_reformat and json_verify
 
-cd workspace
-git checkout ssh://masukomi@masukomi.org/home/masukomi/home_dir_configs.git
-cd home_dir_configs
+# support for sup email client
+brew tap homebrew/dupes
+brew install ncurses
+brew doctor
+brew link ncurses # might require a --force
+brew install msmtp
+# end sup
+
+cd ~/workspace/home_dir_configs
 git submodule init
 git submodule update
 ln -s ~/workspace/home_dir_configs/.vim/bundle ~/.vim/bundle
@@ -102,9 +108,6 @@ ln -s ~/workspace/home_dir_configs/.vim ~/.vim
 ln -s ~/workspace/home_dir_configs/.ackrc ~/.ackrc
 ln -s ~/workspace/home_dir_configs/.clisprc.lisp ~/.clisprc.lisp
 
-# requires `chicken-install linenoise` to have been run first
-ln -s ~/workspace/home_dir_configs/.csirc ~/.csirc
-
 
 ln -s ~/workspace/home_dir_configs/.darcs ~/.darcs
 ln -s ~/workspace/home_dir_configs/.git-completion.bash ~/.git-completion.bash
@@ -115,6 +118,8 @@ cp -r ~/workspace/home_dir_configs/Library/Fonts/* ~/Library/Fonts/
 
 ln -s ~/workspace/home_dir_configs/.oh-my-git ~/.oh-my-git
 ln -s ~/workspace/home_dir_configs/.git-templates ~/.git-templates
+
+ln -s ~/workspace/cleandiff/cdiff ~/bin/cdiff
 
 # setup CCL
 mkdir -p /usr/local/src
@@ -135,6 +140,13 @@ defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool
 
 
 # install chicken scheme stuff
+brew install readline
+readline_version=$(brew list readline --versions)
+readline_version=${readline_version##* }
+export CSC_OPTIONS="-I/usr/local/Cellar/readline/$readline_version/include -L/usr/local/Cellar/readline/$readline_version/lib -Wl,-flat_namespace,-undefined,suppress"
+unset readline_version
+brew install chicken
+chicken-install readline
 chicken-install chicken-doc
 chicken-install linenoise
 chicken-install loops
@@ -142,6 +154,9 @@ chicken-install directory-utils
 chicken-install regex
 cd `csi -p '(chicken-home)'`
 curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
+# requires `chicken-install linenoise` to have been run first
+ln -s ~/workspace/home_dir_configs/.csirc ~/.csirc
+
 
 
 #####
