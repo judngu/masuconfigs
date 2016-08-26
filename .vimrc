@@ -74,6 +74,8 @@ Plugin 'rizzatti/dash.vim'
 " LANGUAGE PLUGINS
 Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
+Plugin 'rhysd/vim-crystal'
+Plugin 'dag/vim-fish'
 "Plugin 'Keithbsmiley/swift.vim'
 Plugin 'kballard/vim-swift'
 "Plugin 'kchmck/vim-coffee-script'
