@@ -121,6 +121,8 @@ ln -s ~/workspace/home_dir_configs/.git-templates ~/.git-templates
 
 ln -s ~/workspace/cleandiff/cdiff ~/bin/cdiff
 
+ln -s ~/workspace/home_dir_configs/.taskrc ~/.taskrc
+
 # setup CCL
 mkdir -p /usr/local/src
 ln -s /Applications/ccl/scripts/ccl ~/bin/ccl
