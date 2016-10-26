@@ -1,11 +1,17 @@
 " masukomi's current .vimrc
 scriptencoding utf-8
-
+" set guioptions+=c " Die extra gui warnings die!... or not
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
 
+" Install vim-plug if we don't already have it
+if empty(glob("~/.vim/autoload/plug.vim"))
+    " Ensure all needed directories exist  (Thanks @kapadiamush)
+    execute 'mkdir -p ~/.vim/plugged'
+    execute 'mkdir -p ~/.vim/autoload'
+    " Download the actual plugin manager
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+call plug#begin('~/.vim/plugged')
 " NOTE All the plugin names here are actually 
 " github repos.
 " For example 'gmarik/Vundle.vim'
@@ -13,112 +19,112 @@ call vundle#begin()
 " so if you want more info on any of them
 " that's how to find it.
 
-Plugin 'gmarik/Vundle.vim'
-" The plugin manager that's managing all these Plugin lines
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Spectacular git integration. If nothing else, check out the GBlame command
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 " Allows you to align items across multiple lines
 " see screencast here: http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-Plugin 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 " allows you to easily toggle lines as commentns or not
 "   Visual mode + g + c
-Plugin 'masukomi/rainbow_parentheses.vim'
+Plug 'masukomi/rainbow_parentheses.vim'
 " ^^ colorizes matching pairs of {}, [], () so you can see what matches what
-Plugin 'itspriddle/vim-marked'
+Plug 'itspriddle/vim-marked', { 'for': 'markdown' }
 " OS X Only - Open the current Markdown buffer in Marked. Supports Marked 1 and 2.
 " Marked: http://marked2app.com/
-Plugin 'nelstrom/vim-markdown-folding'
-" Allows folding of markdown texts based on headings
-Plugin 'chrisbra/Colorizer'
+Plug 'chrisbra/Colorizer', { 'for': 'css' }
 " A plugin to color colornames and codes
 " check out the screenshot: https://github.com/chrisbra/Colorizer#readme
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 " That pretty piece of awesome at the bottom of every cool vim screen
 " the faster successor to Powerline
 " https://github.com/bling/vim-airline#readme
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '|'
 " let g:indentLine_concealcursor = 'vc' (default 'inc')
 " let g:indentLine_conceallevel = 0 "(default 2)
 " That shows vertical lines at levels of indentation
 " :IndentLinesToggle toggles lines on and off.
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
 " tags, and more. The plugin provides mappings to easily delete, change and add
 " such surroundings in pairs.
-Plugin 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 " is a Vim plugin that allows you to visually select increasingly larger
 " regions of text using the same key combination. It is similar to features from
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " a nice way to open files with a fuzzy name / path matching
 
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " useful if you have Ack installed
 " Run your favorite search tool from Vim, with an enhanced results list.
 " This plugin was designed as a Vim frontend for the Perl module App::Ack. Ack
 " can be used as a replacement for 99% of the uses of grep. The plugin allows you
 " to run ack from Vim, and shows the results in a split window.
 
-" Plugin 'craigemery/vim-autotag'
+" Plug 'craigemery/vim-autotag'
 " Automatically discover and "properly" update ctags files on save
 " you are using excuberant ctags right? RIGHT?!?!
 " http://benoithamelin.tumblr.com/post/15101202004/using-vim-exuberant-ctags-easy-source-navigation
 " SEE THE ctags / omnicomplete section below
 "
-Plugin 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 " What do you mean you don't have Dash installed?!
 " enables the :Dash commands
 " https://github.com/rizzatti/dash.vim#readme
 
 " LANGUAGE PLUGINS
-Plugin 'fatih/vim-go'
-Plugin 'rust-lang/rust.vim'
-Plugin 'rhysd/vim-crystal'
-Plugin 'dag/vim-fish'
-"Plugin 'Keithbsmiley/swift.vim'
-Plugin 'kballard/vim-swift'
-"Plugin 'kchmck/vim-coffee-script'
-"Plugin 'wlangstroth/vim-racket'
+" Plug 'scrooloose/syntastic'
+" a syntax checker which displays results in the gutter
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'rhysd/vim-crystal', { 'for': 'crystal' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
+"Plug 'Keithbsmiley/swift.vim'
+Plug 'kballard/vim-swift', { 'for': 'swift' }
+"Plug 'kchmck/vim-coffee-script'
+"Plug 'wlangstroth/vim-racket'
 " LANGUAGE ENHANCING PLUGINS
-" Plugin 'rcyrus/snipmate-snippets-rubymotion'
-Plugin 'jelera/vim-javascript-syntax'
-"Plugin 'fousa/vim-flog'
-" Plugin 'malept/vim-flog'
-"Plugin 'skammer/vim-ruby-complexity'
-Plugin 'tpope/vim-endwise'
+" Plug 'rcyrus/snipmate-snippets-rubymotion'
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+"Plug 'fousa/vim-flog'
+" Plug 'malept/vim-flog'
+"Plug 'skammer/vim-ruby-complexity'
+Plug 'tpope/vim-endwise'
 ":if expand("%") == ""|browse confirm w|else|confirm w|endif
-"Plugin 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 " ^^^ great but commented out because started having serious issues
 "     constantly complaining about not being able to find temp files
-"Plugin 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 " Syntastic is a syntax checking plugin for Vim that runs files through
 " external syntax checkers and displays any resulting errors to the user.
-"Plugin 'masukomi/vim-slime'
-"Plugin 'Floobits/vim-plugin'
-Plugin 'oplatek/Conque-Shell'
-"Plugin 'sjl/AnsiEsc.vim'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'tpope/vim-fireplace'
+"Plug 'masukomi/vim-slime'
+"Plug 'Floobits/vim-plugin'
+" Plug 'oplatek/Conque-Shell'
+"Plug 'sjl/AnsiEsc.vim'
+"Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " There's a REPL in fireplace, but you probably wouldn't have noticed 
 " if I hadn't told you. Such is the way with fireplace.vim. By the way, 
 " this plugin is for Clojure.
 
 " Markdown
-Plugin 'clarke/vim-renumber'
-"Plugin 'itspriddle/vim-marked'
-"Plugin 'nelstrom/vim-markdown-folding'
-"Plugin 'goldfeld/criticmarkup-vim'
+Plug 'nelstrom/vim-markdown-folding', { 'for': 'markdown' }
+" Allows folding of markdown texts based on headings
+Plug 'clarke/vim-renumber', { 'for': 'markdown' }
+"Plug 'itspriddle/vim-marked'
+"Plug 'nelstrom/vim-markdown-folding'
+"Plug 'goldfeld/criticmarkup-vim'
 
 " All of your Plugins must be added before the following line
 "
 "
 " COLOR SCHEMES / THEMES
-"Plugin 'duythinht/inori'
-" Plugin 'kreeger/benlight'
+"Plug 'duythinht/inori'
+" Plug 'kreeger/benlight'
 
 
-call vundle#end()            " required
+call plug#end()            " required
 
 
 "------------------------------------------------
