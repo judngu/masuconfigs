@@ -76,3 +76,5 @@ set -g theme_display_ruby no
 
 
 rvm default
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

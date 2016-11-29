@@ -123,6 +123,9 @@ ln -s ~/workspace/cleandiff/cdiff ~/bin/cdiff
 
 ln -s ~/workspace/home_dir_configs/.taskrc ~/.taskrc
 
+ln -s ~/workspace/home_dir_configs/.iterm2_shell_integration.fish ~/.iterm2_shell_integration.fish
+ln -s ~/workspace/home_dir_configs/.iterm2 ~/.iterm2
+
 # setup CCL
 mkdir -p /usr/local/src
 ln -s /Applications/ccl/scripts/ccl ~/bin/ccl
