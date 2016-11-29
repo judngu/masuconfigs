@@ -19,6 +19,8 @@ abbr -a gvmi gvim
 abbr -a be 'bundle exec'
 abbr -a ga 'git add'
 abbr -a gits 'git status -uno'
+abbr -a gbg 'git bisect good'
+abbr -a gbb 'git bisect bad'
 #End stupidity...
 abbr -a epochtime "date +%s"
 abbr -a epochmillis "date +%s%N | cut -b1-13"
