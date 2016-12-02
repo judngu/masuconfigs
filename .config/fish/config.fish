@@ -8,6 +8,7 @@ if test -f $HOME/.config/fish/secrets.fish
 end
 
 set -x EDITOR gvim
+set -x vmm_use_secure_cookies false
 
 
 # Abbreviations
