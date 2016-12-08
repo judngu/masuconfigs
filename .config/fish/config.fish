@@ -79,3 +79,5 @@ set -g theme_display_ruby no
 rvm default
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+set -x PERLLIB /usr/local/Cellar/perl/5.24.0_1/lib/perl5/site_perl/5.24.0 $PERLLIB

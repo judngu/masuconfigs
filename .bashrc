@@ -393,3 +393,6 @@ source ~/.oh-my-git/prompt.sh
 #source ~/.xsh
 eval "$(thefuck --alias)"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export PERLLIB=/usr/local/Cellar/perl/5.24.0_1/lib/perl5/site_perl/5.24.0:$PERLLIB
+
