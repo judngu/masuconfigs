@@ -4,3 +4,5 @@
 .vim/view
 .DS_Store
 external_gitconfig
+.vim/plugged/*
+.vim/bundle/*
