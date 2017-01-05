@@ -1,5 +1,13 @@
 #!/bin/sh
 
+echo "have you run ssh-add ~/.github ? [y]"
+read github
+if [ "$github" != "y" ]; then
+	echo "Please load your ssh keys before proceeding."
+	echo "We'll need them to download some github repos."
+	exit(1)
+fi
+
 #git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # to see changed lines use git lg -p
 #git config --global alias.st "status -sb"
@@ -59,6 +67,10 @@ brew install cmake # used by yajl
 brew install jq # json parser
 brew install homebrew/dupes/expect # gets you unbuffer
 brew install rlwrap
+brew install task # task warrior
+brew install awscli
+brew install npm
+brew install postgresql
 
 ### for spacemacs https://github.com/syl20bnr/spacemacs
 brew tap railwaycat/homebrew-emacsmacport
@@ -70,10 +82,23 @@ brew linkapps
 # along with anything else that needs to be linked there
 # could just do brew linkapps emacs-mac 
 
+##########
+# GEMs
+gem install aws-sdk
+##########
+
+##########
+# PERL
+curl -L https://install.perlbrew.pl | bash
+
+##########
+
 mkdir -p ~/workspace/reference
+mkdir -p ~/.vim-tmp
 
 cd ~/workspace/reference
 git clone git://github.com/lloyd/yajl
+# A fast streaming JSON parsing library in C. http://lloyd.github.com/yajl
 cd yajl
 ./configure && make install
 #^^^ json formatting library
@@ -90,9 +115,11 @@ brew install msmtp
 cd ~/workspace/home_dir_configs
 git submodule init
 git submodule update
-ln -s ~/workspace/home_dir_configs/.vim/bundle ~/.vim/bundle
 ln -s ~/workspace/home_dir_configs/slime.vim ~/slime.vim
 ln -s ~/workspace/home_dir_configs/.emacs ~/.emacs
+cp .gitconfig ~/.gitconfig 
+# copy not link because it changes somewhat on work computers 
+
 ### spacemacs
 #ln -s ~/workspace/home_dir_configs/.emacs.d ~/.emacs.d
 if [ -e "~/.emacs.d" ]; then
@@ -162,11 +189,21 @@ curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
 # requires `chicken-install linenoise` to have been run first
 ln -s ~/workspace/home_dir_configs/.csirc ~/.csirc
 
+# RVM
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable
 
 
 #####
 echo "MANUAL TODO:----------------------"
-echo "add: /usr/local/bin/fish to /etc/shells"
-echo "run: chsh -s /usr/local/bin/fish"
-echo "run: rvm fish shell integration commands found here"
+echo "add: "
+echo "    /usr/local/bin/fish to /etc/shells"
+echo "    your ssh keys (and load the github one)"
+echo "download:"
+echo "    Inconsolata (not -g or -dz) from"
+echo "    https://github.com/powerline/fonts"
+echo "run: "
+echo "    chsh -s /usr/local/bin/fish"
+echo "run: "
+echo "    rvm fish shell integration commands found here"
 echo "     https://rvm.io/integration/fish"
